@@ -7,7 +7,7 @@
 var Cafe = {
   canPay: true,
   modeOrder: true,
-  totalPrice: 0,
+  totalPrice: 1,
 
   init: function(options) {
     Telegram.WebApp.ready();
