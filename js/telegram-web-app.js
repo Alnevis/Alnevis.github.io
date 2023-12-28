@@ -256,7 +256,7 @@
   var isIframe = WebView.isIframe;
 
   var WebApp = {};
-  var webAppInitData = '', webAppInitDataUnsafe = {};
+  var webAppInitData = '6520942264:AAHd9elJH5bKIjH_LsTLn9anycsoPItvhAE', webAppInitDataUnsafe = {};
   var themeParams = {}, colorScheme = 'light';
   var webAppVersion = '1.0';
 
