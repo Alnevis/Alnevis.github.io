@@ -5,9 +5,9 @@
 })(jQuery);
 
 var Cafe = {
-  canPay: true,
-  modeOrder: true,
-  totalPrice: 1,
+  canPay: false,
+  modeOrder: false,
+  totalPrice: 0,
 
   init: function(options) {
     Telegram.WebApp.ready();
