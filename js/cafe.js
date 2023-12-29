@@ -154,17 +154,16 @@ var Cafe = {
         }).showProgress();
       } else {
         mainButton.setParams({
-        is_visible: !!Cafe.canPay,
-        text: 'VIEW ORDER',
-        color: '#31b545'
+          is_visible: !!Cafe.canPay,
+          text: 'PAY ' + Cafe.formatPrice(Cafe.totalPrice),
+          color: '#31b545'
         }).hideProgress();
       }
     } else {
       mainButton.setParams({
         is_visible: !!Cafe.canPay,
-        text: 'PAY ' + Cafe.formatPrice(Cafe.totalPrice),
+        text: 'VIEW ORDER',
         color: '#31b545'
-
       }).hideProgress();
     }
   },
