@@ -86,10 +86,7 @@
       }
    });
 
-   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData("SOME INFO");
-      //при клике на основную кнопку отправляем данные в строковом виде
-   });
+
 
 
    let usercard = document.getElementById("usercard"); //получаем блок usercard
@@ -105,6 +102,10 @@
    userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
    usercard.appendChild(userid); //добавляем
 
+   Telegram.WebApp.onEvent('mainButtonClicked', function(){
+      tg.sendData("some string that we need to send",usercard);
+      //при клике на основную кнопку отправляем данные в строковом виде
+   });
 
    //работает только в attachment menu
    // let pic = document.createElement('img'); //создаем img
