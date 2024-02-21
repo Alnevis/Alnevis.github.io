@@ -103,7 +103,7 @@
    usercard.appendChild(userid); //добавляем
 
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData("some string that we need to send",usercard);
+      tg.sendData("some string that we need to send",profName.innerText);
       //при клике на основную кнопку отправляем данные в строковом виде
    });
 
