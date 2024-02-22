@@ -32,8 +32,8 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
    });
 
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData(`Ваш `);
-      window.alert(`HELLO!${tg.WebAppUser.username}`);
+      tg.sendData(`Ваш ${tg.headerColor}`);
+      window.alert(`HELLO!`);
       //при клике на основную кнопку отправляем данные в строковом виде  
    });
 
