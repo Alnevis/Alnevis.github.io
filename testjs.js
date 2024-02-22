@@ -32,7 +32,7 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
    });
 
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData(`Ваши имя сохранено!4434!`);
+      tg.sendData(`Ваши имя сохранен!`);
       window.alert(`HELLO!`);
       //при клике на основную кнопку отправляем данные в строковом виде  ${tg.initData}
    });
