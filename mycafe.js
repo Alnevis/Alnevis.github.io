@@ -1,5 +1,5 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-
+let x = tg.initData;
    tg.expand(); //расширяем на все окно
   
    tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
@@ -12,7 +12,7 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
     if (!Telegram.WebApp.initDataUnsafe) {
-        tg.sendData(`Ваш Заказ отправлен!`);
+        tg.sendData(`Ваш Заказ отправлен! ${x}`);
     } else {
         window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     }
