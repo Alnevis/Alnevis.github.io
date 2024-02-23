@@ -17,13 +17,13 @@ var addbutton = document.querySelector('.addbutton');
 // Add a click event listener to the button
 addbutton.addEventListener('click', function() {
   // Code to execute when the button is clicked
-  tg.openLink('https://core.telegram.org/bots/webapps');
+  tg.openTelegramLink('https://t.me/public_python');
 });
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
     if (!x) {
      //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-      tg.showAlert(`ОТКРОЙ ПРИЛОЖЕНИЕ`)
+      tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`)
       
        
     } else {
