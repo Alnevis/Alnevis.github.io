@@ -1,11 +1,13 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 
    tg.expand(); //расширяем на все окно
-
+  
    tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
    tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе
+   tg.MainButton.show()
+   tg.MainButton.enable()
 
-   let btn = document.getElementById("btn"); //получаем кнопку скрыть/показать  
+     
 
    Telegram.WebApp.onEvent('mainButtonClicked', function(){
       tg.sendData(`Ваш Заказ отправлен!`);
