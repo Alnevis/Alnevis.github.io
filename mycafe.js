@@ -6,7 +6,7 @@ let x = tg.initData;
    tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе ${x}
    tg.MainButton.show()
    tg.SettingsButton.show()
-   tg.isClosingConfirmationEnabled = true;
+   tg.isClosingConfirmationEnabled = false;
    tg.BackButton.show()
 
      
