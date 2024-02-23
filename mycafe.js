@@ -9,13 +9,13 @@ let z = false;
    tg.SettingsButton.show()
    tg.isClosingConfirmationEnabled = false;
    tg.BackButton.show()
+   tg.setBackgroundColor('#DC143C');
 
      
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
     if (!z) {
       tg.sendData(`Ваш Заказ отправлен! `);
-       window.alert(` !!!`);
       
        
     } else {
