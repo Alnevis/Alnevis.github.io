@@ -5,13 +5,15 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
    tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
    tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе
    tg.MainButton.show()
-   tg.MainButton.enable()
+   
 
      
 
-   Telegram.WebApp.onEvent('mainButtonClicked', function(){
+   Telegram.WebApp.onEvent('mainButtonClicked', MainButtonCall)
+   
+   MainButtonCall: function(){
       tg.sendData(`Ваш Заказ отправлен!`);
-      window.alert(`HELLO!`);
+      window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
       //при клике на основную кнопку отправляем данные в строковом виде  
-   });
+   };
 
