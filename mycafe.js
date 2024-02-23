@@ -5,17 +5,18 @@ let x = tg.initData;
    tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
    tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе
    tg.MainButton.show()
-   //tg.SettingsButton.show()
+   tg.SettingsButton.show()
    
 
      
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
-    if (!Telegram.WebApp.initDataUnsafe) {
-        tg.sendData(`Ваш Заказ отправлен!!!!! ${x}`);
+    if (!!Telegram.WebApp.initDataUnsafe) {
+      window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+       
     } else {
-        window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`)
-    };
+      tg.sendData(`Ваш Заказ отправлен! ${x}`);
+    }
 });
 
 
