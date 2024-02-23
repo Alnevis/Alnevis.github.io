@@ -11,7 +11,7 @@ let x = tg.initData;
      
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
-    if (!Telegram.WebApp.initDataUnsafe) {
+    if (!!Telegram.WebApp.initDataUnsafe) {
         tg.sendData(`Ваш Заказ отправлен! ${x}`);
     } else {
         window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
