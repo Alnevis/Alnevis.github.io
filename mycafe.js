@@ -14,7 +14,7 @@ let z = false;
      
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
-    if (!z) {
+    if (!x) {
       tg.sendData(`Ваш Заказ отправлен! `);
       window.alert(` !!!`);
        
