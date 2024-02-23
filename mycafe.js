@@ -16,7 +16,7 @@ let z = false;
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
     if (!z) {
       tg.sendData(`Ваш Заказ отправлен! `);
-      
+      window.alert(` !!!`);
        
     } else {
       window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
