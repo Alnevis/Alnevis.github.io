@@ -7,13 +7,11 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
    tg.MainButton.show()
    
 
-   function MainButtonCall() {
-    tg.sendData('Ваш Заказ отправлен!');
-    window.alert('ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!');
-    // при клике на основную кнопку отправляем данные в строковом виде
-  };
+     
 
-   Telegram.WebApp.onEvent('mainButtonClicked', MainButtonCall);
-
-
+   Telegram.WebApp.onEvent('mainButtonClicked', function(){
+      tg.sendData(`Ваш Заказ отправлен!`);
+      window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+      //при клике на основную кнопку отправляем данные в строковом виде  
+   });
 
