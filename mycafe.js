@@ -5,6 +5,7 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
    tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
    tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе
    tg.MainButton.show()
+   tg.SettingsButton.show()
    
 
      
