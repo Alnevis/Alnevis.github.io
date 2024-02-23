@@ -10,10 +10,14 @@ let tg = window.Telegram.WebApp; //получаем объект webapp теле
 
      
 
-   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      
-      if (!Telegram.WebApp.initDataUnsafe) {window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-    }else {tg.sendData(`Ваш Заказ отправлен!`)};
-       
-   });
+   Telegram.WebApp.onEvent('mainButtonClicked', function () {
+    if (!Telegram.WebApp.initDataUnsafe) {
+        tg.sendData(`Ваш Заказ отправлен!`);
+    } else {
+        window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    }
+});
 
+
+       
+   
