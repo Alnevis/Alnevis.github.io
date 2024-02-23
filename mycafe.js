@@ -3,20 +3,21 @@ let x = tg.initData;
    tg.expand(); //расширяем на все окно
   
    tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-   tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе
+   tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе ${x}
    tg.MainButton.show()
    tg.SettingsButton.show()
    tg.isClosingConfirmationEnabled = true;
-   
+   tg.BackButton.show()
 
      
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
-    if (!!Telegram.WebApp.initDataUnsafe) {
-      window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    if (!Telegram.WebApp.initDataUnsafe) {
+      tg.sendData(`Ваш Заказ отправлен! `);
+      
        
     } else {
-      tg.sendData(`Ваш Заказ отправлен! ${x}`);
+      window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     }
 });
 
