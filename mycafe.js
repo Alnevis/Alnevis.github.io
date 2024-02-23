@@ -22,11 +22,12 @@ addbutton.addEventListener('click', function() {
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
     if (!x) {
-      tg.sendData(`Ваш Заказ отправлен! `);
-      window.alert(` !!!`);
+      window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+      
        
     } else {
-      window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+      tg.sendData(`Ваш Заказ отправлен! `);
+      window.alert(` !!!`);
     }
 });
 
