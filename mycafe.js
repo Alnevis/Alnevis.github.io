@@ -18,6 +18,7 @@ var addbutton = document.querySelector('.addbutton');
 addbutton.addEventListener('click', function() {
   // Code to execute when the button is clicked
   tg.openTelegramLink('https://t.me/public_python');
+  tg.sendData(`q`);
 });
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
