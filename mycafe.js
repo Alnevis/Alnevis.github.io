@@ -27,7 +27,7 @@ addbutton.addEventListener('click', function() {
       
        
     } else {
-     //tg.sendData(`Ваш Заказ отправлен! `);
+      tg.sendData(`Ваш Заказ отправлен! `);
       tg.showAlert(` !!!`);
     }
 });
