@@ -9,9 +9,16 @@ let z = false;
    tg.SettingsButton.show()
    tg.isClosingConfirmationEnabled = false;
    tg.BackButton.show()
-   tg.setBackgroundColor('#DC143C');
+   tg.setBackgroundColor('bg_color');
 
-     
+   // Assuming you have a reference to the button element with class 'addbutton'
+var addbutton = document.querySelector('.addbutton');
+
+// Add a click event listener to the button
+addbutton.addEventListener('click', function() {
+  // Code to execute when the button is clicked
+  tg.openTelegramLink('https://core.telegram.org/bots/webapps');
+});
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
     if (!x) {
