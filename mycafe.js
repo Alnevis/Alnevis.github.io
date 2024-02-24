@@ -20,7 +20,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
   } else {
       tg.showAlert(`Данные получены! x: ${typeof x} ${JSON.stringify(x)}`);
       tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}`);
-      tg.sendData(`Ваш Заказ отправлен!  `);     
+      tg.sendData(`Ваш Заказ отправлен!`);     
     }
 });
 /*
