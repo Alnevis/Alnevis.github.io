@@ -17,7 +17,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
-      tg.showAlert(`!!!`);
+      tg.showAlert(`Данные получены!!!`);
       tg.sendData(`Ваш Заказ отправлен!x: ${typeof x} ${x}`);      
     }
 });
