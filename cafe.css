@@ -129,6 +129,11 @@ body {
   .cafe-item-title {
     font-weight: 500;
   }
+  .cafe-item-quantity{
+    font-weight: 900;    
+    margin: 5px 2px;
+    
+  }
   .cafe-item-price {
     font-weight: 700;
     white-space: nowrap;
@@ -490,6 +495,7 @@ body {
   .cafe-item-quantity-wrap{
     display: none;
   }
+  
   @-webkit-keyframes rotate-circle {
     from { transform: rotateZ(-90deg); }
     to   { transform: rotateZ(630deg); }
