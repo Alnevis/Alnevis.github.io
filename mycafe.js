@@ -21,7 +21,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
   }
 });
 
-var addbutton = $('.js-item-incr-btn');
+/*var addbutton = $('.js-item-incr-btn');
  
 addbutton.on('click', function(event) {
   event.preventDefault();
@@ -63,6 +63,3 @@ function updateItem(itemEl, delta) {
   updateItemQuantity(itemEl);
   // Add your custom logic here to update the item quantity in the order overview section
 };
-
-      
-  
