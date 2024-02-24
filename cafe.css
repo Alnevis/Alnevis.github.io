@@ -91,6 +91,7 @@ body {
     padding: 0;
     margin: 0;
   }
+  
   .cafe-item-photo {
     position: relative;
     height: 78px;
@@ -153,7 +154,7 @@ body {
   button {
     cursor: pointer;
   }
-  
+
   button,
   .cafe-item-counter {
     display: inline-block;

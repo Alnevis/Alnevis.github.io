@@ -2,7 +2,7 @@
 //comment
 /* this 
 is ]
-comment
+comments
 */
 document.getElementById("H1").textContent = `Hello Friend`;
 let x = 10;
