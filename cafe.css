@@ -153,6 +153,7 @@ body {
   button {
     cursor: pointer;
   }
+  
   button,
   .cafe-item-counter {
     display: inline-block;
