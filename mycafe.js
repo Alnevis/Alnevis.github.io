@@ -1,5 +1,6 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 let x = tg.initDataUnsafe;
+let y = tg.initData;
 let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
@@ -18,7 +19,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
       tg.showAlert(`Данные получены!`);
-      tg.sendData(`Ваш Заказ отправлен! x: ${typeof x} ${JSON.stringify(x)}`);     
+      tg.sendData(`Ваш Заказ отправлен! x: ${typeof x} ${JSON.stringify(x)} y: ${typeof y} ${JSON.stringify(y)}`);     
     }
 });
 /*
