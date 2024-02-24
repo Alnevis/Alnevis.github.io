@@ -3,7 +3,7 @@ let x = tg.initDataUnsafe;
 let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе ${x}
+tg.MainButton.setText("ЗАКАЗ"); //изменяем текст кнопки иначе ${x}
 tg.MainButton.show();
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = false;
