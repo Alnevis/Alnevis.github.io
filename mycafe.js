@@ -11,8 +11,19 @@ let z = false;
    tg.BackButton.hide();
    tg.setBackgroundColor('bg_color');
 
-
-
+   Telegram.WebApp.onEvent('mainButtonClicked', function () {
+    if (!z) {
+      //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+      tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+      tg.openTelegramLink('https://t.me/public_python');
+        
+    } else {
+      tg.sendData(`Ваш Заказ отправлен! `);
+      tg.showAlert(`!!!`);
+    }
+    });
+var addbutton = $('.js-item-incr-btn');
+// Select the quantity decrement button
 // Add a click event listener to the button 
 addbutton.on('click', function(event) {
   event.preventDefault();
@@ -22,19 +33,8 @@ addbutton.on('click', function(event) {
 });
 
 
-   Telegram.WebApp.onEvent('mainButtonClicked', function () {
-    if (!z) {
-     //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-      tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-      tg.openTelegramLink('https://t.me/public_python');
-       
-    } else {
-      tg.sendData(`Ваш Заказ отправлен! `);
-      tg.showAlert(`!!!`);
-    }
-});
-var addbutton = $('.js-item-incr-btn');
- // Select the quantity decrement button
+
+
 var decrButton = $('.js-item-quantity-decr');
 
 // Add a click event listener to the button
