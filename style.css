@@ -1,0 +1,19 @@
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2em;
+    text-align: center;
+}
+.hover-effect {
+    padding: 20px;
+    background-color: rgb(178, 173, 230);
+    cursor: pointer;
+    transition: filter 2.5s ease; /* Transition on the filter property */
+  }
+  
+  .hover-effect:hover {
+    filter: grayscale(100%); /* Fully grayscale on hover */
+    background-color: red;
+  }
+  .example {
+    color: blue;
+  }
