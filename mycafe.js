@@ -11,14 +11,15 @@ tg.BackButton.hide();
 tg.setBackgroundColor('bg_color');
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
-  if (!!x) {
-      //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-      tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-      tg.openTelegramLink('https://t.me/public_python');  
+  if (x) {
+    window.alert('x is falsy!');
+    //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    tg.openTelegramLink('https://t.me/public_python');  
   } else {
       tg.sendData(`Ваш Заказ отправлен!`);
       tg.showAlert(`!!!`);
-  }
+    }
 });
 /*
 var addbutton = $('.js-item-incr-btn'); 
