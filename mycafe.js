@@ -5,9 +5,9 @@ let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
 tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
-tg.MainButton.show();
+
 tg.SettingsButton.show();
-tg.isClosingConfirmationEnabled = false;
+tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
 tg.setBackgroundColor('bg_color');
 //$(".h").text("HI")
@@ -27,7 +27,7 @@ function incrClicked (itemEl, delta) {
     itemEl.find('.js-item-quantity-decr').hide();
     itemEl.find('.js-item-quantity').hide();
     itemEl.find('.js-item-incr-btn').show();
-    
+    tg.MainButton.hide();
   }
   itemEl.data('item-count', count);
   itemprice = 0;
@@ -42,7 +42,7 @@ function incrClicked (itemEl, delta) {
 }
 var addbutton = $('.js-item-incr-btn'); 
 addbutton.on('click', function(event) {
-  //
+  tg.MainButton.show();
   $(this).parent('.cafe-item-buttons').find('.js-item-incr-btn').hide();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-incr').show();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-decr').show();
