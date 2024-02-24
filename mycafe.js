@@ -15,11 +15,12 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
   if (!x) {
     //window.alert('x is true!');
     //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-    tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!! x: ${typeof x} ${JSON.stringify(x)}`);
+    tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
-      tg.showAlert(`Данные получены!`);
-      tg.sendData(`Ваш Заказ отправлен!  y: ${typeof y} ${JSON.stringify(y)}`);     
+      tg.showAlert(`Данные получены! x: ${typeof x} ${JSON.stringify(x)}`);
+      tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}`);
+      tg.sendData(`Ваш Заказ отправлен!  `);     
     }
 });
 /*
