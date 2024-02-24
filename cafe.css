@@ -301,7 +301,7 @@ body {
     opacity: 1;
   }
   .cafe-order-header-wrap {
-    padding: 21px 20px 14px;
+    padding: 11px 20px 14px;
     display: flex;
     align-items: center;
   }
@@ -314,7 +314,7 @@ body {
     margin: 0;
   }
   .cafe-order-edit {
-    font-size: 15px;
+    font-size: 19px;
     line-height: 18px;
     font-weight: 500;
     color: var(--accent-color);
@@ -367,7 +367,7 @@ body {
   }
   
   .cafe-text-field-wrap {
-    margin-top: 14px;
+    margin-top: 4px;
   }
   .cafe-text-field {
     font-family: var(--default-font);
