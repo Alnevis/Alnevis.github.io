@@ -11,8 +11,8 @@ tg.BackButton.hide();
 tg.setBackgroundColor('bg_color');
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
-  if (x) {
-    window.alert('x is true!');
+  if (!x) {
+    //window.alert('x is true!');
     //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
