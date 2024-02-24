@@ -11,16 +11,7 @@ tg.isClosingConfirmationEnabled = false;
 tg.BackButton.hide();
 tg.setBackgroundColor('bg_color');
 //$(".h").text("HI")
-Telegram.WebApp.onEvent('mainButtonClicked', function () {
-  if (!x) {
-    //window.alert('x is true!');   
-    tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-    //tg.openTelegramLink('https://t.me/public_python');  
-  } else {
-      //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
-      tg.sendData(`Ваш Заказ отправлен!`);     
-    }
-});
+
 function incrClicked (itemEl, delta) {
   
   var count = itemEl.data('item-count');
@@ -36,7 +27,13 @@ function incrClicked (itemEl, delta) {
     
   }
   itemEl.data('item-count', count);
-  updateItem(itemEl, delta);
+  if (count > 0) {
+    let itemprice = itemEl.find('.cafe-item-price').text();
+    let itemtitle = itemEl.find('.cafe-item-title').text();
+    //alert(`finalcount = ${count} ${gl} ${al}`);
+  }
+  
+ // updateItem(itemEl, delta);
 }
 var addbutton = $('.js-item-incr-btn'); 
 addbutton.on('click', function(event) {
@@ -90,3 +87,13 @@ function updateItem(itemEl, delta) {
   updateItemQuantity(itemEl);
   // Add your custom logic here to update the item quantity in the order overview section
 };*/
+Telegram.WebApp.onEvent('mainButtonClicked', function () {
+  if (!x) {
+    //window.alert('x is true!');   
+    tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    //tg.openTelegramLink('https://t.me/public_python');  
+  } else {
+      //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
+      tg.sendData(`Заказ: ${count} шт. ${itemprice} ${itemtitle}`);     
+    }
+});
