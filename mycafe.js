@@ -20,11 +20,8 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       tg.showAlert(`!!!`);
   }
 });
-
 /*
-
-var addbutton = $('.js-item-incr-btn');
- 
+var addbutton = $('.js-item-incr-btn'); 
 addbutton.on('click', function(event) {
   event.preventDefault();
   var itemEl = $(this).closest('.js-item');
