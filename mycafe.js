@@ -74,34 +74,18 @@ incrButton.on('click', function(event) {
   incrClicked(itemEl, 1);
 });
 
-/* Update the item quantity display
-function updateItemQuantity(itemEl) {
-  var count = itemEl.data('item-count');
-  itemEl.find('.cafe-item-quantity').text(count);
-};
-
-// Update the item
-function updateItem(itemEl, delta) {
-  var count = itemEl.data('item-count') || 0;
-  count += delta;
-  if (count <= 0 ) {
-    //alert("Button clicked!");
-      count = 0;
-      $(this).closest('.cafe-item-buttons').find('.js-item-quantity-incr').hide();
-  }
-  itemEl.data('item-count', count);
-  updateItemQuantity(itemEl);
-  // Add your custom logic here to update the item quantity in the order overview section
-};*/
-
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
   alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`);
-  if (!x) {
+  var OrderMode = document.querySelector('.cafe-items');
+  OrderMode.style.display = 'none';
+  var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+  cafeOrderOverview.style.display = 'flex';
+  /*if (!x) {
     //window.alert('x is true!');   
     tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
       //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
-      tg.sendData(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`);     
-    }
+      tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice} `);     
+    }*/
 });
