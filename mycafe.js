@@ -3,7 +3,7 @@ let x = tg.initDataUnsafe;
 let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-tg.MainButton.setText("ЗАКАЗ"); //изменяем текст кнопки иначе ${x}
+tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе ${x}
 tg.MainButton.show();
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = false;
@@ -11,12 +11,12 @@ tg.BackButton.hide();
 tg.setBackgroundColor('bg_color');
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
-  if (!z) {
-    //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+  if (!!x) {
+      //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
       tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
       tg.openTelegramLink('https://t.me/public_python');  
   } else {
-      tg.sendData(`Ваш Заказ отправлен! `);
+      tg.sendData(`Ваш Заказ отправлен!`);
       tg.showAlert(`!!!`);
   }
 });
