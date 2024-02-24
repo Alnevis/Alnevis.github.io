@@ -79,6 +79,8 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
   tg.BackButton.show();
   var OrderMode = document.querySelector('.cafe-items');
   OrderMode.style.display = 'none';
+  var OrderItem = document.querySelector('.cafe-order-item');
+  OrderItem.style.display = 'flex';
   var cafeOrderOverview = document.querySelector('.cafe-order-overview');
   cafeOrderOverview.style.display = 'flex';
   /*if (!x) {
