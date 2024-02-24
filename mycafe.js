@@ -5,10 +5,10 @@ let z = false;
   
    tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
    tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе ${x}
-   tg.MainButton.show()
-   tg.SettingsButton.hide()
+   tg.MainButton.show();
+   tg.SettingsButton.show();
    tg.isClosingConfirmationEnabled = false;
-   tg.BackButton.hide()
+   tg.BackButton.hide();
    tg.setBackgroundColor('bg_color');
 
 
@@ -23,7 +23,7 @@ addbutton.on('click', function(event) {
 
 
    Telegram.WebApp.onEvent('mainButtonClicked', function () {
-    if (!x) {
+    if (!z) {
      //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
       tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
       tg.openTelegramLink('https://t.me/public_python');
