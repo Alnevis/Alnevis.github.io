@@ -11,7 +11,7 @@ tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
 tg.setBackgroundColor('bg_color');
 //$(".h").text("HI")
-let count;        // Declare count
+let count1;        // Declare count
 let itemprice;    // Declare itemprice
 let itemtitle; 
 
@@ -32,10 +32,11 @@ function incrClicked (itemEl, delta) {
   itemEl.data('item-count', count);
   itemprice = 0;
   itemtitle = 0;
+  count1 = 0;
   if (count > 0) {
     itemprice = itemEl.find('.cafe-item-price').text();
     itemtitle = itemEl.find('.cafe-item-title').text();
-    //alert(`finalcount = ${count} ${gl} ${al}`);
+    count1 = count
   };
   
  // updateItem(itemEl, delta);
@@ -94,13 +95,13 @@ function updateItem(itemEl, delta) {
 };*/
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
-  alert(`Заказ: ${count} шт. ${itemprice} ${itemtitle}`);
+  alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`);
   if (!x) {
     //window.alert('x is true!');   
     tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
       //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
-      tg.sendData(`Заказ: ${count} шт. ${itemprice} ${itemtitle}`);     
+      tg.sendData(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`);     
     }
 });
