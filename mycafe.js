@@ -89,7 +89,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
-      tg.showAlert(`Данные получены!`)
+      tg.showAlert(`Данные получены!!!`)
       //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
       //tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice} `);     
     }
