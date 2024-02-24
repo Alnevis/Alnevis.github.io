@@ -11,6 +11,9 @@ tg.isClosingConfirmationEnabled = false;
 tg.BackButton.hide();
 tg.setBackgroundColor('bg_color');
 //$(".h").text("HI")
+let count;        // Declare count
+let itemprice;    // Declare itemprice
+let itemtitle; 
 
 function incrClicked (itemEl, delta) {
   
@@ -27,11 +30,13 @@ function incrClicked (itemEl, delta) {
     
   }
   itemEl.data('item-count', count);
+  itemprice = 0;
+  itemtitle = 0;
   if (count > 0) {
-    let itemprice = itemEl.find('.cafe-item-price').text();
-    let itemtitle = itemEl.find('.cafe-item-title').text();
+    itemprice = itemEl.find('.cafe-item-price').text();
+    itemtitle = itemEl.find('.cafe-item-title').text();
     //alert(`finalcount = ${count} ${gl} ${al}`);
-  }
+  };
   
  // updateItem(itemEl, delta);
 }
@@ -87,7 +92,9 @@ function updateItem(itemEl, delta) {
   updateItemQuantity(itemEl);
   // Add your custom logic here to update the item quantity in the order overview section
 };*/
+
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
+  alert(`Заказ: ${count} шт. ${itemprice} ${itemtitle}`);
   if (!x) {
     //window.alert('x is true!');   
     tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
