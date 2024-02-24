@@ -75,6 +75,7 @@ incrButton.on('click', function(event) {
 });
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
+  alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`);
   tg.BackButton.show();
   var OrderMode = document.querySelector('.cafe-items');
   OrderMode.style.display = 'none';
@@ -82,7 +83,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
   OrderItem.style.display = 'flex';
   var cafeOrderOverview = document.querySelector('.cafe-order-overview');
   cafeOrderOverview.style.display = 'flex';
-  alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`);
+  
   if (!x) {
     //window.alert('x is true!');   
     tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
