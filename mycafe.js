@@ -18,7 +18,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
       tg.showAlert(`!!!`);
-      tg.sendData(`Ваш Заказ отправлен!x: ${typeof x}`);      
+      tg.sendData(`Ваш Заказ отправлен!x: ${typeof x} ${x}`);      
     }
 });
 /*
