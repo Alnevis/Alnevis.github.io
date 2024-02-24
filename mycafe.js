@@ -4,7 +4,7 @@ let y = tg.initData;
 let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе ${x}
+tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
 tg.MainButton.show();
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = false;
@@ -13,8 +13,7 @@ tg.setBackgroundColor('bg_color');
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () {
   if (!x) {
-    //window.alert('x is true!');
-    //window.alert(`ОТКРОЙ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    //window.alert('x is true!');   
     tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
@@ -22,7 +21,16 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       tg.sendData(`Ваш Заказ отправлен!`);     
     }
 });
-/*
+function incrClicked (itemEl, delta) {
+  
+  var count = +itemEl.data('item-count') || 0;
+  count += delta;
+  if (count < 0) {
+    count = 0;
+  }
+  itemEl.data('item-count', count);
+  updateItem(itemEl, delta);
+}
 var addbutton = $('.js-item-incr-btn'); 
 addbutton.on('click', function(event) {
   event.preventDefault();
@@ -63,4 +71,4 @@ function updateItem(itemEl, delta) {
   itemEl.data('item-count', count);
   updateItemQuantity(itemEl);
   // Add your custom logic here to update the item quantity in the order overview section
-}; */
+};
