@@ -74,13 +74,13 @@ incrButton.on('click', function(event) {
   var itemEl = $(this).closest('.js-item');
   incrClicked(itemEl, 1);
 });
-  var OrderMode = document.querySelector('.cafe-items');
+  /*var OrderMode = document.querySelector('.cafe-items');
   OrderMode.style.display = 'none';
   var OrderItem = document.querySelector('.cafe-order-item');
   OrderItem.style.display = 'flex';
   var cafeOrderOverview = document.querySelector('.cafe-order-overview');
   cafeOrderOverview.style.display = 'flex';
-  cafeOrderOverview.style.opacity = '1';
+  cafeOrderOverview.style.opacity = '1';*/
 Telegram.WebApp.onEvent('mainButtonClicked', function () {  
   alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`); 
    if (tg.MainButton.text=="Посмотреть заказ") {
