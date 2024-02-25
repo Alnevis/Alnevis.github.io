@@ -38,8 +38,9 @@ function incrClicked (itemEl, delta) {
     itemprice = itemEl.find('.cafe-item-price').text();
     itemtitle = itemEl.find('.cafe-item-title').text();
     count1 = count
-    itempricefloat = parseFloat(itemEl.data('item-price') / 100);
-    totalitemprice = count * itempricefloat;
+    itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
+    totalitemprice = count * itempricefloat; //
+    $('.oneitemtotalprice').text(totalitemprice);
   };
   
  // updateItem(itemEl, delta);
@@ -78,7 +79,7 @@ incrButton.on('click', function(event) {
   var itemEl = $(this).closest('.js-item');
   incrClicked(itemEl, 1);
 });
- /* var OrderMode = document.querySelector('.cafe-items');
+  var OrderMode = document.querySelector('.cafe-items');
   OrderMode.style.display = 'none';
   var OrderItem = document.querySelector('.cafe-order-item');
   OrderItem.style.display = 'flex';
@@ -86,7 +87,7 @@ incrButton.on('click', function(event) {
   cafeOrderOverview.style.display = 'flex';
   cafeOrderOverview.style.opacity = '1';
   var Comment = document.querySelector('.comment');
-    Comment.style.display = 'flex';*/
+  Comment.style.display = 'flex';
 Telegram.WebApp.onEvent('mainButtonClicked', function () {  
   alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`); 
    if (tg.MainButton.text=="Посмотреть заказ") {
@@ -100,6 +101,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     cafeOrderOverview.style.opacity = '1';
     var Comment = document.querySelector('.comment');
     Comment.style.display = 'flex';
+    $('.finalamount').addClass('show');
     tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
