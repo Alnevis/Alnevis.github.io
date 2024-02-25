@@ -5,7 +5,7 @@ let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
-alert(`hei`); 
+alert(`hui`); 
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -46,6 +46,7 @@ function incrClicked (itemEl, delta, itemId) {
   count1 = 0;
   if (count > 0) {
     itemprice = itemEl.find('.cafe-item-price').text();
+    $('.oneitemprice#' + itemId).text(itemprice);
     itemtitle = itemEl.find('.cafe-item-title').text();
     count1 = count
     itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
@@ -57,7 +58,7 @@ function incrClicked (itemEl, delta, itemId) {
       return parseFloat($(this).text());
     }).get();
 
-    var finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
+    finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue;
     }, 0);
 
