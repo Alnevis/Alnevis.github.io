@@ -417,7 +417,7 @@ body {
     margin-left: 11px;
   }
   .finalamount {
-
+    margin-left: 11px;
     display: none;
   }
   .finalamount.show {
@@ -426,7 +426,7 @@ body {
   }
   .cafe-text-field-wrap {
     margin-top: 14px;
-    width: 30%;
+    width: 50%;
   }
   .cafe-text-field {
     font-family: var(--default-font);
