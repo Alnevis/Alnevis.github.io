@@ -411,20 +411,22 @@ body {
   }
   .comment {
     display:none;
+     
   }
   .cafe-text-field-wrap {
-    margin-top: 4px;
+    margin-top: 14px;
+    width: 30%;
   }
   .cafe-text-field {
     font-family: var(--default-font);
-    font-size: 15px;
-    line-height: 21px;
+    font-size: 13px;
+    line-height: 12px;
     -webkit-font-smoothing: antialiased;
     padding: 12px 20px 13px;
     box-sizing: border-box;
-    display: block;
+    display: flex;
     outline: none;
-    border: none;
+    border-style: dotted;
     border-radius: 0;
     resize: none;
     color: var(--text-color);
