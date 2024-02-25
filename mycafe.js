@@ -29,8 +29,17 @@ function incrClicked (itemEl, delta, itemId) {
     itemEl.find('.js-item-quantity-decr').hide();
     itemEl.find('.js-item-quantity').hide();
     itemEl.find('.js-item-incr-btn').show();
-    tg.MainButton.hide();
+    
   }
+  var allZeros = $('.js-order-item-counter').map(function() {
+    return parseInt($(this).text());
+  }).get().every(function(value) {
+    return value === 0;
+  });  
+  if (allZeros) {
+    tg.MainButton.hide();
+  } 
+  
   itemEl.data('item-count', count);
   itemprice = 0;
   itemtitle = 0;
@@ -135,6 +144,7 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
     cafeOrderOverview.style.opacity = '0';
     var Comment = document.querySelector('.comment');
     Comment.style.display = 'none';
+    $('.finalamount').removeClass('show');
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки иначе 
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
