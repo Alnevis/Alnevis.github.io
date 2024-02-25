@@ -38,7 +38,8 @@ function incrClicked (itemEl, delta) {
     itemprice = itemEl.find('.cafe-item-price').text();
     itemtitle = itemEl.find('.cafe-item-title').text();
     count1 = count
-    totalitemprice = count * parseFloat(itemprice)
+    itempricefloat = parseFloat(itemEl.data('item-price') / 100);
+    totalitemprice = count * itempricefloat;
   };
   
  // updateItem(itemEl, delta);
