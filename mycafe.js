@@ -5,7 +5,7 @@ let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
-alert(`haaaui`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+alert(`hti`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -45,7 +45,7 @@ function incrClicked (itemEl, delta, itemId) {
   itemtitle = 0;
   count1 = 0;
   if (count > 0) {
-    $('.js-order-item#' + itemId).show();
+    $(`.js-order-item[data-item-id="${itemId}"]`).show();
     itemprice = itemEl.find('.cafe-item-price').text();
     $('.oneitemprice#' + itemId).text(itemprice);
     itemtitle = itemEl.find('.cafe-item-title').text();
@@ -59,14 +59,15 @@ function incrClicked (itemEl, delta, itemId) {
       return parseFloat($(this).text());
     }).get();
 
-    finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
+    var finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue;
     }, 0);
 
     $('.allitemtotalprice').text(finalprice.toFixed(2)); //
     alert(`count1 = ${count1} itemId = ${itemId} itemtitle = ${itemtitle} itemprice = ${itemprice} itempricefloat = ${itempricefloat} totalitemprice = ${totalitemprice} finalprice = ${finalprice}`);
   } else {
-    $('.js-order-item#' + itemId).hide();
+    $(`.js-order-item[data-item-id="${itemId}"]`).hide();
+
   };
   
  // updateItem(itemEl, delta);
