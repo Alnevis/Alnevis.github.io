@@ -4,7 +4,7 @@ let y = tg.initData;
 let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
-tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
+//tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
 
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
@@ -92,6 +92,8 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     var cafeOrderOverview = document.querySelector('.cafe-order-overview');
     cafeOrderOverview.style.display = 'flex';
     cafeOrderOverview.style.opacity = '1';
+    var Comment = document.querySelector('.comment');
+    Comment.style.display = 'flex';
     tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
@@ -112,6 +114,8 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
     var cafeOrderOverview = document.querySelector('.cafe-order-overview');
     cafeOrderOverview.style.display = 'none';
     cafeOrderOverview.style.opacity = '0';
+    var Comment = document.querySelector('.comment');
+    Comment.style.display = 'none';
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки иначе 
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
