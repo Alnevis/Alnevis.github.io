@@ -14,7 +14,7 @@ tg.setBackgroundColor('bg_color');
 let count1;        // Declare count
 let itemprice;    // Declare itemprice
 let itemtitle; 
-
+let totalitemprice
 function incrClicked (itemEl, delta) {
   
   var count = itemEl.data('item-count');
@@ -38,6 +38,7 @@ function incrClicked (itemEl, delta) {
     itemprice = itemEl.find('.cafe-item-price').text();
     itemtitle = itemEl.find('.cafe-item-title').text();
     count1 = count
+    totalitemprice = count * parseFloat(itemprice)
   };
   
  // updateItem(itemEl, delta);
