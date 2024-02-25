@@ -15,14 +15,15 @@ let count1;        // Declare count
 let itemprice;    // Declare itemprice
 let itemtitle; 
 let totalitemprice
-function incrClicked (itemEl, delta) {
+let finalprice
+function incrClicked (itemEl, delta, itemId) {
   
   var count = itemEl.data('item-count');
  // alert(`count = ${count}`);
   count += delta;
   //alert(`count = ${count}`);
   itemEl.find('.js-item-quantity').text(count);
-  $('.js-order-item-counter').text(count);
+  $('.js-order-item-counter#' + itemId).text(count);
   if (count <= 0) {
     itemEl.find('.js-item-quantity-incr').hide();
     itemEl.find('.js-item-quantity-decr').hide();
@@ -40,7 +41,11 @@ function incrClicked (itemEl, delta) {
     count1 = count
     itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
     totalitemprice = count * itempricefloat; //
-    $('.oneitemtotalprice').text(totalitemprice);
+    totalitemprice = totalitemprice.toFixed(2);
+    $('.oneitemtotalprice#' + itemId).text(totalitemprice);
+    finalprice = parseFloat($('.allitemtotalprice').text());
+    finalprice += totalitemprice;
+    $('.allitemtotalprice').text(finalprice.toFixed(2));
   };
   
  // updateItem(itemEl, delta);
@@ -55,11 +60,12 @@ addbutton.on('click', function(event) {
  // event.preventDefault();
  var itemEl = $(this).closest('.js-item');
  var count = itemEl.data('item-count');
+ var itemId = itemEl.data('item-id');
  //alert(`count1 = ${count}`);
  itemEl.data('item-count',1)
  itemEl.find('.js-item-quantity').text(1);
- $('.js-order-item-counter').text(1);
- incrClicked(itemEl, 0);
+ $('.js-order-item-counter#' + itemId).text(1);
+ incrClicked(itemEl, 0 , itemId);
 });
 
 var decrButton = $('.js-item-quantity-decr');
@@ -67,7 +73,8 @@ var decrButton = $('.js-item-quantity-decr');
 decrButton.on('click', function(event) {
   event.preventDefault();
   var itemEl = $(this).closest('.js-item');
-  incrClicked(itemEl, -1);
+  var itemId = itemEl.data('item-id');
+  incrClicked(itemEl, -1, itemId );
 });
 
 // Select the quantity increment button
@@ -77,7 +84,8 @@ incrButton.on('click', function(event) {
   //event.preventDefault();
   //alert("itemEl.data('item-count')");
   var itemEl = $(this).closest('.js-item');
-  incrClicked(itemEl, 1);
+  var itemId = itemEl.data('item-id');
+  incrClicked(itemEl, 1, itemId);
 });
 /*
   var OrderMode = document.querySelector('.cafe-items');
@@ -111,7 +119,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
       //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
-      tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice}  на сумму ${totalitemprice} `);     
+      tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice}  на сумму ${totalitemprice} final price : ${finalprice} `);     
       //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!`);
     }
 });
