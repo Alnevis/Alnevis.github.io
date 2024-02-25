@@ -371,7 +371,7 @@ body {
   }
   .cafe-text-field {
     font-family: var(--default-font);
-    font-size: 17px;
+    font-size: 15px;
     line-height: 21px;
     -webkit-font-smoothing: antialiased;
     padding: 12px 20px 13px;

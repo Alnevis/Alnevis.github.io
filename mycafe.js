@@ -3,7 +3,7 @@ let x = tg.initDataUnsafe;
 let y = tg.initData;
 let z = false;
 tg.expand(); //расширяем на все окно
-tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
+tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
 
 tg.SettingsButton.show();
@@ -74,10 +74,6 @@ incrButton.on('click', function(event) {
   var itemEl = $(this).closest('.js-item');
   incrClicked(itemEl, 1);
 });
- 
-Telegram.WebApp.onEvent('mainButtonClicked', function () {  
-  alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`);
-  tg.BackButton.show();
   var OrderMode = document.querySelector('.cafe-items');
   OrderMode.style.display = 'none';
   var OrderItem = document.querySelector('.cafe-order-item');
@@ -85,14 +81,39 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
   var cafeOrderOverview = document.querySelector('.cafe-order-overview');
   cafeOrderOverview.style.display = 'flex';
   cafeOrderOverview.style.opacity = '1';
-  if (!x) {
+Telegram.WebApp.onEvent('mainButtonClicked', function () {  
+  alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`); 
+   if (tg.MainButton.text=="Посмотреть заказ") {
+    tg.BackButton.show();
+    var OrderMode = document.querySelector('.cafe-items');
+    OrderMode.style.display = 'none';
+    var OrderItem = document.querySelector('.cafe-order-item');
+    OrderItem.style.display = 'flex';
+    var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+    cafeOrderOverview.style.display = 'flex';
+    cafeOrderOverview.style.opacity = '1';
+    tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
     //window.alert('x is true!');   
-    tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
       //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
-      //tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice} `);     
-      tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!`);
+      tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice} `);     
+      //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!`);
     }
 });
+Telegram.WebApp.onEvent('backButtonClicked', function () {   
   
+    tg.BackButton.hide();
+    var OrderMode = document.querySelector('.cafe-items');
+    OrderMode.style.display = 'flex';
+    var OrderItem = document.querySelector('.cafe-order-item');
+    OrderItem.style.display = 'none';
+    var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+    cafeOrderOverview.style.display = 'none';
+    cafeOrderOverview.style.opacity = '0';
+    tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки иначе 
+    //window.alert('x is true!');   
+    //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    //tg.openTelegramLink('https://t.me/public_python');  
+  } )
