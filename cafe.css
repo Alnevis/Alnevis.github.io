@@ -57,6 +57,12 @@ body {
     background-color: var(--block-bg-color);
     -webkit-box-shadow: 0 0.5px rgba(0, 0, 0, .07);
     box-shadow: 0 0.5px rgba(0, 0, 0, .07);
+     min-width: 50%;
+    box-sizing: border-box; 
+    overflow: hidden;
+    word-wrap: break-word; /* Break words to prevent overflow */
+    white-space: normal;  /* Allow text to wrap onto the next line */
+     
   }
   
   .cafe-items {
@@ -297,21 +303,44 @@ body {
     transition: opacity var(--page-animation);
     opacity: 0;
   }
+  .headwrappers{
+    display: inline;
+  }
   body.order-mode .cafe-order-overview {
     opacity: 1;
   }
   .cafe-order-header-wrap {
-    padding: 11px 20px 14px;
+    padding: 11px 0px 14px 0px;
     display: flex;
-    align-items: center;
+    align-items: right;
+    width: 100%;
+     
   }
   .cafe-order-header {
     font-size: 17px;
     line-height: 21px;
     text-transform: uppercase;
-    flex-grow: 1;
     padding: 0;
     margin: 0;
+    text-align: left;
+    flex-grow: 1; /* Allow headers to grow and take available space */
+  }
+  .total-header-wrap {
+    padding: 11px 2px 14px 0px;
+    display: flex;
+    align-items: left;
+    width: 100%;
+  }
+  
+  .total-header {
+    font-size: 17px;
+    line-height: 21px;
+    text-transform: uppercase;
+    flex-grow: 1;
+    padding: 0 ;
+    margin: 0;
+    text-align: center;
+    min-width: 100%;
   }
   .cafe-order-edit {
     font-size: 19px;
@@ -321,14 +350,16 @@ body {
   }
   .cafe-order-item {
     display: none;
-    padding: 5px 20px 5px 14px;
+    padding: 11px 0px 14px 0px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+     
   }
   .cafe-order-item.selected {
     display: flex;
   }
-  .cafe-order-item-label {
-    flex-grow: 1;
-  }
+ 
   .cafe-order-item-photo {
     text-align: center;
     width: 50px;
@@ -351,19 +382,32 @@ body {
   }
   .cafe-order-item-counter {
     color: var(--main-color);
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 700;
   }
   .cafe-order-item-description {
     font-size: 14px;
     line-height: 17px;
     -webkit-font-smoothing: antialiased;
     color: var(--page-hint-color);
-    padding: 2px 0;
+    padding: 2px 0;   
+     
+    overflow: auto; /* Enable vertical scroll if needed */
+    word-wrap: break-word; /* Break words to prevent overflow */
+    flex-grow: 1;
+    padding: 0;
+    margin: 0;
+    text-align: center;   
+     
+    
   }
   .cafe-order-item-price {
     font-size: 14px;
     line-height: 17px;
     font-weight: 500;
-    padding: 4px 0;
+    padding: 4px 4px;
+     
   }
   .comment {
     display:none;
