@@ -39,7 +39,7 @@ function incrClicked (itemEl, delta, itemId) {
   if (allZeros) {
     tg.MainButton.hide();
   } 
-  
+
   itemEl.data('item-count', count);
   itemprice = 0;
   itemtitle = 0;
@@ -50,10 +50,11 @@ function incrClicked (itemEl, delta, itemId) {
     count1 = count
     itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
     totalitemprice = count * itempricefloat; //
-    totalitemprice = totalitemprice.toFixed(2);
+    //totalitemprice = totalitemprice.toFixed(2);
     $('.oneitemtotalprice#' + itemId).text(totalitemprice);
     finalprice = parseFloat($('.allitemtotalprice').text());
     finalprice += totalitemprice;
+    alert(`count1 = ${count1}  itemtitle = ${itemtitle} itemprice = ${itemprice} itempricefloat = ${itempricefloat} totalitemprice = ${totalitemprice} finalprice = ${finalprice}`);
     $('.allitemtotalprice').text(finalprice.toFixed(2));
   };
   
