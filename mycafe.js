@@ -5,8 +5,8 @@ var itemsData = [];
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
-//$('.js-order-item').hide();
-alert(`hti`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$('.js-order-item').hide();
+alert(`hi`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -250,15 +250,13 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
 Telegram.WebApp.onEvent('backButtonClicked', function () {     
     tg.BackButton.hide();
     var OrderMode = document.querySelector('.cafe-items');
-    OrderMode.style.display = 'flex';
-    var OrderItem = document.querySelector('.cafe-order-item');
-    OrderItem.style.display = 'none';
-    var cafeOrderOverview = document.querySelector('.cafe-order-overview');
-    cafeOrderOverview.style.display = 'none';
-    cafeOrderOverview.style.opacity = '0';
-    var Comment = document.querySelector('.comment');
-    Comment.style.display = 'none';
-    $('.finalamount').removeClass('show');
+      OrderMode.style.display = 'flex';      
+      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+      cafeOrderOverview.style.display = 'none';
+      cafeOrderOverview.style.opacity = '0';
+      var Comment = document.querySelector('.comment');
+      Comment.style.display = 'none';
+      $('.finalamount').removeClass('show');
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки иначе 
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
