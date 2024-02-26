@@ -148,7 +148,8 @@ incrButton.on('click', function(event) {
   var itemId = itemEl.data('item-id');
   incrClicked(itemEl, 1, itemId);
 });
-/*-------------------zzzzzzzzzzzzzzzzzzzzzzzzz--------------------------------------------------------------
+/*
+-------------------zzzzzzzzzzzzzzzzzzzzzzzzz--------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
   // Wait for the DOM content to be fully loaded
 
