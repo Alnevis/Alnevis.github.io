@@ -474,6 +474,73 @@ body {
   }
   
   
+  /* Style for the container div */
+  .cafe-settings {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Style for the input fields */
+/* Style for each row */
+.add-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Style for the input fields */
+.data-input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Style for the picture */
+.cafe-item-photo {
+  margin-right: 10px;
+}
+
+/* Style for the button */
+.data-item-incr-button {
+  background-color: var(--main-color);
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the button text */
+.button-item-data {
+  color: white;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+ 
+
+/* Style for the placeholders */
+.data-item-label {
+  display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    position: relative;
+    z-index: 1;
+    
+}
+
+  .cafe-settings.show{
+    display: flex;
+    width: 100%;
+  }
   .button-item.ripple-handler {
     position: relative;
   }

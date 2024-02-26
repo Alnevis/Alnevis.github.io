@@ -206,7 +206,15 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 //---------------------------------------------------------------------------------*/
-
+var OrderMode = document.querySelector('.cafe-items');
+  OrderMode.style.display = 'none';      
+  var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+  cafeOrderOverview.style.display = 'none';
+  cafeOrderOverview.style.opacity = '0';
+  var Comment = document.querySelector('.comment');
+  Comment.style.display = 'none';
+  $('.finalamount').removeClass('show');
+  $('.cafe-settings').addClass('show');
   
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () { 
@@ -228,9 +236,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else if (tg.MainButton.text=="Сохранить"){
-    tg.showAlert(`Сохранено!`); 
-
-
+    tg.showAlert(`Сохранено!`);   
 
 
   }else {
@@ -275,13 +281,14 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
     tg.MainButton.setText("Cохранить"); //изменяем текст кнопки
     tg.MainButton.show();
     var OrderMode = document.querySelector('.cafe-items');
-      OrderMode.style.display = 'none';      
-      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
-      cafeOrderOverview.style.display = 'none';
-      cafeOrderOverview.style.opacity = '0';
-      var Comment = document.querySelector('.comment');
-      Comment.style.display = 'none';
-      $('.finalamount').removeClass('show');
+    OrderMode.style.display = 'none';      
+    var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+    cafeOrderOverview.style.display = 'none';
+    cafeOrderOverview.style.opacity = '0';
+    var Comment = document.querySelector('.comment');
+    Comment.style.display = 'none';
+    $('.finalamount').removeClass('show');
+    $('.cafe-settings').addClass('show');
      
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
