@@ -479,7 +479,7 @@ body {
   
   /* Style for the container div */
   .cafe-settings {
-    display: flex;
+    display: none;
     justify-content: flex-start;
     align-items: center;
     padding: 20px;

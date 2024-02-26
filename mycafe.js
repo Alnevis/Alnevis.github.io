@@ -6,7 +6,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`hiiiii`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+alert(`haaaaaaaa`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -278,7 +278,7 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
 
   Telegram.WebApp.onEvent('settingsButtonClicked', function () {     
     tg.BackButton.show();
-    tg.MainButton.setText("Cохранить"); //изменяем текст кнопки
+    tg.MainButton.setText("Сохранить"); //изменяем текст кнопки
     tg.MainButton.show();
     var OrderMode = document.querySelector('.cafe-items');
     OrderMode.style.display = 'none';      
