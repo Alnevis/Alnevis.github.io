@@ -39,8 +39,7 @@ function incrClicked (itemEl, delta, itemId) {
   count1 = count
   itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
   totalitemprice = count * itempricefloat; //
-  totalitemprice = totalitemprice.toFixed(2)
-
+  totalitemprice =totalitemprice.toFixed(2)
   if (count > 0) {
     console.log(itemId);
     $('.js-order-item#' + "m"+ itemId).show();
@@ -149,8 +148,7 @@ incrButton.on('click', function(event) {
   var itemId = itemEl.data('item-id');
   incrClicked(itemEl, 1, itemId);
 });
-/*
--------------------zzzzzzzzzzzzzzzzzzzzzzzzz--------------------------------------------------------------
+//-------------------zzzzzzzzzzzzzzzzzzzzzzzzz--------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
   // Wait for the DOM content to be fully loaded
 
@@ -173,8 +171,12 @@ document.addEventListener('DOMContentLoaded', function() {
       var Comment = document.querySelector('.comment');
       Comment.style.display = 'flex';
       $('.finalamount').addClass('show');
-    } else {         
-       
+    } else {
+      
+      
+
+   
+    
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());
     var finalprice = finalprice.toFixed(2)
@@ -202,23 +204,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
----------------------------------------------------------------------------------
-*/
+//---------------------------------------------------------------------------------*/
 
   
 
-Telegram.WebApp.onEvent('mainButtonClicked', function () {  
+Telegram.WebApp.onEvent('mainButtonClicked', function () { 
+  document.addEventListener('DOMContentLoaded', function() { 
  // alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`); 
    if (tg.MainButton.text=="Посмотреть заказ") {
     tg.BackButton.show();
     var OrderMode = document.querySelector('.cafe-items');
-    OrderMode.style.display = 'none';    
+    OrderMode.style.display = 'none';
+    
     var cafeOrderOverview = document.querySelector('.cafe-order-overview');
     cafeOrderOverview.style.display = 'flex';
     cafeOrderOverview.style.opacity = '1';
     var Comment = document.querySelector('.comment');
     Comment.style.display = 'flex';
-    $('.finalamount').addClass('show');    
+    $('.finalamount').addClass('show');  
     tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
@@ -236,25 +239,14 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     // Add the final price to the message
     message += `\nFinal Price: ${finalprice}`;
     message += `\nUser's Comment: ${userComment}`;
-      //alert(`${message}`);
-      
-      var OrderMode = document.querySelector('.cafe-items');
-      OrderMode.style.display = 'flex';
-      
-      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
-      cafeOrderOverview.style.display = 'none';
-      cafeOrderOverview.style.opacity = '0';
-      var Comment = document.querySelector('.comment');
-      Comment.style.display = 'none';
-      $('.finalamount').removeClass('show');
-    tg.sendData(`${message}`);
-    
-      //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
-      //tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice}  на сумму ${totalitemprice} final price : ${finalprice} `);     
-      //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!`);
+    alert(`${message}`);
+    tg.sendData(`${message}`);    
+    //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
+    //tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice}  на сумму ${totalitemprice} final price : ${finalprice} `);     
+    //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!`);
     }
 });
-
+});
 Telegram.WebApp.onEvent('backButtonClicked', function () {     
     tg.BackButton.hide();
     var OrderMode = document.querySelector('.cafe-items');
