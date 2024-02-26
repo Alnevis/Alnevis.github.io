@@ -4,8 +4,9 @@ let y = tg.initData;
 let z = false;
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
-//tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
-alert(`hti`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//console.log('Hiding mc1:', $('.js-order-item.mc1'));
+$('.js-order-item').hide();
+//alert(`hti`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -14,23 +15,17 @@ tg.setBackgroundColor('bg_color');
 let count1;        // Declare count
 let itemprice;    // Declare itemprice
 let itemtitle; 
-let totalitemprice
+let totalitemprice  
 let finalprice
+
 function incrClicked (itemEl, delta, itemId) {
   
-  var count = itemEl.data('item-count');
- // alert(`count = ${count}`);
-  count += delta;
-  //alert(`count = ${count}`);
+  var count = itemEl.data('item-count'); 
+  count += delta;  
   itemEl.find('.js-item-quantity').text(count);
-  $('.js-order-item-counter#' + itemId).text(count);
-  if (count <= 0) {
-    itemEl.find('.js-item-quantity-incr').hide();
-    itemEl.find('.js-item-quantity-decr').hide();
-    itemEl.find('.js-item-quantity').hide();
-    itemEl.find('.js-item-incr-btn').show();
-    
-  }
+  $('.js-order-item-counter#' +"counter" + itemId).text(count);
+
+  // REMOVE MAINBUTTON IF ALL POSITION are ZERO
   var allZeros = $('.js-order-item-counter').map(function() {
     return parseInt($(this).text());
   }).get().every(function(value) {
@@ -44,16 +39,21 @@ function incrClicked (itemEl, delta, itemId) {
   itemprice = 0;
   itemtitle = 0;
   count1 = 0;
+
   if (count > 0) {
-    $(`.js-order-item[data-item-id="${itemId}"]`).show();
+    console.log(itemId);
+    $('.js-order-item#' + "m"+ itemId).show();
+    //console.log(' oneitemprice:', $(`.oneitemprice#`+ itemId).text());
+       
     itemprice = itemEl.find('.cafe-item-price').text();
-    $('.oneitemprice#' + itemId).text(itemprice);
+    $('.oneitemprice#' + "oneitemprice" + itemId).text(itemprice);    
     itemtitle = itemEl.find('.cafe-item-title').text();
     count1 = count
     itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
     totalitemprice = count * itempricefloat; //
-    //totalitemprice = totalitemprice.toFixed(2);
-    $('.oneitemtotalprice#' + itemId).text(totalitemprice);
+    //totalitemprice = totalitemprice.toFixed(2);    
+    $('.oneitemtotalprice#'+"oneitemtotalprice" + itemId).text(totalitemprice);
+    
     // Calculate finalprice as the sum of all .oneitemtotalprice
     var allTotalPrices = $('.oneitemtotalprice').map(function () {
       return parseFloat($(this).text());
@@ -64,10 +64,26 @@ function incrClicked (itemEl, delta, itemId) {
     }, 0);
 
     $('.allitemtotalprice').text(finalprice.toFixed(2)); //
-    alert(`count1 = ${count1} itemId = ${itemId} itemtitle = ${itemtitle} itemprice = ${itemprice} itempricefloat = ${itempricefloat} totalitemprice = ${totalitemprice} finalprice = ${finalprice}`);
+    //alert(`count1 = ${count1} itemId = ${itemId} itemtitle = ${itemtitle} itemprice = ${itemprice} itempricefloat = ${itempricefloat} totalitemprice = ${totalitemprice} finalprice = ${finalprice}`);
   } else {
-    $(`.js-order-item[data-item-id="${itemId}"]`).hide();
+    console.log(itemId);
+    $('.js-order-item#' + "m"+itemId).hide();
+    itemEl.find('.js-item-quantity-incr').hide();
+    itemEl.find('.js-item-quantity-decr').hide();
+    itemEl.find('.js-item-quantity').hide();
+    itemEl.find('.js-item-incr-btn').show();
+    //console.log('Before Update:', $('.oneitemtotalprice#' + itemId).text());
+    $('.oneitemtotalprice#' +"oneitemtotalprice"+ itemId).text(0);
+    //console.log('After Update:', $('.oneitemtotalprice#' + itemId).text());
+    
+    var allTotalPrices = $('.oneitemtotalprice').map(function () {
+      return parseFloat($(this).text());
+    }).get();
 
+    var finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
+      return accumulator + currentValue;
+    }, 0);
+    $('.allitemtotalprice').text(finalprice.toFixed(2)); //
   };
   
  // updateItem(itemEl, delta);
@@ -86,7 +102,7 @@ addbutton.on('click', function(event) {
  //alert(`count1 = ${count}`);
  itemEl.data('item-count',1)
  itemEl.find('.js-item-quantity').text(1);
- $('.js-order-item-counter#' + itemId).text(1);
+ $('.js-order-item-counter#'+"counter" + itemId).text(1);
  incrClicked(itemEl, 0 , itemId);
 });
 
@@ -109,18 +125,74 @@ incrButton.on('click', function(event) {
   var itemId = itemEl.data('item-id');
   incrClicked(itemEl, 1, itemId);
 });
-/*
-  var OrderMode = document.querySelector('.cafe-items');
-  OrderMode.style.display = 'none';
-  var OrderItem = document.querySelector('.cafe-order-item');
-  OrderItem.style.display = 'flex';
-  var cafeOrderOverview = document.querySelector('.cafe-order-overview');
-  cafeOrderOverview.style.display = 'flex';
-  cafeOrderOverview.style.opacity = '1';
-  var Comment = document.querySelector('.comment');
-  Comment.style.display = 'flex';
-  $('.finalamount').addClass('show');
-*/
+//-------------------zzzzzzzzzzzzzzzzzzzzzzzzz--------------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+  // Wait for the DOM content to be fully loaded
+
+  // Find the button element by its id
+  var myButton = document.getElementById('myButton');
+
+  // Add a click event listener to the button-
+  myButton.addEventListener('click', function() {
+    // Check the current text of the button
+    if (myButton.textContent === "Посмотреть заказ") {
+      // Change the button text and perform actions
+      myButton.textContent = "CДЕЛАТЬ ЗАКАЗ";
+
+      var OrderMode = document.querySelector('.cafe-items');
+      OrderMode.style.display = 'none';
+      
+      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+      cafeOrderOverview.style.display = 'flex';
+      cafeOrderOverview.style.opacity = '1';
+      var Comment = document.querySelector('.comment');
+      Comment.style.display = 'flex';
+      $('.finalamount').addClass('show');
+    } else {
+      // Change the button text back and perform other actions
+      var itemsData = [];
+
+    // Inside your loop or logic for processing items
+    var itemData = {
+      title: itemtitle,
+      count: count1,
+      price: itemprice,
+      total: totalitemprice
+    };
+    
+    itemsData.push(itemData);
+    
+    // After processing all items
+    var finalprice =  parseFloat($('.allitemtotalprice').text());
+    var finalprice = finalprice.toFixed(2)
+    // Construct a string with information for all items and final price
+    var message = itemsData.map(function (item) {
+      return `${item.title} ${item.count} шт. по цене ${item.price}  на сумму ${item.total}`;
+    }).join('\n');
+    var textarea = document.querySelector('.cafe-text-field');
+    var userComment = textarea.value;    
+    // Add the final price to the message
+    message += `\nFinal Price: ${finalprice}`;
+    message += `\nUser's Comment: ${userComment}`;
+      alert(` finalprice = ${finalprice} ${message}`);
+      myButton.textContent = "Посмотреть заказ";
+      var OrderMode = document.querySelector('.cafe-items');
+      OrderMode.style.display = 'flex';
+      
+      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+      cafeOrderOverview.style.display = 'none';
+      cafeOrderOverview.style.opacity = '0';
+      var Comment = document.querySelector('.comment');
+      Comment.style.display = 'none';
+      $('.finalamount').removeClass('show');
+      // Add logic for reverting changes or any other actions
+    }
+  });
+});
+//---------------------------------------------------------------------------------
+
+  
+
 Telegram.WebApp.onEvent('mainButtonClicked', function () {  
  // alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`); 
    if (tg.MainButton.text=="Посмотреть заказ") {
