@@ -1,7 +1,7 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 let x = tg.initDataUnsafe;
 let y = tg.initData;
-let z = false;
+var itemsData = [];
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
@@ -18,8 +18,7 @@ let itemtitle;
 let totalitemprice  
 let finalprice
 
-function incrClicked (itemEl, delta, itemId) {
-  
+function incrClicked (itemEl, delta, itemId) {  
   var count = itemEl.data('item-count'); 
   count += delta;  
   itemEl.find('.js-item-quantity').text(count);
@@ -36,9 +35,10 @@ function incrClicked (itemEl, delta, itemId) {
   } 
 
   itemEl.data('item-count', count);
-  itemprice = 0;
-  itemtitle = 0;
-  count1 = 0;
+  itemtitle = itemEl.find('.cafe-item-title').text();
+  count1 = count
+  itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
+  totalitemprice = count * itempricefloat; //
 
   if (count > 0) {
     console.log(itemId);
@@ -47,24 +47,40 @@ function incrClicked (itemEl, delta, itemId) {
        
     itemprice = itemEl.find('.cafe-item-price').text();
     $('.oneitemprice#' + "oneitemprice" + itemId).text(itemprice);    
-    itemtitle = itemEl.find('.cafe-item-title').text();
-    count1 = count
-    itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
-    totalitemprice = count * itempricefloat; //
+    
     //totalitemprice = totalitemprice.toFixed(2);    
     $('.oneitemtotalprice#'+"oneitemtotalprice" + itemId).text(totalitemprice);
     
     // Calculate finalprice as the sum of all .oneitemtotalprice
     var allTotalPrices = $('.oneitemtotalprice').map(function () {
       return parseFloat($(this).text());
-    }).get();
+      }).get();
 
     var finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue;
-    }, 0);
+      }, 0);
 
     $('.allitemtotalprice').text(finalprice.toFixed(2)); //
     //alert(`count1 = ${count1} itemId = ${itemId} itemtitle = ${itemtitle} itemprice = ${itemprice} itempricefloat = ${itempricefloat} totalitemprice = ${totalitemprice} finalprice = ${finalprice}`);
+     // Inside your loop or logic for processing items
+     var existingItem = itemsData.find(item => item.title === itemtitle);
+
+     if (existingItem) {
+       // If the item already exists, update its quantity and total
+       existingItem.count = count1;
+       existingItem.total = totalitemprice;
+     } else {
+       // If the item is not in the array, add a new entry
+    var itemData = {
+      title: itemtitle,
+      count: count1,
+      price: itemprice,
+      total: totalitemprice
+    };
+ 
+    itemsData.push(itemData);
+     }
+
   } else {
     console.log(itemId);
     $('.js-order-item#' + "m"+itemId).hide();
@@ -78,14 +94,21 @@ function incrClicked (itemEl, delta, itemId) {
     
     var allTotalPrices = $('.oneitemtotalprice').map(function () {
       return parseFloat($(this).text());
-    }).get();
+      }).get();
 
     var finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue;
-    }, 0);
+      }, 0);
     $('.allitemtotalprice').text(finalprice.toFixed(2)); //
-  };
-  
+
+    // Check if an item with the same title already exists in itemsData
+    var existingIndex = itemsData.findIndex(item => item.title === itemtitle);
+
+    if (existingIndex !== -1) {
+      // If the item already exists, remove it from the array
+      itemsData.splice(existingIndex, 1);
+      }
+  };  
  // updateItem(itemEl, delta);
 }
 var addbutton = $('.js-item-incr-btn'); 
@@ -125,7 +148,7 @@ incrButton.on('click', function(event) {
   var itemId = itemEl.data('item-id');
   incrClicked(itemEl, 1, itemId);
 });
-//-------------------zzzzzzzzzzzzzzzzzzzzzzzzz--------------------------------------------------------------
+/*-------------------zzzzzzzzzzzzzzzzzzzzzzzzz--------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
   // Wait for the DOM content to be fully loaded
 
@@ -148,20 +171,8 @@ document.addEventListener('DOMContentLoaded', function() {
       var Comment = document.querySelector('.comment');
       Comment.style.display = 'flex';
       $('.finalamount').addClass('show');
-    } else {
-      // Change the button text back and perform other actions
-      var itemsData = [];
-
-    // Inside your loop or logic for processing items
-    var itemData = {
-      title: itemtitle,
-      count: count1,
-      price: itemprice,
-      total: totalitemprice
-    };
-    
-    itemsData.push(itemData);
-    
+    } else {         
+       
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());
     var finalprice = finalprice.toFixed(2)
@@ -174,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add the final price to the message
     message += `\nFinal Price: ${finalprice}`;
     message += `\nUser's Comment: ${userComment}`;
-      alert(` finalprice = ${finalprice} ${message}`);
+      alert(` ${message}`);
       myButton.textContent = "Посмотреть заказ";
       var OrderMode = document.querySelector('.cafe-items');
       OrderMode.style.display = 'flex';
@@ -189,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-//---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------*/
 
   
 
@@ -198,9 +209,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
    if (tg.MainButton.text=="Посмотреть заказ") {
     tg.BackButton.show();
     var OrderMode = document.querySelector('.cafe-items');
-    OrderMode.style.display = 'none';
-    var OrderItem = document.querySelector('.cafe-order-item');
-    OrderItem.style.display = 'flex';
+    OrderMode.style.display = 'none';    
     var cafeOrderOverview = document.querySelector('.cafe-order-overview');
     cafeOrderOverview.style.display = 'flex';
     cafeOrderOverview.style.opacity = '1';
@@ -212,36 +221,30 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   } else {
-    var itemsData = [];
-
-    // Inside your loop or logic for processing items
-    var itemData = {
-      title: itemtitle,
-      count: count1,
-      price: itemprice,
-      total: totalitemprice
-    };
-    
-    itemsData.push(itemData);
-    
     // After processing all items
-    var finalprice = itemsData.reduce(function (total, item) {
-      return total + parseFloat(item.total);
-    }, 0);
-    
+    var finalprice =  parseFloat($('.allitemtotalprice').text());
+    var finalprice = finalprice.toFixed(2)
     // Construct a string with information for all items and final price
     var message = itemsData.map(function (item) {
       return `${item.title} ${item.count} шт. по цене ${item.price}  на сумму ${item.total}`;
     }).join('\n');
     var textarea = document.querySelector('.cafe-text-field');
-
-    // Get the placeholder value
-    var placeholderValue = textarea.getAttribute('placeholder');
+    var userComment = textarea.value;    
     // Add the final price to the message
-    message += `\nFinal Price: ${finalprice.toFixed(2)}`;
-    message += `\nAdditional Comment: ${placeholderValue}`;
-    // Send the combined message
-    tg.sendData(message);
+    message += `\nFinal Price: ${finalprice}`;
+    message += `\nUser's Comment: ${userComment}`;
+      //alert(`${message}`);
+      myButton.textContent = "Посмотреть заказ";
+      var OrderMode = document.querySelector('.cafe-items');
+      OrderMode.style.display = 'flex';
+      
+      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+      cafeOrderOverview.style.display = 'none';
+      cafeOrderOverview.style.opacity = '0';
+      var Comment = document.querySelector('.comment');
+      Comment.style.display = 'none';
+      $('.finalamount').removeClass('show');
+    tg.sendData(`${message}`);
     
       //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
       //tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice}  на сумму ${totalitemprice} final price : ${finalprice} `);     
