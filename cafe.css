@@ -115,6 +115,9 @@ body {
   .cafe-item-photo .cafe-item-lottie {
     width: 74px;
   }
+  .data-item-photo .cafe-item-lottie {
+    width: 74px;
+  }
   .cafe-item-lottie:before {
     content: '';
     display: block;
@@ -485,8 +488,8 @@ body {
 /* Style for the input fields */
 /* Style for each row */
 .add-item {
-  display: flex;
-  align-items: center;
+   
+  align-items: left;
   margin-bottom: 10px;
 }
 
@@ -496,13 +499,11 @@ body {
   margin: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
+  width: auto;
 }
 
-/* Style for the picture */
-.cafe-item-photo {
-  margin-right: 10px;
-}
+ 
 
 /* Style for the button */
 .data-item-incr-button {
@@ -524,11 +525,15 @@ body {
 }
 
  
-
+.data-item-photo {
+  position: relative;
+  height: 78px;
+  width: 20%;
+}
 /* Style for the placeholders */
 .data-item-label {
   display: inline-block;
-    max-width: 100%;
+    max-width: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
     vertical-align: top;

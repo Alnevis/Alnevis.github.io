@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-//---------------------------------------------------------------------------------*/
+//---------------------------------------------------------------------------------
 var OrderMode = document.querySelector('.cafe-items');
   OrderMode.style.display = 'none';      
   var cafeOrderOverview = document.querySelector('.cafe-order-overview');
@@ -215,7 +215,7 @@ var OrderMode = document.querySelector('.cafe-items');
   Comment.style.display = 'none';
   $('.finalamount').removeClass('show');
   $('.cafe-settings').addClass('show');
-  
+  */
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () { 
  // document.addEventListener('DOMContentLoaded', function() { 
