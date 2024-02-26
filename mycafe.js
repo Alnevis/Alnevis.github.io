@@ -245,7 +245,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     var newDescriptionText = document.querySelector('.desc-input');
     var newDescription =newDescriptionText.value; 
     const cafeContainer = document.querySelector('.cafe-page')   
-    const newItemDiv = createNewItemnewItem(newPrice);
+    const newItemDiv = createNewItem(newPrice);
     cafeContainer.appendChild(newItemDiv);
     $('.cafe-settings').removeClass('show');
     tg.showAlert(`Сохранено!${newItemDiv}`); 

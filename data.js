@@ -72,15 +72,15 @@ function generateRandomString(length) {
   }
   
   function createNewItem(newPrice) {
-    const newItem = document.createElement("div");
-    newItem.classList.add("cafe-item", "js-item");
-    newItem.setAttribute("data-item-price", newPrice);
-    newItem.setAttribute("data-item-count", "0");
+    const newItemItem = document.createElement("div");
+    newItemItem.classList.add("cafe-item", "js-item");
+    newItemItem.setAttribute("data-item-price", newPrice);
+    newItemItem.setAttribute("data-item-count", "0");
     const randomString = generateRandomString(28); // Generate a random string of length 28
     console.log(randomString);
-    newItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
+    newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
     
-    newItem.innerHTML = `
+    newItemItem.innerHTML = `
     
         <div class="cafe-item-photo">
             <picture class="cafe-item-lottie">        
@@ -101,7 +101,7 @@ function generateRandomString(length) {
             </button>
         </div>
     `;
-    return newItem;
+    return newItemItem;
 }
  
   
