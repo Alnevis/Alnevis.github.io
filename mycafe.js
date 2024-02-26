@@ -237,7 +237,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     message += `\nUser's Comment: ${userComment}`;
       //alert(`${message}`);
       
-      /*var OrderMode = document.querySelector('.cafe-items');
+      var OrderMode = document.querySelector('.cafe-items');
       OrderMode.style.display = 'flex';
       
       var cafeOrderOverview = document.querySelector('.cafe-order-overview');
@@ -245,7 +245,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       cafeOrderOverview.style.opacity = '0';
       var Comment = document.querySelector('.comment');
       Comment.style.display = 'none';
-      $('.finalamount').removeClass('show');*/
+      $('.finalamount').removeClass('show');
     tg.sendData(`${message}`);
     
       //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
