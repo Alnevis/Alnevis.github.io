@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check the current text of the button
     if (myButton.textContent === "Посмотреть заказ") {
       // Change the button text and perform actions
-      myButton.textContent = "CДЕЛАТЬ ЗАКАЗ";
+      myButton.textContent = "Сохранить";
 
       var OrderMode = document.querySelector('.cafe-items');
       OrderMode.style.display = 'none';
@@ -171,12 +171,13 @@ document.addEventListener('DOMContentLoaded', function() {
       var Comment = document.querySelector('.comment');
       Comment.style.display = 'flex';
       $('.finalamount').addClass('show');
-    } else {
-      
-      
+    } else if (tg.MainButton.text=="Сохранить"){
+    tg.showAlert(`Сохранено!`); 
 
-   
-    
+
+
+
+  }else {
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());
     var finalprice = finalprice.toFixed(2)
@@ -226,7 +227,13 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
-  } else {
+  } else if (tg.MainButton.text=="Сохранить"){
+    tg.showAlert(`Сохранено!`); 
+
+
+
+
+  }else {
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());
     var finalprice = finalprice.toFixed(2)
@@ -258,6 +265,24 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
       Comment.style.display = 'none';
       $('.finalamount').removeClass('show');
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки 
+    //window.alert('x is true!');   
+    //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
+    //tg.openTelegramLink('https://t.me/public_python');  
+  });
+
+  Telegram.WebApp.onEvent('settingsButtonClicked', function () {     
+    tg.BackButton.show();
+    tg.MainButton.setText("Cохранить"); //изменяем текст кнопки
+    tg.MainButton.show();
+    var OrderMode = document.querySelector('.cafe-items');
+      OrderMode.style.display = 'none';      
+      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+      cafeOrderOverview.style.display = 'none';
+      cafeOrderOverview.style.opacity = '0';
+      var Comment = document.querySelector('.comment');
+      Comment.style.display = 'none';
+      $('.finalamount').removeClass('show');
+     
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
