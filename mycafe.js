@@ -6,7 +6,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`haaaaaaaa`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//alert(`haaaaaaaa`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 //---------------------------------------------------------------------------------
+
 var OrderMode = document.querySelector('.cafe-items');
   OrderMode.style.display = 'none';      
   var cafeOrderOverview = document.querySelector('.cafe-order-overview');
@@ -214,8 +215,8 @@ var OrderMode = document.querySelector('.cafe-items');
   var Comment = document.querySelector('.comment');
   Comment.style.display = 'none';
   $('.finalamount').removeClass('show');
-  $('.cafe-settings').addClass('show');
-  */
+  $('.cafe-settings').addClass('show'); */
+  
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () { 
  // document.addEventListener('DOMContentLoaded', function() { 
@@ -237,8 +238,15 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //tg.openTelegramLink('https://t.me/public_python');  
   } else if (tg.MainButton.text=="Сохранить"){
     tg.showAlert(`Сохранено!`);   
-
-
+    var newItemtext = document.querySelector('.quantity-input');
+    var newItem = newItemtext.value; 
+    var newPricetext = document.querySelector('.price-input');
+    var newPrice = newPricetext.value; 
+    var newDescriptionText = document.querySelector('.desc-input');
+    var newDescription =newDescriptionText.value; 
+    const cafeContainer = document.querySelector('.cafe-page')   
+    const newItemDiv = createNewItemnewItem(newPrice);
+    cafeContainer.appendChild(newItemDiv);
   }else {
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());

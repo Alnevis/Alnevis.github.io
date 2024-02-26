@@ -493,6 +493,31 @@ body {
   margin-bottom: 10px;
 }
 
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+.buttons-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.addNewItemBtn {
+  margin: 0 0 0 25px; /* Adjust the margin as needed */
+  
+}
+
+.add-qty {
+ 
+  padding-left: 1px; /* Adjust the padding as needed */
+}
+
+.addNewItemBtn {
+  position: relative;
+  top: 0.2em; /* Adjust the value as needed */
+   * Adjust the value as needed */
+}
 /* Style for the input fields */
 .data-input {
   padding: 10px;
@@ -500,7 +525,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
-  width: auto;
+  width: 80%;
 }
 
  
@@ -534,7 +559,7 @@ body {
 .data-item-label {
   display: inline-block;
     max-width: 50%;
-    overflow: hidden;
+    
     text-overflow: ellipsis;
     vertical-align: top;
     position: relative;

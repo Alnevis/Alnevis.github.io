@@ -126,29 +126,35 @@
 </div>  
 <!-- SETTINGS ITEM----------------------------->
 <div class="cafe-settings">
-  <div class="add-item" data-item-price="25300" data-item-count = "0" data-item-id="c1">
-  <!--<div class="cafe-item-counter js-item-counter">1</div>-->
-  <div class="data-item-photo">
-          <picture class="cafe-item-lottie">        
-      <img src="img/plus.png">
-  </picture>
-  </div><div><h3>Новый товар</h3></div>
-  <div class="data-item-label">
-    <span class="data-item-title"><input type="text" placeholder="Название товара" class="data-input"></span>
-    <span class="data-item-price"><input type="text" placeholder="Цена" class="data-input"></span>
-    <span class="data-item-price"><input type="text" placeholder="Описание" class="data-input"></span>
+  <div class="add-item" data-item-price="0" data-item-count="0" data-item-id="c111">
+    <div class="data-item-photo">
+      <picture class="cafe-item-lottie">
+        <img src="img/plus.png">
+      </picture>
+    </div>
+    <div>
+      <h3>Новый товар</h3>
+    </div>
+    <div class="data-item-label">
+      <span class="data-item-title"><input type="text" placeholder="Название товара" class="data-input quantity-input"></span>
+      <span class="data-item-price"><input type="text" placeholder="Цена" class="data-input price-input"></span>
+      <span class="data-item-price"><input type="text" placeholder="Описание" class="data-input desc-input"></span>
+    </div>
+    <div class="button-container">
+      <button class="addNewItemBtn js-addNewItemBtn">Добавить</button>
+      <div class="buttons-wrapper">
+        <button class="addNewItemBtn addminusbutton">-</button>
+        <div class="add-qty addNewItemBtn">0</div>
+        <button class="addNewItemBtn addplusbutton">+</button>
+      </div>
+    </div>
   </div>
-    
-  <div >
-<button >
-  <span class=" addNewItemBtn">Добавить</span> 
-</button>
 </div>
-</div>  </div>
 <!-- SETTINGS Folder----------------------------->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="mycafe.js"></script>    
+<script src="data.js"></script>
 </body>
 </html>
  
