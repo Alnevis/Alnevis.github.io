@@ -39,6 +39,7 @@ function incrClicked (itemEl, delta, itemId) {
   count1 = count
   itempricefloat = parseFloat(itemEl.data('item-price') / 1000);
   totalitemprice = count * itempricefloat; //
+  totalitemprice = totalitemprice.toFixed(2)
 
   if (count > 0) {
     console.log(itemId);
