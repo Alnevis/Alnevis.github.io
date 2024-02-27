@@ -124,12 +124,12 @@ return [newItemItem,newOrderItem, randomString];
 };
 
 // Storing div information
-function storeDivInfo(itemName, price, description,randomPlace) {
-  tg.showAlert(`Random  ` + randomPlace + ` Name ` + itemName + ` Price ` + price + ` Desc ` + description );
+function storeDivInfo(itemName, price, description, randomPlace) {
+  //tg.showAlert(`Random  ` + randomPlace + ` Name ` + itemName + ` Price ` + price + ` Desc ` + description );
   const divInfo = [itemName, price, description];
   const jsonString = JSON.stringify(divInfo); 
   //tg.showAlert(`SAVED IN STORAGE : ` + jsonString);  
-  tg.CloudStorage.setItem(`${randomPlace} `, jsonString, function(error, success) {
+  tg.CloudStorage.setItem(`${randomPlace}`, jsonString, function(error, success) {
     if (error) {
       tg.showAlert('Error storing data in Cloud Storage: ');
     } else {
@@ -167,7 +167,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
     if (keys && keys.length > 0) {
       // Iterate through each key
       keys.forEach(function(key) {
-        // Retrieve the stored JSON string for each key
+        alert('Processing key: ', key);  // Add this line
         tg.CloudStorage.getItem(key, function(error, storedData) {
           if (error) {
             tg.showAlert('Error retrieving data for key ' + key + ': ' + error);
@@ -176,7 +176,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
               // Parse the JSON string back to an array or object based on your data structure
               const parsedData = JSON.parse(storedData);
               // Now you can work with each retrieved data
-              tg.showAlert('Data for key ' + key + '     :    parsedData     '+ parsedData);
+              tg.showAlert('I got key : ' + key + '     :    Values of key     '+ parsedData);
             }
           }
         });
