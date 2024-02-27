@@ -157,7 +157,7 @@ tg.CloudStorage.getItem('addedDivInfo', function(error, storedDivInfo) {
     }
   }
 });
-//*/
+//
 // Get all keys from Cloud Storage
 tg.CloudStorage.getKeys(function(error, keys) {
   if (error) {
@@ -174,7 +174,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
               // Parse the JSON string back to an array or object based on your data structure
               const parsedData = JSON.parse(storedData);
               // Now you can work with each retrieved data
-              tg.showAlert('Ключ : ' + key + ' Значение ключа '+ parsedData[1] + ' Значение ключа '+ parsedData[0] + ' Значение ключа '+ parsedData[2]);
+              //tg.showAlert('Ключ : ' + key + ' Значение ключа '+ parsedData[1] + ' Значение ключа '+ parsedData[0] + ' Значение ключа '+ parsedData[2]);
               const cafeContainer = document.querySelector('.cafe-page')   
               const [newItemDivS,newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2]);
               cafeContainer.appendChild(newItemDivS);
@@ -184,6 +184,53 @@ tg.CloudStorage.getKeys(function(error, keys) {
           }
         });
       });
+    } else {
+      tg.showAlert('No keys found in Cloud Storage.');
+    }
+  }
+});
+*/
+function retrieveAndAppendItems(keys) {
+  const promises = keys.map(key => {
+    return new Promise((resolve, reject) => {
+      tg.CloudStorage.getItem(key, function(error, storedData) {
+        if (error) {
+          reject('Error retrieving data for key ' + key + ': ' + error);
+        } else {
+          if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            const [newItemDivS, newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2]);
+            resolve({ newItemDivS, newOrderDivS });
+          } else {
+            reject('No data found for key ' + key);
+          }
+        }
+      });
+    });
+  });
+
+  Promise.all(promises)
+    .then(results => {
+      const cafeContainer = document.querySelector('.cafe-page');
+      const OrderContainer = document.querySelector('.cafe-block');
+
+      results.forEach(({ newItemDivS, newOrderDivS }) => {
+        cafeContainer.appendChild(newItemDivS);
+        OrderContainer.appendChild(newOrderDivS);
+      });
+    })
+    .catch(error => {
+      tg.showAlert(error);
+    });
+}
+
+// Get all keys from Cloud Storage
+tg.CloudStorage.getKeys(function(error, keys) {
+  if (error) {
+    tg.showAlert('Error retrieving keys from Cloud Storage: ' + error);
+  } else {
+    if (keys && keys.length > 0) {
+      retrieveAndAppendItems(keys);
     } else {
       tg.showAlert('No keys found in Cloud Storage.');
     }
