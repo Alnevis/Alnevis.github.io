@@ -128,12 +128,12 @@ function storeDivInfo(itemName, price, description) {
  
   const divInfo = [itemName, price, description];
   const jsonString = JSON.stringify(divInfo); 
-  tg.showAlert(`SAVED IN STORAGE`);  
+  tg.showAlert(`SAVED IN STORAGE` + jsonString);  
   tg.CloudStorage.setItem(`${itemName}`, jsonString, function(error, success) {
     if (error) {
-      tg.showAlert('Error storing data in Cloud Storage: ' + error);
+      tg.showAlert('Error storing data in Cloud Storage: ');
     } else {
-      tg.showAlert('Data stored successfully: ' + jsonString);
+      tg.showAlert('Data stored successfully: ');
     }    
   });
 }
