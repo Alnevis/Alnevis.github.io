@@ -71,12 +71,12 @@ function generateRandomString(length) {
     return randomString;
   }
   
-  function createNewItem(newPrice) {
+  function createNewItem(newPrice,newItemName,newDescription) {
     const newItemItem = document.createElement("div");
     newItemItem.classList.add("cafe-item", "js-item");
     newItemItem.setAttribute("data-item-price", newPrice);
     newItemItem.setAttribute("data-item-count", "0");
-    const randomString = generateRandomString(28); // Generate a random string of length 28
+    const randomString = generateRandomString(12); // Generate a random string of length 28
     console.log(randomString);
     newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
     
@@ -84,12 +84,12 @@ function generateRandomString(length) {
     
         <div class="cafe-item-photo">
             <picture class="cafe-item-lottie">        
-                <img src="img/placeholder.png"> <!-- You can set a placeholder image -->
+                <img src="img/Popcorn_148.png"> <!-- You can set a placeholder image -->
             </picture>
         </div>
         <div class="cafe-item-label">
-            <span class="cafe-item-title">New Item</span>
-            <span class="cafe-item-price">$0.00</span>
+            <span class="cafe-item-title">${newItemName}</span>
+            <span class="cafe-item-price">$${newPrice}</span>
         </div>
         <div class="cafe-item-buttons">
             <button class="cafe-item-quantity-decr js-item-quantity-decr button-item ripple-handler">-</button>
@@ -101,7 +101,23 @@ function generateRandomString(length) {
             </button>
         </div>
     `;
-    return newItemItem;
-}
- 
-  
+   
+};
+
+    const newOrderItem = document.createElement("div");    
+    newOrderItem.innerHTML = `
+    <div class="cafe-order-item js-order-item" id="${randomString}mc1">
+    <div class="cafe-order-item-photo">
+        <picture class="cafe-item-lottie">
+          <source type="application/x-tgsticker" srcset="./img/Burger.tgs">
+          <img src="img/Popcorn_148.png" >
+        </picture>
+    </div>     
+    <div class="cafe-order-item-title">${newItemName}</div>
+    <div class="cafe-order-item-price js-order-item-price"><span class="cafe-order-item-counter"><span class="js-order-item-counter" id="${randomString}counterc1">0</span>x</span><span class="currency">$</span><span class="oneitemprice" id="${randomString}oneitempricec">0</span></div>
+    <div class="cafe-order-item-price js-order-item-price">ИТОГО: <span class="currency">$</span><span class="oneitemtotalprice" id="${randomString}oneitemtotalprice">0</span></div>
+    <div class="cafe-order-item-description"><span> ${newDescription}</span></div>
+    </div>
+    `;
+
+return [newItemItem,newOrderItem];
