@@ -129,7 +129,7 @@ function storeDivInfo(itemName, price, description) {
   const divInfo = [itemName, price, description];
   const jsonString = JSON.stringify(divInfo);
 
-  tg.CloudStorage.setItem('addedDivInfo', jsonString, function(error, success) {
+  tg.CloudStorage.setItem(`${itemName}`, jsonString, function(error, success) {
     if (error) {
       tg.showAlert('Error storing data in Cloud Storage: ' + error);
     } else {
@@ -137,7 +137,7 @@ function storeDivInfo(itemName, price, description) {
     }
   });
 }
-
+/*
 // Retrieve the stored JSON string from Telegram's Cloud Storage
 tg.CloudStorage.getItem('addedDivInfo', function(error, storedDivInfo) {
   if (error) {
@@ -155,6 +155,34 @@ tg.CloudStorage.getItem('addedDivInfo', function(error, storedDivInfo) {
       cafeOrderContainer.appendChild(newOrderItem);
     } else {
       tg.showAlert('No stored data found.');
+    }
+  }
+});
+//*/
+// Get all keys from Cloud Storage
+tg.CloudStorage.getKeys(function(error, keys) {
+  if (error) {
+    tg.showAlert('Error retrieving keys from Cloud Storage: ' + error);
+  } else {
+    if (keys && keys.length > 0) {
+      // Iterate through each key
+      keys.forEach(function(key) {
+        // Retrieve the stored JSON string for each key
+        tg.CloudStorage.getItem(key, function(error, storedData) {
+          if (error) {
+            tg.showAlert('Error retrieving data for key ' + key + ': ' + error);
+          } else {
+            if (storedData) {
+              // Parse the JSON string back to an array or object based on your data structure
+              const parsedData = JSON.parse(storedData);
+              // Now you can work with each retrieved data
+              tg.showAlert('Data for key ' + key + ':', parsedData);
+            }
+          }
+        });
+      });
+    } else {
+      tg.showAlert('No keys found in Cloud Storage.');
     }
   }
 });

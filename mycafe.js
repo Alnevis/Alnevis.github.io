@@ -6,7 +6,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`hahihuuh`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+alert(`1111111111`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -261,8 +261,8 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       Comment.style.display = 'none';
       $('.finalamount').removeClass('show');
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки
-    // We save data of new items
-    storeDivInfo(newPrice,newItemName,newDescription);
+    // We save data of new items to STORAGE
+    storeDivInfo(newItemName,newPrice,newDescription);
   }else {
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());
