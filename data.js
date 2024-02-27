@@ -171,7 +171,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
           if (error) {
             tg.showAlert('Error retrieving data for key ' + key + ': ' + error);
           } else {
-            tg.showAlert('Ключ1: ' + key );
+            tg.showAlert('Ключ1: ' + key + 'Ключи: ' + keys + 'Len: ' + keys.length );
             if (storedData) {
               // Parse the JSON string back to an array or object based on your data structure
               const parsedData = JSON.parse(storedData);
