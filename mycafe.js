@@ -6,7 +6,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`hiiiiiiiiii`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+alert(`heee`); ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 //---------------------------------------------------------------------------------
-
+*/
 var OrderMode = document.querySelector('.cafe-items');
   OrderMode.style.display = 'none';      
   var cafeOrderOverview = document.querySelector('.cafe-order-overview');
@@ -215,7 +215,7 @@ var OrderMode = document.querySelector('.cafe-items');
   var Comment = document.querySelector('.comment');
   Comment.style.display = 'none';
   $('.finalamount').removeClass('show');
-  $('.cafe-settings').addClass('show'); */
+  $('.cafe-settings').addClass('show'); 
   
 
 Telegram.WebApp.onEvent('mainButtonClicked', function () { 

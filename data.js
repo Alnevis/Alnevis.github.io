@@ -1,5 +1,5 @@
-const randomString = generateRandomString(28); // Generate a random string of length 8
-console.log(randomString);
+
+
 $('.buttons-wrapper').hide();
 
 var addItem = $('.js-addNewItemBtn'); 
@@ -102,7 +102,7 @@ function generateRandomString(length) {
         </div>
     `;
    
-};
+
 
     const newOrderItem = document.createElement("div");    
     newOrderItem.innerHTML = `
@@ -121,3 +121,4 @@ function generateRandomString(length) {
     `;
 
 return [newItemItem,newOrderItem];
+};
