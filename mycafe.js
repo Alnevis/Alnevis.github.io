@@ -283,6 +283,7 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
       Comment.style.display = 'none';
       $('.finalamount').removeClass('show');
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки 
+    $('.cafe-settings').removeClass('show');
     //window.alert('x is true!');   
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
