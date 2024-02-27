@@ -235,7 +235,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе     
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');
-    ///////////////////////////////////////////////////////////СОХРАНИТЬ/////////////////////////  
+    ///////////////////////////////////////////////////////////СОХРАНИТЬ////////////////////////////////////////////////////////////////////////////  
   } else if (tg.MainButton.text=="Сохранить"){      
     var newItemtext = document.querySelector('.quantity-input');
     var newItemName = newItemtext.value; 
@@ -262,6 +262,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       $('.finalamount').removeClass('show');
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки
     // We save data of new items to STORAGE
+    tg.showAlert(`itemname1 ` + newItemName);
     storeDivInfo(newItemName,newPrice,newDescription);
   }else {
     // After processing all items
