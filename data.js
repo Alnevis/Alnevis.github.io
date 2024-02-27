@@ -125,7 +125,7 @@ return [newItemItem,newOrderItem];
 
 // Storing div information
 function storeDivInfo(itemName, price, description) {
-  
+  tg.showAlert(`itemname11111 ` + itemName + price + description );
   const divInfo = [itemName, price, description];
   const jsonString = JSON.stringify(divInfo); 
   //tg.showAlert(`SAVED IN STORAGE : ` + jsonString);  

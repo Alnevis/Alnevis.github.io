@@ -6,7 +6,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`3  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+//alert(`3  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -148,7 +148,7 @@ incrButton.on('click', function(event) {
   var itemId = itemEl.data('item-id');
   incrClicked(itemEl, 1, itemId);
 });
-/*-------------------zzzzzzzzzzzzzzzzzzzzzzzzz--------------------------------------------------------------
+/*-------------------zzzzzzzzzzzzzzzzzzzzzzzzz-------------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
   // Wait for the DOM content to be fully loaded
 
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add a click event listener to the button-
   myButton.addEventListener('click', function() {
     // Check the current text of the button
-    if (myButton.textContent === "Посмотреть заказ") {
+    if (myButton.textContent == "Посмотреть заказ") {
       // Change the button text and perform actions
       myButton.textContent = "Сохранить";
 
@@ -171,12 +171,12 @@ document.addEventListener('DOMContentLoaded', function() {
       var Comment = document.querySelector('.comment');
       Comment.style.display = 'flex';
       $('.finalamount').addClass('show');
-    } else if (tg.MainButton.text=="Сохранить"){
-    tg.showAlert(`Сохранено!`); 
+    } else if (myButton.textContent=="Сохранить"){
+    tg.showAlert(`Сохранено!`);       
 
-
-
-
+  }else if (myButton.textContent=="SET"){
+    
+    
   }else {
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());
@@ -205,19 +205,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
-//---------------------------------------------------------------------------------
-
+//---------------------------------------------------------------------------------*/
+/*
+    var newItemtext = document.querySelector('.quantity-input');
+    var newItemName = newItemtext.value; 
+    var newPricetext = document.querySelector('.price-input');
+    var newPrice = newPricetext.value; 
+    var newDescriptionText = document.querySelector('.desc-input');
+    var newDescription =newDescriptionText.value; 
+    
+    const cafeContainer = document.querySelector('.cafe-page')   
+    const [newItemDiv,newOrderDiv] = createNewItem(newPrice,newItemName,newDescription);
+    cafeContainer.appendChild(newItemDiv);
+    const OrderContainer = document.querySelector('.cafe-block');
+    OrderContainer.appendChild(newOrderDiv); 
+    $('.cafe-settings').removeClass('show');
+   
+//return to initial page and conceal current page */
+/*
 var OrderMode = document.querySelector('.cafe-items');
-  OrderMode.style.display = 'none';      
-  var cafeOrderOverview = document.querySelector('.cafe-order-overview');
-  cafeOrderOverview.style.display = 'none';
-  cafeOrderOverview.style.opacity = '0';
-  var Comment = document.querySelector('.comment');
-  Comment.style.display = 'none';
-  $('.finalamount').removeClass('show');
-  $('.cafe-settings').addClass('show'); 
-  */
-
+OrderMode.style.display = 'none';      
+var cafeOrderOverview = document.querySelector('.cafe-order-overview');
+cafeOrderOverview.style.display = 'none';
+cafeOrderOverview.style.opacity = '0';
+var Comment = document.querySelector('.comment');
+Comment.style.display = 'none';
+$('.finalamount').removeClass('show');
+$('.cafe-settings').addClass('show');
+alert(`itemname1` );
+storeDivInfo(newItemName,newPrice,newDescription);
+   
+//     */
 Telegram.WebApp.onEvent('mainButtonClicked', function () { 
  // document.addEventListener('DOMContentLoaded', function() { 
  // alert(`Заказ: ${count1} шт. ${itemprice} ${itemtitle}`); 
@@ -262,7 +280,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       $('.finalamount').removeClass('show');
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки
     // We save data of new items to STORAGE
-    tg.showAlert(`itemname1 ` + newItemName);
+    
     storeDivInfo(newItemName,newPrice,newDescription);
   }else {
     // After processing all items
