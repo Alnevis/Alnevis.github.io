@@ -516,8 +516,9 @@ body {
 .addNewItemBtn {
   position: relative;
   top: 0.2em; /* Adjust the value as needed */
-   * Adjust the value as needed */
+   
 }
+
 /* Style for the input fields */
 .data-input {
   padding: 10px;
