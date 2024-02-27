@@ -131,9 +131,9 @@ function storeDivInfo(itemName, price, description, randomPlace) {
   //tg.showAlert(`SAVED IN STORAGE : ` + jsonString);  
   tg.CloudStorage.setItem(`${randomPlace}`, jsonString, function(error, success) {
     if (error) {
-      tg.showAlert('Error storing data in Cloud Storage: ');
+      tg.showAlert('Error storing data in Cloud Storage');
     } else {
-      tg.showAlert('Data stored successfully: ');
+      tg.showAlert('Данные товара сохранены успешно!');
     }    
   });
 }
@@ -166,17 +166,18 @@ tg.CloudStorage.getKeys(function(error, keys) {
   } else {
     if (keys && keys.length > 0) {
       // Iterate through each key
-      keys.forEach(function(key) {
-        alert('Processing key: ', key);  // Add this line
+      keys.forEach(function(key) {        
         tg.CloudStorage.getItem(key, function(error, storedData) {
           if (error) {
             tg.showAlert('Error retrieving data for key ' + key + ': ' + error);
           } else {
+            tg.showAlert('Ключ1: ' + key );
             if (storedData) {
               // Parse the JSON string back to an array or object based on your data structure
               const parsedData = JSON.parse(storedData);
               // Now you can work with each retrieved data
-              tg.showAlert('I got key : ' + key + '     :    Values of key     '+ parsedData);
+              tg.showAlert('Ключ : ' + key + '     :    Значение ключа     '+ parsedData);
+              createNewItem(parsedData[1], parsedData[0], parsedData[2]);
             }
           }
         });
