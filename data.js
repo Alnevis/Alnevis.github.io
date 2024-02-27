@@ -77,7 +77,7 @@ function generateRandomString(length) {
     newItemItem.setAttribute("data-item-price", newPrice);
     newItemItem.setAttribute("data-item-count", "0");
     const randomString = generateRandomString(12); // Generate a random string of length 28
-    console.log(randomString);
+    console.log(`random` + randomString);
     newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
     
     newItemItem.innerHTML = `
@@ -129,11 +129,11 @@ function storeDivInfo(itemName, price, description) {
   const divInfo = [itemName, price, description];
   const jsonString = JSON.stringify(divInfo); 
   //tg.showAlert(`SAVED IN STORAGE : ` + jsonString);  
-  tg.CloudStorage.setItem(`${itemName}`, jsonString, function(error, success) {
+  tg.CloudStorage.setItem(`itemname11111 `, jsonString, function(error, success) {
     if (error) {
-      tg.showAlert('Error storing data in Cloud Storage: ');
+      alert('Error storing data in Cloud Storage: ');
     } else {
-      tg.showAlert('Data stored successfully: ');
+      alert('Data stored successfully: ');
     }    
   });
 }
@@ -176,7 +176,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
               // Parse the JSON string back to an array or object based on your data structure
               const parsedData = JSON.parse(storedData);
               // Now you can work with each retrieved data
-              tg.showAlert('Data for key ' + key + ':'+ parsedData);
+              tg.showAlert('Data for key ' + key + '     :    parsedData     '+ parsedData);
             }
           }
         });

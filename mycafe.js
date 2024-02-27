@@ -6,7 +6,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-//alert(`3  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+alert(`3  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -149,22 +149,15 @@ incrButton.on('click', function(event) {
   incrClicked(itemEl, 1, itemId);
 });
 /*-------------------zzzzzzzzzzzzzzzzzzzzzzzzz-------------------------------------------------------------------------------------
+
+
 document.addEventListener('DOMContentLoaded', function() {
-  // Wait for the DOM content to be fully loaded
-
-  // Find the button element by its id
-  var myButton = document.getElementById('myButton');
-
-  // Add a click event listener to the button-
-  myButton.addEventListener('click', function() {
-    // Check the current text of the button
-    if (myButton.textContent == "Посмотреть заказ") {
-      // Change the button text and perform actions
+    var myButton = document.getElementById('myButton');
+  myButton.addEventListener('click', function() {  
+    if (myButton.textContent == "Посмотреть заказ") {  
       myButton.textContent = "Сохранить";
-
       var OrderMode = document.querySelector('.cafe-items');
       OrderMode.style.display = 'none';
-      
       var cafeOrderOverview = document.querySelector('.cafe-order-overview');
       cafeOrderOverview.style.display = 'flex';
       cafeOrderOverview.style.opacity = '1';
@@ -172,36 +165,12 @@ document.addEventListener('DOMContentLoaded', function() {
       Comment.style.display = 'flex';
       $('.finalamount').addClass('show');
     } else if (myButton.textContent=="Сохранить"){
-    tg.showAlert(`Сохранено!`);       
+    alert(`Сохранено!`);     
 
-  }else if (myButton.textContent=="SET"){
-    
-    
+  }else if (myButton.textContent=="SET"){    
+    storeDivInfo(newItemName,newPrice,newDescription);
   }else {
-    // After processing all items
-    var finalprice =  parseFloat($('.allitemtotalprice').text());
-    var finalprice = finalprice.toFixed(2)
-    // Construct a string with information for all items and final price
-    var message = itemsData.map(function (item) {
-      return `${item.title} ${item.count} шт. по цене ${item.price}  на сумму ${item.total}`;
-    }).join('\n');
-    var textarea = document.querySelector('.cafe-text-field');
-    var userComment = textarea.value;    
-    // Add the final price to the message
-    message += `\nFinal Price: ${finalprice}`;
-    message += `\nUser's Comment: ${userComment}`;
-      alert(` ${message}`);
-      myButton.textContent = "Посмотреть заказ";
-      var OrderMode = document.querySelector('.cafe-items');
-      OrderMode.style.display = 'flex';
-      
-      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
-      cafeOrderOverview.style.display = 'none';
-      cafeOrderOverview.style.opacity = '0';
-      var Comment = document.querySelector('.comment');
-      Comment.style.display = 'none';
-      $('.finalamount').removeClass('show');
-      // Add logic for reverting changes or any other actions
+    alert(`ено!`);
     }
   });
 });
@@ -221,8 +190,8 @@ document.addEventListener('DOMContentLoaded', function() {
     OrderContainer.appendChild(newOrderDiv); 
     $('.cafe-settings').removeClass('show');
    
-//return to initial page and conceal current page */
-/*
+//return to initial page and conceal current page 
+
 var OrderMode = document.querySelector('.cafe-items');
 OrderMode.style.display = 'none';      
 var cafeOrderOverview = document.querySelector('.cafe-order-overview');
@@ -232,8 +201,8 @@ var Comment = document.querySelector('.comment');
 Comment.style.display = 'none';
 $('.finalamount').removeClass('show');
 $('.cafe-settings').addClass('show');
-alert(`itemname1` );
-storeDivInfo(newItemName,newPrice,newDescription);
+//alert(`itemname1` );
+
    
 //     */
 Telegram.WebApp.onEvent('mainButtonClicked', function () { 
