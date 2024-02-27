@@ -125,14 +125,36 @@ return [newItemItem,newOrderItem];
 
 // Storing div information
 function storeDivInfo(itemName, price, description) {
+  tg.showAlert(`Сохранено`); 
   const divInfo = [itemName, price, description];
   const jsonString = JSON.stringify(divInfo);
 
   tg.CloudStorage.setItem('addedDivInfo', jsonString, function(error, success) {
     if (error) {
-      tg.showAlert('Error storing data in Cloud Storage:', error);
+      tg.showAlert('Error storing data in Cloud Storage: ' + error);
     } else {
-      tg.showAlert('Data stored successfully:', jsonString);
+      tg.showAlert('Data stored successfully: ' + jsonString);
     }
   });
 }
+
+// Retrieve the stored JSON string from Telegram's Cloud Storage
+tg.CloudStorage.getItem('addedDivInfo', function(error, storedDivInfo) {
+  if (error) {
+    tg.showAlert('Error retrieving data from Cloud Storage:' + error);
+  } else {
+    if (storedDivInfo) {
+      // Parse the JSON string back to an array
+      const parsedDivInfo = JSON.parse(storedDivInfo);
+
+      // Assuming you have a function createNewItem that takes relevant parameters and returns a new div
+      const [newItem, newOrderItem] = createNewItem(parsedDivInfo[1], parsedDivInfo[0], parsedDivInfo[2]);
+
+      // Append the new divs to the container
+      cafeContainer.appendChild(newItem);
+      cafeOrderContainer.appendChild(newOrderItem);
+    } else {
+      tg.showAlert('No stored data found.');
+    }
+  }
+});

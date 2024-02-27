@@ -250,7 +250,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     const OrderContainer = document.querySelector('.cafe-block');
     OrderContainer.appendChild(newOrderDiv); 
     $('.cafe-settings').removeClass('show');
-    tg.showAlert(`Сохранено`); 
+   
 //return to initial page and conceal current page
       var OrderMode = document.querySelector('.cafe-items');
       OrderMode.style.display = 'flex';      
