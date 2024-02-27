@@ -232,10 +232,10 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     var Comment = document.querySelector('.comment');
     Comment.style.display = 'flex';
     $('.finalamount').addClass('show');  
-    tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе 
-    //window.alert('x is true!');   
+    tg.MainButton.setText("CДЕЛАТЬ ЗАКАЗ"); //изменяем текст кнопки иначе     
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
-    //tg.openTelegramLink('https://t.me/public_python');  
+    //tg.openTelegramLink('https://t.me/public_python');
+    ///////////////////////////////////////////////////////////СОХРАНИТЬ/////////////////////////  
   } else if (tg.MainButton.text=="Сохранить"){      
     var newItemtext = document.querySelector('.quantity-input');
     var newItemName = newItemtext.value; 
@@ -243,6 +243,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     var newPrice = newPricetext.value; 
     var newDescriptionText = document.querySelector('.desc-input');
     var newDescription =newDescriptionText.value; 
+    
     const cafeContainer = document.querySelector('.cafe-page')   
     const [newItemDiv,newOrderDiv] = createNewItem(newPrice,newItemName,newDescription);
     cafeContainer.appendChild(newItemDiv);
@@ -250,7 +251,8 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     OrderContainer.appendChild(newOrderDiv); 
     $('.cafe-settings').removeClass('show');
     tg.showAlert(`Сохранено`); 
-    var OrderMode = document.querySelector('.cafe-items');
+//return to initial page and conceal current page
+      var OrderMode = document.querySelector('.cafe-items');
       OrderMode.style.display = 'flex';      
       var cafeOrderOverview = document.querySelector('.cafe-order-overview');
       cafeOrderOverview.style.display = 'none';
@@ -259,6 +261,8 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       Comment.style.display = 'none';
       $('.finalamount').removeClass('show');
     tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки
+    // We save data of new items
+    storeDivInfo(newPrice,newItemName,newDescription);
   }else {
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());

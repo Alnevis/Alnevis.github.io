@@ -122,3 +122,17 @@ function generateRandomString(length) {
 
 return [newItemItem,newOrderItem];
 };
+
+// Storing div information
+function storeDivInfo(itemName, price, description) {
+  const divInfo = [itemName, price, description];
+  const jsonString = JSON.stringify(divInfo);
+
+  tg.CloudStorage.setItem('addedDivInfo', jsonString, function(error, success) {
+    if (error) {
+      tg.showAlert('Error storing data in Cloud Storage:', error);
+    } else {
+      tg.showAlert('Data stored successfully:', jsonString);
+    }
+  });
+}
