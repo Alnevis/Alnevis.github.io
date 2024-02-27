@@ -6,7 +6,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`3  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+alert(`5  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -232,7 +232,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     var newDescription =newDescriptionText.value; 
     
     const cafeContainer = document.querySelector('.cafe-page')   
-    const [newItemDiv,newOrderDiv] = createNewItem(newPrice,newItemName,newDescription);
+    const [newItemDiv,newOrderDiv, randomItem] = createNewItem(newPrice,newItemName,newDescription);
     cafeContainer.appendChild(newItemDiv);
     const OrderContainer = document.querySelector('.cafe-block');
     OrderContainer.appendChild(newOrderDiv); 
@@ -247,10 +247,10 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       var Comment = document.querySelector('.comment');
       Comment.style.display = 'none';
       $('.finalamount').removeClass('show');
-    tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки
+      tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки
     // We save data of new items to STORAGE
     
-    storeDivInfo(newItemName,newPrice,newDescription);
+      storeDivInfo(newItemName,newPrice,newDescription, randomItem);
   }else {
     // After processing all items
     var finalprice =  parseFloat($('.allitemtotalprice').text());

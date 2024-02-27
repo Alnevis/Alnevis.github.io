@@ -120,20 +120,20 @@ function generateRandomString(length) {
     </div>
     `;
 
-return [newItemItem,newOrderItem];
+return [newItemItem,newOrderItem, randomString];
 };
 
 // Storing div information
-function storeDivInfo(itemName, price, description) {
-  tg.showAlert(`itemname11111 ` + itemName + price + description );
+function storeDivInfo(itemName, price, description,randomPlace) {
+  tg.showAlert(`Random  ` + randomPlace + ` Name ` + itemName + ` Price ` + price + ` Desc ` + description );
   const divInfo = [itemName, price, description];
   const jsonString = JSON.stringify(divInfo); 
   //tg.showAlert(`SAVED IN STORAGE : ` + jsonString);  
-  tg.CloudStorage.setItem(`itemname11111 `, jsonString, function(error, success) {
+  tg.CloudStorage.setItem(`${randomPlace} `, jsonString, function(error, success) {
     if (error) {
-      alert('Error storing data in Cloud Storage: ');
+      tg.showAlert('Error storing data in Cloud Storage: ');
     } else {
-      alert('Data stored successfully: ');
+      tg.showAlert('Data stored successfully: ');
     }    
   });
 }
