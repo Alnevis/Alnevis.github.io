@@ -76,8 +76,7 @@ function generateRandomString(length) {
     newItemItem.classList.add("cafe-item", "js-item");
     newItemItem.setAttribute("data-item-price", newPrice);
     newItemItem.setAttribute("data-item-count", "0");
-    const randomString = generateRandomString(12); // Generate a random string of length 28
-    console.log(`random` + randomString);
+    const randomString = generateRandomString(12); // Generate a random string of length 28    
     newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
     
     newItemItem.innerHTML = `
@@ -171,13 +170,16 @@ tg.CloudStorage.getKeys(function(error, keys) {
           if (error) {
             tg.showAlert('Error retrieving data for key ' + key + ': ' + error);
           } else {
-            tg.showAlert('Ключ1:' + key + 'Ключи: ' + keys + 'Len: ' + keys.length );
-            if (storedData) {
+              if (storedData) {
               // Parse the JSON string back to an array or object based on your data structure
               const parsedData = JSON.parse(storedData);
               // Now you can work with each retrieved data
-              tg.showAlert('Ключ : ' + key + '     :    Значение ключа     '+ parsedData);
-              createNewItem(parsedData[1], parsedData[0], parsedData[2]);
+              tg.showAlert('Ключ : ' + key + ' Значение ключа '+ parsedData[1] + ' Значение ключа '+ parsedData[0] + ' Значение ключа '+ parsedData[2]);
+              const cafeContainer = document.querySelector('.cafe-page')   
+              const [newItemDivS,newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2]);
+              cafeContainer.appendChild(newItemDivS);
+              const OrderContainer = document.querySelector('.cafe-block');
+              OrderContainer.appendChild(newOrderDivS); 
             }
           }
         });
