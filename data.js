@@ -125,16 +125,17 @@ return [newItemItem,newOrderItem];
 
 // Storing div information
 function storeDivInfo(itemName, price, description) {
-  tg.showAlert(`Сохранено`); 
+  tg.showAlert(`SAVED IN STORAGE`); 
   const divInfo = [itemName, price, description];
   const jsonString = JSON.stringify(divInfo);
-
+  tg.showAlert(`SAVED IN STORAGE2`);
   tg.CloudStorage.setItem(`${itemName}`, jsonString, function(error, success) {
     if (error) {
       tg.showAlert('Error storing data in Cloud Storage: ' + error);
     } else {
       tg.showAlert('Data stored successfully: ' + jsonString);
     }
+    tg.showAlert(`SAVED IN STORAGE3`);
   });
 }
 /*
@@ -176,7 +177,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
               // Parse the JSON string back to an array or object based on your data structure
               const parsedData = JSON.parse(storedData);
               // Now you can work with each retrieved data
-              tg.showAlert('Data for key ' + key + ':', parsedData);
+              tg.showAlert('Data for key ' + key + ':'+ parsedData);
             }
           }
         });
