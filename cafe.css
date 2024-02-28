@@ -392,13 +392,12 @@ button {
   }
   .cafe-order-item {
     display: none;
-    padding: 11px 0px 14px 0px;
-    display: flex;
+    padding: 11px 0px 14px 0px;    
     align-items: center;
     width: 100%;
      
   }
-  .cafe-order-item.selected {
+  .cafe-order-item.show {
     display: flex;
   }
  
