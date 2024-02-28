@@ -20,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.cafe-block .js-order-item').hide();
-logWithTimestamp(` 1 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 3 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -36,7 +36,7 @@ function incrClicked (itemEl, delta, itemId) {
   var count = itemEl.data('item-count'); 
   count += delta;  
   itemEl.find('.js-item-quantity').text(count);
-  $('.cafe-block .js-order-item-counter#' + "counter" + itemId).text(count);
+  $('.cafe-block .js-order-item-counter#'+ itemId + "counterc1" ).text(count);
 
   // REMOVE MAINBUTTON IF ALL POSITION are ZERO
   var allZeros = $('.cafe-page .js-order-item-counter').map(function() {
@@ -58,14 +58,14 @@ function incrClicked (itemEl, delta, itemId) {
   totalitemprice =totalitemprice.toFixed(2)
   console.log(" ITEMtitle", itemtitle , " totalitemprice", totalitemprice, " itempricefloat", itempricefloat )
   if (count > 0) {    
-    $('.cafe-block .js-order-item#' + "m"+ itemId).show();
+    $('.cafe-block .js-order-item#' + itemId+ "mc1").show();
     //console.log(' oneitemprice:', $(`.oneitemprice#`+ itemId).text());
        
     itemprice = itemEl.find('.cafe-item-price').text();
-    $('.cafe-block .oneitemprice#' + "oneitemprice" + itemId).text(itemprice);    
+    $('.cafe-block .oneitemprice#'  + itemId + "oneitempricec").text(itemprice);    
     
     //totalitemprice = totalitemprice.toFixed(2);    
-    $('.cafe-block .oneitemtotalprice#'+"oneitemtotalprice" + itemId).text(totalitemprice);
+    $('.cafe-block .oneitemtotalprice#'+ itemId +"oneitemtotalprice" ).text(totalitemprice);
     
     // Calculate finalprice as the sum of all .oneitemtotalprice
     var allTotalPrices = $('.cafe-block .oneitemtotalprice').map(function () {
@@ -99,13 +99,13 @@ function incrClicked (itemEl, delta, itemId) {
 
   } else {
     
-    $('.cafe-block .js-order-item#' + "m"+itemId).hide();
+    $('.cafe-block .js-order-item#' + itemId+ "mc1").hide();
     itemEl.find('.js-item-quantity-incr').hide();
     itemEl.find('.js-item-quantity-decr').hide();
     itemEl.find('.js-item-quantity').hide();
     itemEl.find('.js-item-incr-btn').show();
     //console.log('Before Update:', $('.oneitemtotalprice#' + itemId).text());
-    $('.cafe-block .oneitemtotalprice#' +"oneitemtotalprice"+ itemId).text(0);
+    $('.cafe-block .oneitemtotalprice#' + itemId +"oneitemtotalprice").text(0);
     //console.log('After Update:', $('.oneitemtotalprice#' + itemId).text());
     
     var allTotalPrices = $('.cafe-block .oneitemtotalprice').map(function () {
@@ -146,7 +146,7 @@ $('.cafe-page').on('click', '.js-item-incr-btn', function(event) {
  itemEl.data('item-count',1)
  var count = itemEl.data('item-count');
  itemEl.find('.js-item-quantity').text(1);
- $('.js-order-item-counter#'+"counter" + itemId).text(1);
+ $('.js-order-item-counter#'+ itemId + "counterc1").text(1);
  console.log('Item Title:', textname , 'Item id:', itemId, 'item-count' , count);
  incrClicked(itemEl, 0 , itemId);
 });
