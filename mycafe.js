@@ -20,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.cafe-block .js-order-item').hide();
-logWithTimestamp(` 9 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 1 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -53,7 +53,7 @@ function incrClicked (itemEl, delta, itemId) {
   itemtitle = itemEl.find('.cafe-item-title').text();
   
   count1 = count
-  itempricefloat = parseFloat(itemEl.data('item-price') / 1000);  //DELETE 1000
+  itempricefloat = parseFloat(itemEl.data('item-price'));  
   totalitemprice = count * itempricefloat; //
   totalitemprice =totalitemprice.toFixed(2)
   console.log(" ITEMtitle", itemtitle , " totalitemprice", totalitemprice, " itempricefloat", itempricefloat )
@@ -65,10 +65,10 @@ function incrClicked (itemEl, delta, itemId) {
     $('.cafe-block .oneitemprice#' + "oneitemprice" + itemId).text(itemprice);    
     
     //totalitemprice = totalitemprice.toFixed(2);    
-    $('.oneitemtotalprice#'+"oneitemtotalprice" + itemId).text(totalitemprice);
+    $('.cafe-block .oneitemtotalprice#'+"oneitemtotalprice" + itemId).text(totalitemprice);
     
     // Calculate finalprice as the sum of all .oneitemtotalprice
-    var allTotalPrices = $('.oneitemtotalprice').map(function () {
+    var allTotalPrices = $('.cafe-block .oneitemtotalprice').map(function () {
       return parseFloat($(this).text());
       }).get();
 
@@ -76,7 +76,7 @@ function incrClicked (itemEl, delta, itemId) {
       return accumulator + currentValue;
       }, 0);
 
-    $('.allitemtotalprice').text(finalprice.toFixed(2)); //
+    $('.cafe-block .allitemtotalprice').text(finalprice.toFixed(2)); //
     //alert(`count1 = ${count1} itemId = ${itemId} itemtitle = ${itemtitle} itemprice = ${itemprice} itempricefloat = ${itempricefloat} totalitemprice = ${totalitemprice} finalprice = ${finalprice}`);
      // Inside your loop or logic for processing items
      var existingItem = itemsData.find(item => item.title === itemtitle);
@@ -115,7 +115,7 @@ function incrClicked (itemEl, delta, itemId) {
     var finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue;
       }, 0);
-    $('.allitemtotalprice').text(finalprice.toFixed(2)); //
+    $('.cafe-block .allitemtotalprice').text(finalprice.toFixed(2)); //
 
     // Check if an item with the same title already exists in itemsData
     var existingIndex = itemsData.findIndex(item => item.title === itemtitle);
