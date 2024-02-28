@@ -1,4 +1,5 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+tg.ready()
 let x = tg.initDataUnsafe;
 let y = tg.initData;
 var itemsData = [];
@@ -6,7 +7,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`2  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+alert(`3  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -118,6 +119,8 @@ $('.cafe-page').on('click', '.js-item-incr-btn', function(event) {
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-incr').show();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-decr').show();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity').show();
+  var textname = $(this).closest('.cafe-item').find('.cafe-item-title').text();
+  console.log('Item Title:', textname);
  // event.preventDefault();
  var itemEl = $(this).closest('.js-item');
  var count = itemEl.data('item-count');
