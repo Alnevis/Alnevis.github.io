@@ -112,7 +112,7 @@ function incrClicked (itemEl, delta, itemId) {
  // updateItem(itemEl, delta);
 }
 var addbutton = $('.js-item-incr-btn'); 
-addbutton.on('click', function(event) {
+$('.cafe-page').on('click', '.js-item-incr-btn', function(event) {
   tg.MainButton.show();
   $(this).parent('.cafe-item-buttons').find('.js-item-incr-btn').hide();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-incr').show();
