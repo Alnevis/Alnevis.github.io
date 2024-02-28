@@ -20,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`4  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` your version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -126,7 +126,7 @@ function incrClicked (itemEl, delta, itemId) {
  // updateItem(itemEl, delta);
 }
 var addbutton = $('.js-item-incr-btn'); 
-$('.cafe-page').on('click', '.js-item-incr-btn', function(event) {  
+$('.cafe-page').on('click', '.cafe-item-buttons', '.js-item-incr-btn', function(event) {
   console.log('Before tg.MainButton.show()');
   tg.MainButton.show();
   console.log('After tg.MainButton.show()');
@@ -325,3 +325,9 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
     //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!!!`);
     //tg.openTelegramLink('https://t.me/public_python');  
   });
+
+  function logWithTimestamp(message) {
+    const timestamp = new Date().toLocaleTimeString();
+    console.log(`[${timestamp}] ${message}`);
+    tg.showAlert(`[${timestamp}] ${message}`);
+  }
