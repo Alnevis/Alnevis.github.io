@@ -44,11 +44,11 @@ function addclick (itemEl, delta, itemId) {
   if (count > 0) {
     itemEl.find('.addNewItemBtn').show();
     itemEl.find('.js-addNewItemBtn').hide();
-  } else {     
+  } else {    
     
     itemEl.find('.addNewItemBtn').hide();
     itemEl.find('.js-addNewItemBtn').show();
-   
+    
   };  
  // updateItem(itemEl, delta);
 }
