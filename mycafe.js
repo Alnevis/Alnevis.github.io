@@ -20,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-logWithTimestamp(` 1 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 7 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -134,17 +134,18 @@ $('.cafe-page').on('click', '.js-item-incr-btn', function(event) {
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-incr').show();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-decr').show();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity').show();
-  var textname = $(this).closest('.cafe-item').find('.cafe-item-title').text();
-  console.log('Item Title:', textname);
+  var textname = $(this).closest('.cafe-item').data('.cafe-item-title').text();
+  
+  
  // event.preventDefault();
  var itemEl = $(this).closest('.js-item');
  var count = itemEl.data('item-count');
  var itemId = itemEl.data('item-id');
- //alert(`count1 = ${count}`);
+ console.log();
  itemEl.data('item-count',1)
  itemEl.find('.js-item-quantity').text(1);
  $('.js-order-item-counter#'+"counter" + itemId).text(1);
- console.log('After tg.MainButton.show()');
+ console.log('Item Title:', textname , 'Item id:', itemId, 'item-count' , count);
  incrClicked(itemEl, 0 , itemId);
 });
 
