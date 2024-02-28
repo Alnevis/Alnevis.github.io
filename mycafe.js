@@ -19,8 +19,8 @@ var itemsData = [];
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
-$('.js-order-item').hide();
-logWithTimestamp(` 7 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+$('.cafe-block .js-order-item').hide();
+logWithTimestamp(` 9 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -36,7 +36,7 @@ function incrClicked (itemEl, delta, itemId) {
   var count = itemEl.data('item-count'); 
   count += delta;  
   itemEl.find('.js-item-quantity').text(count);
-  $('.js-order-item-counter#' +"counter" + itemId).text(count);
+  $('.cafe-block .js-order-item-counter#' + "counter" + itemId).text(count);
 
   // REMOVE MAINBUTTON IF ALL POSITION are ZERO
   var allZeros = $('.cafe-page .js-order-item-counter').map(function() {
@@ -62,7 +62,7 @@ function incrClicked (itemEl, delta, itemId) {
     //console.log(' oneitemprice:', $(`.oneitemprice#`+ itemId).text());
        
     itemprice = itemEl.find('.cafe-item-price').text();
-    $('.oneitemprice#' + "oneitemprice" + itemId).text(itemprice);    
+    $('.cafe-block .oneitemprice#' + "oneitemprice" + itemId).text(itemprice);    
     
     //totalitemprice = totalitemprice.toFixed(2);    
     $('.oneitemtotalprice#'+"oneitemtotalprice" + itemId).text(totalitemprice);
