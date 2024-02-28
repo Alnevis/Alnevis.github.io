@@ -20,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-logWithTimestamp(` 5 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 7 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -56,7 +56,7 @@ function incrClicked (itemEl, delta, itemId) {
   itempricefloat = parseFloat(itemEl.data('item-price') / 1000);  //DELETE 1000
   totalitemprice = count * itempricefloat; //
   totalitemprice =totalitemprice.toFixed(2)
-  console.log(" ITEMtitle", itemtitlem , " totalitemprice", totalitemprice, " itempricefloat", itempricefloat )
+  console.log(" ITEMtitle", itemtitle , " totalitemprice", totalitemprice, " itempricefloat", itempricefloat )
   if (count > 0) {    
     $('.cafe-block .js-order-item#' + "m"+ itemId).show();
     //console.log(' oneitemprice:', $(`.oneitemprice#`+ itemId).text());
