@@ -129,7 +129,7 @@ var addbutton = $('.js-item-incr-btn');
 $('.cafe-page').on('click', '.cafe-item-buttons', '.js-item-incr-btn', function(event) {
   console.log('Before tg.MainButton.show()');
   tg.MainButton.show();
-  console.log('After tg.MainButton.show()');
+  
   $(this).parent('.cafe-item-buttons').find('.js-item-incr-btn').hide();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-incr').show();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-decr').show();
@@ -144,6 +144,7 @@ $('.cafe-page').on('click', '.cafe-item-buttons', '.js-item-incr-btn', function(
  itemEl.data('item-count',1)
  itemEl.find('.js-item-quantity').text(1);
  $('.js-order-item-counter#'+"counter" + itemId).text(1);
+ console.log('After tg.MainButton.show()');
  incrClicked(itemEl, 0 , itemId);
 });
 
