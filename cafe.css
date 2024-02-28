@@ -87,7 +87,7 @@ body {
   .cafe-item-shadow {
     position: relative;
     width: 120px;
-    height: 159px;
+    min-height: 160px;
     padding: 4px 5px 21px;
     box-sizing: border-box;
     text-align: center;
@@ -190,7 +190,7 @@ button {
 .cafe-order-item-title {
   font-weight: 500;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: pre-line;
   text-overflow: ellipsis;
   -webkit-line-clamp: 2; /* Number of lines to show */
   -webkit-box-orient: vertical;
@@ -440,7 +440,7 @@ button {
     padding: 0;
     margin: 0;
     text-align: left;   
-     
+    width: 23%;
     
   }
   .cafe-order-item-price {

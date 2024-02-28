@@ -23,7 +23,7 @@ $(document).ready(function() {
   console.log("I am here")
   $('.cafe-block .js-order-item').hide();
 });
-logWithTimestamp(` 11 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 3 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
