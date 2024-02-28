@@ -6,7 +6,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`12  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+alert(`15  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -131,7 +131,7 @@ $('.cafe-page').on('click', '.js-item-incr-btn', function(event) {
 
 var decrButton = $('.js-item-quantity-decr');
 // Add a click event listener to the button
-decrButton.on('click', function(event) {
+$('.cafe-page').on('click','.js-item-quantity-decr', function(event) {
   event.preventDefault();
   var itemEl = $(this).closest('.js-item');
   var itemId = itemEl.data('item-id');
@@ -141,7 +141,7 @@ decrButton.on('click', function(event) {
 // Select the quantity increment button
 var incrButton = $('.js-item-quantity-incr');
 // Add a click event listener to the button
-incrButton.on('click', function(event) {
+$('.cafe-page').on('click', '.js-item-quantity-incr', function(event) {
   //event.preventDefault();
   //alert("itemEl.data('item-count')");
   var itemEl = $(this).closest('.js-item');
