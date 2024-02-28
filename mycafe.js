@@ -21,9 +21,9 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $(document).ready(function() {
   console.log("I am here")
-  $('.cafe-block .js-order-item').hide();
+  $('.cafe-block .cafe-order-item .js-order-item').hide();
 });
-logWithTimestamp(` 3 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 15 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -61,7 +61,7 @@ function incrClicked (itemEl, delta, itemId) {
   totalitemprice =totalitemprice.toFixed(2)
   console.log(" ITEMtitle", itemtitle , " totalitemprice", totalitemprice, " itempricefloat", itempricefloat )
   if (count > 0) {    
-    $('.cafe-block .js-order-item#' + itemId+ "mc1").show();
+    $('.cafe-block  .cafe-order-item .js-order-item#' + itemId+ "mc1").show();
     //console.log(' oneitemprice:', $(`.oneitemprice#`+ itemId).text());
        
     itemprice = itemEl.find('.cafe-item-price').text();
@@ -79,7 +79,7 @@ function incrClicked (itemEl, delta, itemId) {
       return accumulator + currentValue;
       }, 0);
 
-    $('.cafe-block .allitemtotalprice').text(finalprice.toFixed(2)); //
+    $('.finalamount .allitemtotalprice').text(finalprice.toFixed(2)); //
     //alert(`count1 = ${count1} itemId = ${itemId} itemtitle = ${itemtitle} itemprice = ${itemprice} itempricefloat = ${itempricefloat} totalitemprice = ${totalitemprice} finalprice = ${finalprice}`);
      // Inside your loop or logic for processing items
      var existingItem = itemsData.find(item => item.title === itemtitle);
@@ -102,7 +102,7 @@ function incrClicked (itemEl, delta, itemId) {
 
   } else {
     
-    $('.cafe-block .js-order-item#' + itemId + "mc1").hide();
+    $('.cafe-block  .cafe-order-item .js-order-item#' + itemId + "mc1").hide();
     itemEl.find('.js-item-quantity-incr').hide();
     itemEl.find('.js-item-quantity-decr').hide();
     itemEl.find('.js-item-quantity').hide();
@@ -278,7 +278,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       storeDivInfo(newItemName,newPrice,newDescription, randomItem);
   }else {
     // After processing all items
-    var finalprice =  parseFloat($('.allitemtotalprice').text());
+    var finalprice =  parseFloat($('.finalamount .allitemtotalprice').text());
     var finalprice = finalprice.toFixed(2)
     // Construct a string with information for all items and final price
     var message = itemsData.map(function (item) {
