@@ -20,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-logWithTimestamp(` 3 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 5 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -38,7 +38,7 @@ function incrClicked (itemEl, delta, itemId) {
   itemEl.find('.js-item-quantity').text(count);
   $('.js-order-item-counter#' +"counter" + itemId).text(count);
 
-  /* REMOVE MAINBUTTON IF ALL POSITION are ZERO
+  // REMOVE MAINBUTTON IF ALL POSITION are ZERO
   var allZeros = $('.js-order-item-counter').map(function() {
     return parseInt($(this).text());
   }).get().every(function(value) {
@@ -47,7 +47,7 @@ function incrClicked (itemEl, delta, itemId) {
   if (allZeros) {
     tg.MainButton.hide();
   } 
-*/
+
   itemEl.data('item-count', count);
   itemtitle = itemEl.find('.cafe-item-title').text();
   count1 = count
@@ -126,7 +126,7 @@ function incrClicked (itemEl, delta, itemId) {
  // updateItem(itemEl, delta);
 }
 var addbutton = $('.js-item-incr-btn'); 
-$('.cafe-page').on('click', '.cafe-item-buttons', '.js-item-incr-btn', function(event) {
+addbutton.on('click', '.js-item-incr-btn', function(event) {
   console.log('Before tg.MainButton.show()');
   tg.MainButton.show();
   
