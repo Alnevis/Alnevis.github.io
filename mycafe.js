@@ -112,8 +112,8 @@ function incrClicked (itemEl, delta, itemId) {
  // updateItem(itemEl, delta);
 }
 var addbutton = $('.js-item-incr-btn'); 
-$('.cafe-page').on('click', '.js-item-incr-btn', function(event) {
-  tg.MainButton.show();
+$('.cafe-page').on('click', '.js-item-incr-btn', function(event) {  
+  window.Telegram.WebApp.MainButton.show();
   $(this).parent('.cafe-item-buttons').find('.js-item-incr-btn').hide();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-incr').show();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-decr').show();
