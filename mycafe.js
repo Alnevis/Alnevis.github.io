@@ -20,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-logWithTimestamp(` 5 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 1 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -126,7 +126,7 @@ function incrClicked (itemEl, delta, itemId) {
  // updateItem(itemEl, delta);
 }
 var addbutton = $('.js-item-incr-btn'); 
-addbutton.on('click', '.js-item-incr-btn', function(event) {
+$('.cafe-page').on('click', '.js-item-incr-btn', function(event) {
   console.log('Before tg.MainButton.show()');
   tg.MainButton.show();
   
