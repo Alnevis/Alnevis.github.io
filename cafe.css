@@ -391,7 +391,7 @@ button {
     color: var(--accent-color);
   }
   .cafe-order-item {
-    display: flex;
+    display: none;
     padding: 11px 0px 14px 0px;    
     align-items: center;
     width: 100%;

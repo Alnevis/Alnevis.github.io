@@ -19,11 +19,11 @@ var itemsData = [];
 tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
-$(document).ready(function() {
-  console.log("I am here")
-$('.cafe-block .cafe-order-item .js-order-item').hide();
-});
-logWithTimestamp(` 19 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+//$(document).ready(function() {
+  //console.log("I am here")
+//$('.cafe-block .cafe-order-item .js-order-item').hide();
+//});
+logWithTimestamp(` 21 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -61,7 +61,7 @@ function incrClicked (itemEl, delta, itemId) {
   totalitemprice =totalitemprice.toFixed(2)
   console.log(" ITEMtitle", itemtitle , " totalitemprice", totalitemprice, " itempricefloat", itempricefloat )
   if (count > 0) {    
-    $('.cafe-block  .js-order-item#' + itemId+ "mc1").show();
+    $('.cafe-block  .js-order-item#' + itemId+ "mc1").addClass('show');
     //console.log(' oneitemprice:', $(`.oneitemprice#`+ itemId).text());
        
     itemprice = itemEl.find('.cafe-item-price').text();
