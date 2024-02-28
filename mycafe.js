@@ -20,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.cafe-block .js-order-item').hide();
-logWithTimestamp(` 3 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 5 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -115,7 +115,7 @@ function incrClicked (itemEl, delta, itemId) {
     var finalprice = allTotalPrices.reduce(function (accumulator, currentValue) {
       return accumulator + currentValue;
       }, 0);
-    $('.cafe-block .allitemtotalprice').text(finalprice.toFixed(2)); //
+    $('.finalamount .allitemtotalprice').text(finalprice.toFixed(2)); //
 
     // Check if an item with the same title already exists in itemsData
     var existingIndex = itemsData.findIndex(item => item.title === itemtitle);
