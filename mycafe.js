@@ -1,5 +1,18 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 tg.ready()
+// Get all keys from Cloud Storage
+tg.CloudStorage.getKeys(function(error, keys) {
+  if (error) {
+    tg.showAlert('Error retrieving keys from Cloud Storage: ' + error);
+  } else {
+    if (keys && keys.length > 0) {
+      console.log('keys found in Cloud Storage.');
+      retrieveAndAppendItems(keys);
+    } else {
+      tg.showAlert('No keys found in Cloud Storage.');
+    }
+  }
+});
 let x = tg.initDataUnsafe;
 let y = tg.initData;
 var itemsData = [];
@@ -7,7 +20,7 @@ tg.expand(); //расширяем на все окно
 tg.MainButton.text = "Посмотреть заказ"; //изменяем текст кнопки
 //console.log('Hiding mc1:', $('.js-order-item.mc1'));
 $('.js-order-item').hide();
-alert(`3  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+alert(`4  your version bot api${tg.version} . WebAppInitData :  `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -114,7 +127,9 @@ function incrClicked (itemEl, delta, itemId) {
 }
 var addbutton = $('.js-item-incr-btn'); 
 $('.cafe-page').on('click', '.js-item-incr-btn', function(event) {  
+  console.log('Before tg.MainButton.show()');
   tg.MainButton.show();
+  console.log('After tg.MainButton.show()');
   $(this).parent('.cafe-item-buttons').find('.js-item-incr-btn').hide();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-incr').show();
   $(this).parent('.cafe-item-buttons').find('.js-item-quantity-decr').show();

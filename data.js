@@ -224,15 +224,4 @@ function retrieveAndAppendItems(keys) {
     });
 }
 
-// Get all keys from Cloud Storage
-tg.CloudStorage.getKeys(function(error, keys) {
-  if (error) {
-    tg.showAlert('Error retrieving keys from Cloud Storage: ' + error);
-  } else {
-    if (keys && keys.length > 0) {
-      retrieveAndAppendItems(keys);
-    } else {
-      tg.showAlert('No keys found in Cloud Storage.');
-    }
-  }
-});
+
