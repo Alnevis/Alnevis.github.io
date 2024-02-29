@@ -543,6 +543,7 @@ button {
 .button-container {
   display: flex;
   align-items: center;
+  padding: 5px;
 }
 
 .buttons-wrapper {
@@ -552,7 +553,13 @@ button {
 
 .addNewItemBtn {
   margin: 0 0 0 25px; /* Adjust the margin as needed */
-  
+  position: relative;
+  top: 0.2em; /* Adjust the value as needed */  
+}
+.delAllItemBtn {
+  margin: 0 0 0 25px; /* Adjust the margin as needed */
+  position: relative;
+  top: 0.2em; /* Adjust the value as needed */  
 }
 
 .add-qty {
@@ -560,11 +567,6 @@ button {
   padding-left: 1px; /* Adjust the padding as needed */
 }
 
-.addNewItemBtn {
-  position: relative;
-  top: 0.2em; /* Adjust the value as needed */
-   
-}
 
 /* Style for the input fields */
 .data-input {

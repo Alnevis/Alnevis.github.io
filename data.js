@@ -54,7 +54,8 @@ function addclick (itemEl, delta, itemId) {
 
  var delAllButton = $('.js-delAllItemBtn');
 // Add a click event listener to the button
-delAllButton.on('click', function(event) {    
+delAllButton.on('click', function(event) {  
+  console.log("DEL BUTTON PRESSED")  
   tg.CloudStorage.getKeys(function (error, keys) {
     if (error) {
       console.error('Error retrieving keys from Cloud Storage:', error);
@@ -64,13 +65,81 @@ delAllButton.on('click', function(event) {
         if (error) {
           console.log('Failed to remove items.');
         } else {
+          tg.showAlert("Все товары успешно удалены!")
           console.log('Items successfully removed.');
         }
       });
     }
   });
 });
+var preAddButton = $('.js-addItemBtn');
+// Add a click event listener to the button
+saveButton.on('click', function(event) {  
+  console.log("Save BUTTON PRESSED") 
+  // Retrieve the updated list from session storage
+const updatedItemsJson = sessionStorage.getItem('newItemsList');
+const updatedItems = JSON.parse(updatedItemsJson);
+updatedItems.forEach(item => {
+  const { newPrice, newItemName, newDescription } = item;
 
+  const cafeContainer = document.querySelector('.cafe-page');
+  const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+  cafeContainer.appendChild(newItemDiv);
+
+  const OrderContainer = document.querySelector('.cafe-block');
+  OrderContainer.appendChild(newOrderDiv);
+});
+
+
+});
+
+var preAddButton = $('.js-addItemBtn');
+// Add a click event listener to the button
+preAddButton.on('click', function(event) {  
+  console.log("PreADD BUTTON PRESSED") 
+  var newItemtext = document.querySelector('.quantity-input');
+    var newItemName = newItemtext.value; 
+    var newPricetext = document.querySelector('.price-input');
+    var newPrice = newPricetext.value; 
+    var newDescriptionText = document.querySelector('.desc-input');
+    var newDescription =newDescriptionText.value; 
+    
+    const setContainer = document.querySelector('.cafe-settings')   
+    const [newItemDiv,newOrderDiv, randomItem] = createNewItem(newPrice,newItemName,newDescription);
+    setContainer.appendChild(newItemDiv);
+    // Add the new item to the array
+  // Retrieve existing values from session storage
+const existingItemsJson = sessionStorage.getItem('newItemsList');
+
+// Parse the JSON or initialize an empty array
+const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
+
+// Add the new item to the array
+const newItem = {
+  itemName: newItemName,
+  itemPrice: newPrice,
+  itemDescription: newDescription,
+};
+
+existingItems.push(newItem);
+
+// Save the updated array back to session storage
+sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
+ 
+});
+/*  var newItemtext = document.querySelector('.quantity-input');
+    var newItemName = newItemtext.value; 
+    var newPricetext = document.querySelector('.price-input');
+    var newPrice = newPricetext.value; 
+    var newDescriptionText = document.querySelector('.desc-input');
+    var newDescription =newDescriptionText.value; 
+    
+    const cafeContainer = document.querySelector('.cafe-page')   
+    const [newItemDiv,newOrderDiv, randomItem] = createNewItem(newPrice,newItemName,newDescription);
+    cafeContainer.appendChild(newItemDiv);
+    const OrderContainer = document.querySelector('.cafe-block');
+    OrderContainer.appendChild(newOrderDiv); 
+    */
 function generateRandomString(length) {
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     const numbers = '0123456789';
@@ -245,35 +314,14 @@ function retrieveAndAppendItems(keys) {
 function removeAllItems(keys, callback) {
   if (!keys || keys.length === 0) {
     console.error('No keys provided for removal.');
-    tg.showAlert('No keys provided for removal.');
     return;
   }
 
   tg.CloudStorage.removeItems(keys, function (error, success) {
     if (error) {
       console.error('Error removing items from Cloud Storage:', error);
-      tg.showAlert('Error removing items from Cloud Storage:', error);
     } else {
-      console.log('Items successfully removed from Cloud Storage.');
       tg.showAlert('Items successfully removed from Cloud Storage.');
-    }
-
-    if (callback && typeof callback === 'function') {
-      callback(error, success);
-    }
-  });
-}
-
-function removeAllItems(keys, callback) {
-  if (!keys || keys.length === 0) {
-    console.error('No keys provided for removal.');
-    return;
-  }
-
-  tg.CloudStorage.removeItems(keys, function (error, success) {
-    if (error) {
-      console.error('Error removing items from Cloud Storage:', error);
-    } else {
       console.log('Items successfully removed from Cloud Storage.');
     }
 
