@@ -328,13 +328,13 @@ function removeAllItems(keys, callback) {
 
 //check if divs added , if not we add text instructions
 var targetClass = $('.cafe-page .cafe-item'); // The class you are checking for
-var divsWithClass = $('.cafe-page .initial-text');
 
 if (targetClass.length === 0) {
   
-  divsWithClass.show();
-  console.log('Class added to the span element:', divsWithClass);
+  $('.initial-text').show();
+  console.log('Class added to the span element:', targetClass.length);
 } else {
-  divsWithClass.hide();
+  $('.initial-text').hide();
   console.log('Found div(s) with class:', targetClass);
 }
+
