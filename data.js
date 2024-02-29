@@ -77,39 +77,7 @@ delAllButton.on('click', function(event) {
 var saveButton = $('.js-AllItemBtn');
 // Add a click event listener to the button
 saveButton.on('click', function(event) {  
-  console.log("Save BUTTON PRESSED") 
-
-  // Retrieve the updated list from session storage
-  const updatedItemsJson = sessionStorage.getItem('newItemsList');
-  console.log('Updated Items JSON:', updatedItemsJson);
-
-  // Parse the JSON or initialize an empty array if it's null
-  const updatedItems = updatedItemsJson ? JSON.parse(updatedItemsJson) : [];
-
-  // Check if updatedItems is an array before iterating
-  if (Array.isArray(updatedItems)) {
-    updatedItems.forEach((item, index) => {
-      console.log('Item at index', index, ':', item);
-      const { newPrice, newItemName, newDescription } = item;
-      console.log('newPrice at index', newPrice, 'newItemName at index', newItemName, 'newDescription at index', newDescription);
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      console.log('Attempting to create elements for:', { newPrice, newItemName, newDescription });
-      const cafeContainer = document.querySelector('.cafe-page');
-      const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
-      cafeContainer.appendChild(newItemDiv);
-
-      const OrderContainer = document.querySelector('.cafe-block');
-      OrderContainer.appendChild(newOrderDiv);
-
-      console.log('Processed Item:', { newPrice, newItemName, newDescription });
-    });
-  } else {
-    console.error('Updated Items is not an array:', updatedItems);
-  }
-
-  // Clear session storage after processing
-  sessionStorage.removeItem('newItemsList');
-  console.log('Session Storage Cleared');
+  
 });
 
 
@@ -124,7 +92,8 @@ preAddButton.on('click', function(event) {
   var newPrice = newPricetext.value; 
   var newDescriptionText = document.querySelector('.desc-input');
   var newDescription = newDescriptionText.value; 
-    
+  var amountAvailable = $('.add-qty').text()
+  var amountAvailableFloat = parseFloat(amountAvailable)
   const setContainer = document.querySelector('.cafe-settings')   
   const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
   setContainer.appendChild(newItemDiv);
@@ -355,4 +324,16 @@ function removeAllItems(keys, callback) {
       callback(error, success);
     }
   });
+}
+
+//check if divs added , if not we add text instructions
+var targetClass = 'cafe-item'; // The class you are checking for
+var divsWithClass = document.querySelectorAll('div.' + targetClass);
+
+if (divsWithClass.length === 0) {
+  var spanElement = $('.initial-text');
+  spanElement.addClass('show');
+  console.log('Class added to the span element:', spanElement);
+} else {
+  console.log('Found div(s) with class:', targetClass);
 }

@@ -616,7 +616,7 @@ button {
 }
 
   .cafe-settings.show{
-    display: flex;
+    display: block;
     width: 100%;
   }
   .button-item.ripple-handler {

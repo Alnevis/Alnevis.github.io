@@ -23,7 +23,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
   //console.log("I am here")
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
-logWithTimestamp(` 8 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 9 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -249,7 +249,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //tg.openTelegramLink('https://t.me/public_python');
     ///////////////////////////////////////////////////////////СОХРАНИТЬ////////////////////////////////////////////////////////////////////////////  
   } else if (tg.MainButton.text=="Сохранить"){      
-    var newItemtext = document.querySelector('.quantity-input');
+    /*var newItemtext = document.querySelector('.quantity-input');
     var newItemName = newItemtext.value; 
     var newPricetext = document.querySelector('.price-input');
     var newPrice = newPricetext.value; 
@@ -260,8 +260,44 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     const [newItemDiv,newOrderDiv, randomItem] = createNewItem(newPrice,newItemName,newDescription);
     cafeContainer.appendChild(newItemDiv);
     const OrderContainer = document.querySelector('.cafe-block');
-    OrderContainer.appendChild(newOrderDiv); 
+    OrderContainer.appendChild(newOrderDiv);*/ 
     $('.cafe-settings').removeClass('show');
+
+    console.log("Save BUTTON PRESSED") 
+
+  // Retrieve the updated list from session storage
+  const updatedItemsJson = sessionStorage.getItem('newItemsList');
+  console.log('Updated Items JSON:', updatedItemsJson);
+
+  // Parse the JSON or initialize an empty array if it's null
+  const updatedItems = updatedItemsJson ? JSON.parse(updatedItemsJson) : [];
+
+  // Check if updatedItems is an array before iterating
+  if (Array.isArray(updatedItems)) {
+    updatedItems.forEach((item, index) => {
+      console.log('Item at index', index, ':', item);
+      const { newPrice, newItemName, newDescription } = item;
+      console.log('newPrice at index', newPrice, 'newItemName at index', newItemName, 'newDescription at index', newDescription);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      console.log('Attempting to create elements for:', { newPrice, newItemName, newDescription });
+      const cafeContainer = document.querySelector('.cafe-page');
+      const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+      cafeContainer.appendChild(newItemDiv);
+
+      const OrderContainer = document.querySelector('.cafe-block');
+      OrderContainer.appendChild(newOrderDiv);
+
+      console.log('Processed Item:', { newPrice, newItemName, newDescription });
+
+      storeDivInfo(newItemName,newPrice,newDescription, randomItem);
+    });
+  } else {
+    console.error('Updated Items is not an array:', updatedItems);
+  }
+
+  // Clear session storage after processing
+  sessionStorage.removeItem('newItemsList');
+  console.log('Session Storage Cleared');
    
 //return to initial page and conceal current page
       var OrderMode = document.querySelector('.cafe-items');
@@ -275,7 +311,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       tg.MainButton.setText("Посмотреть заказ"); //изменяем текст кнопки
     // We save data of new items to STORAGE
     
-      storeDivInfo(newItemName,newPrice,newDescription, randomItem);
+      
   }else {
     // After processing all items
     var finalprice =  parseFloat($('.finalamount .allitemtotalprice').text());
