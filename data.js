@@ -327,13 +327,13 @@ function removeAllItems(keys, callback) {
 }
 
 //check if divs added , if not we add text instructions
-var targetClass = 'cafe-item'; // The class you are checking for
-var divsWithClass = document.querySelectorAll('div.' + targetClass);
+var targetClass = $('.cafe-page .cafe-item'); // The class you are checking for
+var divsWithClass = $('.cafe-page .initial-text');
 
-if (divsWithClass.length === 0) {
-  var spanElement = $('.initial-text');
-  spanElement.addClass('show');
-  console.log('Class added to the span element:', spanElement);
+if (targetClass.length === 0) {
+  
+  divsWithClass.addClass('show');
+  console.log('Class added to the span element:', divsWithClass);
 } else {
   console.log('Found div(s) with class:', targetClass);
 }
