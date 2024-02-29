@@ -335,6 +335,6 @@ if (targetClass.length === 0) {
   divsWithClass.show();
   console.log('Class added to the span element:', divsWithClass);
 } else {
-  
+  divsWithClass.hide();
   console.log('Found div(s) with class:', targetClass);
 }
