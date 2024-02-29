@@ -330,7 +330,7 @@ function removeAllItems(keys, callback) {
 var targetClass = $('.cafe-page .cafe-item'); // The class you are checking for
 var divsWithClass = $('.cafe-page .initial-text');
 
-if (targetClass.length === 0) {
+if (targetClass.length === 1) {
   
   divsWithClass.addClass('show');
   console.log('Class added to the span element:', divsWithClass);
