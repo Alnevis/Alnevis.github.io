@@ -23,7 +23,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
   //console.log("I am here")
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
-logWithTimestamp(` 21 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 1 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -102,7 +102,7 @@ function incrClicked (itemEl, delta, itemId) {
 
   } else {
     
-    $('.cafe-block .js-order-item#' + itemId + "mc1").hide();
+    $('.cafe-block .js-order-item#' + itemId + "mc1").removeClass('show');
     itemEl.find('.js-item-quantity-incr').hide();
     itemEl.find('.js-item-quantity-decr').hide();
     itemEl.find('.js-item-quantity').hide();

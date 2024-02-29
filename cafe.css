@@ -86,7 +86,7 @@ body {
   .cafe-item,
   .cafe-item-shadow {
     position: relative;
-    width: 120px;
+    width: 33%;
     min-height: 160px;
     padding: 4px 5px 21px;
     box-sizing: border-box;
@@ -141,12 +141,14 @@ body {
 .cafe-item-title {
   font-weight: 500;
   overflow: hidden;
+  font-size: 13px;
   white-space: pre-line;
   text-overflow: ellipsis;
    /* Number of lines to show */
    -webkit-line-clamp: 2;
    -webkit-box-orient: vertical;
-   height: 40px;
+   height: 70%;
+   line-height: 19px;
    
   
 }
@@ -159,7 +161,9 @@ body {
 .cafe-item-price {
   font-weight: 700;
   white-space: nowrap;
-  
+  min-height: 30%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cafe-item-price:before {
