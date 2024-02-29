@@ -85,41 +85,49 @@ saveButton.on('click', function(event) {
 var preAddButton = $('.js-addItemBtn');
 // Add a click event listener to the button
 preAddButton.on('click', function(event) {  
-  console.log("PreADD BUTTON PRESSED") 
-  var newItemtext = document.querySelector('.quantity-input');
-  var newItemName = newItemtext.value; 
-  var newPricetext = document.querySelector('.price-input');
-  var newPrice = newPricetext.value; 
-  var newDescriptionText = document.querySelector('.desc-input');
-  var newDescription = newDescriptionText.value; 
-  var amountAvailable = $('.add-qty').text()
-  var amountAvailableFloat = parseFloat(amountAvailable)
-  const setContainer = document.querySelector('.cafe-settings')   
-  const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
-  setContainer.appendChild(newItemDiv);
-
-  // Retrieve existing values from session storage
-  const existingItemsJson = sessionStorage.getItem('newItemsList');
-
-  // Parse the JSON or initialize an empty array if it's null
-  const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
-
-  // Check if existingItems is an array before pushing the new item
-  if (Array.isArray(existingItems)) {
-    // Add the new item to the array
-    const newItem = {
-      newItemName: newItemName,
-      newPrice: newPrice,
-      newDescription: newDescription,
-    };
-    console.log("const new item ", newItem)
-    existingItems.push(newItem);
-
-    // Save the updated array back to session storage
-    sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
+  console.log("Pre ADD BUTTON PRESSED");
+  
+  var qtyAmount = parseInt($('.add-qty').val(), 10); // Convert to a number
+  
+  if (qtyAmount < 1) {
+    tg.showAlert("Добавьте количество товара в наличии!");
   } else {
-    console.error('Existing Items is not an array:', existingItems);
-  }
+    var newItemtext = document.querySelector('.quantity-input');
+    var newItemName = newItemtext.value; 
+    var newPricetext = document.querySelector('.price-input');
+    var newPrice = newPricetext.value; 
+    var newDescriptionText = document.querySelector('.desc-input');
+    var newDescription = newDescriptionText.value; 
+    var amountAvailable = $('.add-qty').text()
+    var amountAvailableFloat = parseFloat(amountAvailable)
+    const setContainer = document.querySelector('.cafe-settings')   
+    const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+    setContainer.appendChild(newItemDiv);
+  
+    // Retrieve existing values from session storage
+    const existingItemsJson = sessionStorage.getItem('newItemsList');
+  
+    // Parse the JSON or initialize an empty array if it's null
+    const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
+  
+    // Check if existingItems is an array before pushing the new item
+    if (Array.isArray(existingItems)) {
+      // Add the new item to the array
+      const newItem = {
+        newItemName: newItemName,
+        newPrice: newPrice,
+        newDescription: newDescription,
+      };
+      console.log("const new item ", newItem)
+      existingItems.push(newItem);
+  
+      // Save the updated array back to session storage
+      sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
+    } else {
+      console.error('Existing Items is not an array:', existingItems);
+    }
+  };
+ 
 });
 
 /*  var newItemtext = document.querySelector('.quantity-input');
