@@ -50,8 +50,26 @@ function addclick (itemEl, delta, itemId) {
     itemEl.find('.js-addNewItemBtn').show();
     
   };  
- // updateItem(itemEl, delta);
-}
+ }
+
+ var delAllButton = $('.js-delAllItemBtn');
+// Add a click event listener to the button
+delAllButton.on('click', function(event) {    
+  tg.CloudStorage.getKeys(function (error, keys) {
+    if (error) {
+      console.error('Error retrieving keys from Cloud Storage:', error);
+    } else {
+      // Remove all keys from Cloud Storage
+      removeAllItems(keys, function (error, success) {
+        if (error) {
+          console.log('Failed to remove items.');
+        } else {
+          console.log('Items successfully removed.');
+        }
+      });
+    }
+  });
+});
 
 function generateRandomString(length) {
     const letters = 'abcdefghijklmnopqrstuvwxyz';
@@ -224,4 +242,43 @@ function retrieveAndAppendItems(keys) {
     });
 }
 
+function removeAllItems(keys, callback) {
+  if (!keys || keys.length === 0) {
+    console.error('No keys provided for removal.');
+    tg.showAlert('No keys provided for removal.');
+    return;
+  }
 
+  tg.CloudStorage.removeItems(keys, function (error, success) {
+    if (error) {
+      console.error('Error removing items from Cloud Storage:', error);
+      tg.showAlert('Error removing items from Cloud Storage:', error);
+    } else {
+      console.log('Items successfully removed from Cloud Storage.');
+      tg.showAlert('Items successfully removed from Cloud Storage.');
+    }
+
+    if (callback && typeof callback === 'function') {
+      callback(error, success);
+    }
+  });
+}
+
+function removeAllItems(keys, callback) {
+  if (!keys || keys.length === 0) {
+    console.error('No keys provided for removal.');
+    return;
+  }
+
+  tg.CloudStorage.removeItems(keys, function (error, success) {
+    if (error) {
+      console.error('Error removing items from Cloud Storage:', error);
+    } else {
+      console.log('Items successfully removed from Cloud Storage.');
+    }
+
+    if (callback && typeof callback === 'function') {
+      callback(error, success);
+    }
+  });
+}

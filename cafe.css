@@ -152,7 +152,15 @@ body {
    
   
 }
-
+.initial-text{
+  display: none;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+  
+}
+.initial-text .show{
+  display: block;
+}
 .cafe-item-quantity {
   font-weight: 900;
   margin: 5px 2px;
