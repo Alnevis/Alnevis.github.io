@@ -72,7 +72,7 @@ delAllButton.on('click', function(event) {
     }
   });
 });
-var preAddButton = $('.js-addItemBtn');
+var saveButton = $('.js-AllItemBtn');
 // Add a click event listener to the button
 saveButton.on('click', function(event) {  
   console.log("Save BUTTON PRESSED") 
