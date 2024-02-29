@@ -91,7 +91,9 @@ saveButton.on('click', function(event) {
     updatedItems.forEach((item, index) => {
       console.log('Item at index', index, ':', item);
       const { newPrice, newItemName, newDescription } = item;
-
+      console.log('newPrice at index', newPrice, 'newItemName at index', newItemName, 'newDescription at index', newDescription);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      console.log('Attempting to create elements for:', { newPrice, newItemName, newDescription });
       const cafeContainer = document.querySelector('.cafe-page');
       const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
       cafeContainer.appendChild(newItemDiv);
