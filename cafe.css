@@ -153,13 +153,13 @@ body {
   
 }
 .initial-text{
-  display: none;
+  
   font-size: 18px;
   font-family: 'Courier New', Courier, monospace;
   
 }
-.initial-text .show{
-  display: block;
+.initial-text .hide{
+  display: none;
 }
 .cafe-item-quantity {
   font-weight: 900;
