@@ -617,7 +617,7 @@ button {
 
   .cafe-settings.show{
     display: block;
-    width: 100%;
+    
   }
   .button-item.ripple-handler {
     position: relative;
