@@ -72,6 +72,8 @@ delAllButton.on('click', function(event) {
     }
   });
 });
+ 
+
 var saveButton = $('.js-AllItemBtn');
 // Add a click event listener to the button
 saveButton.on('click', function(event) {  
@@ -81,20 +83,27 @@ saveButton.on('click', function(event) {
   const updatedItemsJson = sessionStorage.getItem('newItemsList');
   console.log('Updated Items JSON:', updatedItemsJson);
 
-  const updatedItems = JSON.parse(updatedItemsJson);
+  // Parse the JSON or initialize an empty array if it's null
+  const updatedItems = updatedItemsJson ? JSON.parse(updatedItemsJson) : [];
 
-  updatedItems.forEach(item => {
-    const { newPrice, newItemName, newDescription } = item;
+  // Check if updatedItems is an array before iterating
+  if (Array.isArray(updatedItems)) {
+    updatedItems.forEach((item, index) => {
+      console.log('Item at index', index, ':', item);
+      const { newPrice, newItemName, newDescription } = item;
 
-    const cafeContainer = document.querySelector('.cafe-page');
-    const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
-    cafeContainer.appendChild(newItemDiv);
+      const cafeContainer = document.querySelector('.cafe-page');
+      const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+      cafeContainer.appendChild(newItemDiv);
 
-    const OrderContainer = document.querySelector('.cafe-block');
-    OrderContainer.appendChild(newOrderDiv);
+      const OrderContainer = document.querySelector('.cafe-block');
+      OrderContainer.appendChild(newOrderDiv);
 
-    console.log('Processed Item:', { newPrice, newItemName, newDescription });
-  });
+      console.log('Processed Item:', { newPrice, newItemName, newDescription });
+    });
+  } else {
+    console.error('Updated Items is not an array:', updatedItems);
+  }
 
   // Clear session storage after processing
   sessionStorage.removeItem('newItemsList');
@@ -102,40 +111,46 @@ saveButton.on('click', function(event) {
 });
 
 
+
 var preAddButton = $('.js-addItemBtn');
 // Add a click event listener to the button
 preAddButton.on('click', function(event) {  
   console.log("PreADD BUTTON PRESSED") 
   var newItemtext = document.querySelector('.quantity-input');
-    var newItemName = newItemtext.value; 
-    var newPricetext = document.querySelector('.price-input');
-    var newPrice = newPricetext.value; 
-    var newDescriptionText = document.querySelector('.desc-input');
-    var newDescription =newDescriptionText.value; 
+  var newItemName = newItemtext.value; 
+  var newPricetext = document.querySelector('.price-input');
+  var newPrice = newPricetext.value; 
+  var newDescriptionText = document.querySelector('.desc-input');
+  var newDescription = newDescriptionText.value; 
     
-    const setContainer = document.querySelector('.cafe-settings')   
-    const [newItemDiv,newOrderDiv, randomItem] = createNewItem(newPrice,newItemName,newDescription);
-    setContainer.appendChild(newItemDiv);
-    // Add the new item to the array
+  const setContainer = document.querySelector('.cafe-settings')   
+  const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+  setContainer.appendChild(newItemDiv);
+
   // Retrieve existing values from session storage
-const existingItemsJson = sessionStorage.getItem('newItemsList');
+  const existingItemsJson = sessionStorage.getItem('newItemsList');
 
-// Parse the JSON or initialize an empty array
-const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
+  // Parse the JSON or initialize an empty array if it's null
+  const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
 
-// Add the new item to the array
-const newItem = {
-  itemName: newItemName,
-  itemPrice: newPrice,
-  itemDescription: newDescription,
-};
+  // Check if existingItems is an array before pushing the new item
+  if (Array.isArray(existingItems)) {
+    // Add the new item to the array
+    const newItem = {
+      itemName: newItemName,
+      itemPrice: newPrice,
+      itemDescription: newDescription,
+    };
+    console.log("const new item ", newItem)
+    existingItems.push(newItem);
 
-existingItems.push(newItem);
-
-// Save the updated array back to session storage
-sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
- 
+    // Save the updated array back to session storage
+    sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
+  } else {
+    console.error('Existing Items is not an array:', existingItems);
+  }
 });
+
 /*  var newItemtext = document.querySelector('.quantity-input');
     var newItemName = newItemtext.value; 
     var newPricetext = document.querySelector('.price-input');
