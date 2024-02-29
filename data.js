@@ -139,9 +139,9 @@ preAddButton.on('click', function(event) {
   if (Array.isArray(existingItems)) {
     // Add the new item to the array
     const newItem = {
-      itemName: newItemName,
-      itemPrice: newPrice,
-      itemDescription: newDescription,
+      newItemName: newItemName,
+      newPrice: newPrice,
+      newDescription: newDescription,
     };
     console.log("const new item ", newItem)
     existingItems.push(newItem);
