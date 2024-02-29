@@ -76,22 +76,31 @@ var saveButton = $('.js-AllItemBtn');
 // Add a click event listener to the button
 saveButton.on('click', function(event) {  
   console.log("Save BUTTON PRESSED") 
+
   // Retrieve the updated list from session storage
-const updatedItemsJson = sessionStorage.getItem('newItemsList');
-const updatedItems = JSON.parse(updatedItemsJson);
-updatedItems.forEach(item => {
-  const { newPrice, newItemName, newDescription } = item;
+  const updatedItemsJson = sessionStorage.getItem('newItemsList');
+  console.log('Updated Items JSON:', updatedItemsJson);
 
-  const cafeContainer = document.querySelector('.cafe-page');
-  const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
-  cafeContainer.appendChild(newItemDiv);
+  const updatedItems = JSON.parse(updatedItemsJson);
 
-  const OrderContainer = document.querySelector('.cafe-block');
-  OrderContainer.appendChild(newOrderDiv);
+  updatedItems.forEach(item => {
+    const { newPrice, newItemName, newDescription } = item;
+
+    const cafeContainer = document.querySelector('.cafe-page');
+    const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+    cafeContainer.appendChild(newItemDiv);
+
+    const OrderContainer = document.querySelector('.cafe-block');
+    OrderContainer.appendChild(newOrderDiv);
+
+    console.log('Processed Item:', { newPrice, newItemName, newDescription });
+  });
+
+  // Clear session storage after processing
+  sessionStorage.removeItem('newItemsList');
+  console.log('Session Storage Cleared');
 });
 
-
-});
 
 var preAddButton = $('.js-addItemBtn');
 // Add a click event listener to the button
