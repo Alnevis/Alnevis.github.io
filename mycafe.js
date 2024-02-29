@@ -351,6 +351,8 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
   });
 
   Telegram.WebApp.onEvent('settingsButtonClicked', function () {     
+    sessionStorage.removeItem('newItemsList');
+    console.log('Session Storage Cleared');
     tg.BackButton.show();
     tg.MainButton.setText("Сохранить"); //изменяем текст кнопки
     tg.MainButton.show();
