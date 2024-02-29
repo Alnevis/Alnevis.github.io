@@ -529,7 +529,7 @@ button {
     display: none;
     justify-content: flex-start;
     align-items: center;
-    padding: 20px;
+    margin-left: 20px;
 }
 
 /* Style for the input fields */

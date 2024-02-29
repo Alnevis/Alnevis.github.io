@@ -1,5 +1,7 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
 tg.ready()
+sessionStorage.removeItem('newItemsList');
+console.log('Session Storage Cleared');
 // Get all keys from Cloud Storage
 tg.CloudStorage.getKeys(function(error, keys) {
   if (error) {
@@ -351,8 +353,7 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
   });
 
   Telegram.WebApp.onEvent('settingsButtonClicked', function () {     
-    sessionStorage.removeItem('newItemsList');
-    console.log('Session Storage Cleared');
+    
     tg.BackButton.show();
     tg.MainButton.setText("Сохранить"); //изменяем текст кнопки
     tg.MainButton.show();
