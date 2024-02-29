@@ -98,10 +98,10 @@ preAddButton.on('click', function(event) {
     var newPrice = newPricetext.value; 
     var newDescriptionText = document.querySelector('.desc-input');
     var newDescription = newDescriptionText.value; 
-    var amountAvailable = $('.add-qty').text()
-    var amountAvailableFloat = parseFloat(amountAvailable)
+    
     const setContainer = document.querySelector('.cafe-settings')   
-    const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+    //const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+     const [newItemDiv, randomItem] = createNewSample(newPrice, newItemName);
     setContainer.appendChild(newItemDiv);
   
     // Retrieve existing values from session storage
@@ -210,6 +210,35 @@ function generateRandomString(length) {
     `;
 
 return [newItemItem,newOrderItem, randomString];
+};
+
+function createNewSample(newPrice,newItemName) {
+  const newItemItem = document.createElement("div");
+  newItemItem.classList.add("add-item");
+  newItemItem.setAttribute("data-item-price", newPrice);
+  newItemItem.setAttribute("data-item-count", "0");
+  const randomString = generateRandomString(12); // Generate a random string of length 28    
+  newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
+  
+  newItemItem.innerHTML = `
+  
+      <div class="cafe-item-photo">
+          <picture class="cafe-item-lottie">        
+              <img src="img/Popcorn_148.png">  
+          </picture>
+      </div>
+      <div class="cafe-item-label">
+          <span class="cafe-item-title">${newItemName}</span>
+          <span class="cafe-item-price">$${newPrice}</span>
+      </div>
+      <div class="cafe-item-buttons">
+          <button class="addNewItemBtn addminusbutton">-</button>
+          <div class="add-qty addNewItemBtn">0</div>
+          <button class="addNewItemBtn addplusbutton">+</button>         
+      </div>
+  `;
+ 
+return [newItemItem, randomString];
 };
 
 // Storing div information
