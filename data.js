@@ -195,7 +195,7 @@ function generateRandomString(length) {
         </picture>
     </div>     
     <div class="cafe-order-item-title">${newItemName}</div>
-    <div class="cafe-order-item-price js-order-item-price"><span class="cafe-order-item-counter"><span class="js-order-item-counter" id="${randomString}counterc1">0</span>x</span><span class="currency">$</span><span class="oneitemprice" id="${randomString}oneitempricec">0</span></div>
+    <div class="cafe-order-item-price js-order-item-price"><span class="cafe-order-item-counter"><span class="js-order-item-counter" id="${randomString}counterc1">0</span>x</span><span class="currency"></span><span class="oneitemprice" id="${randomString}oneitempricec">0</span></div>
     <div class="cafe-order-item-price js-order-item-price">ИТОГО: <span class="currency"> </span><span class="oneitemtotalprice" id="${randomString}oneitemtotalprice">0</span></div>
     <div class="cafe-order-item-description"><span> ${newDescription}</span></div>
     </div>
