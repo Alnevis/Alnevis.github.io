@@ -39,10 +39,27 @@ function addclick (itemEl, delta, itemId) {
   itemEl.data('item-count',count)
   console.log(`count=${count}`);    
   //console.log(itemEl.find('.add-qty').text());
-  itemEl.find('.add-qty').text(count);  
+  itemEl.find('.add-qty').text(count);    
   itempricefloat = parseFloat(itemEl.data('item-price')); 
-   
+  thisDivID = itemEl.data('item-id');
+  const updatedItemsJson = sessionStorage.getItem('newItemsList');
+  console.log('Updated Items JSON in addclick:', updatedItemsJson);
+
+  // Parse the JSON or initialize an empty array if it's null
+  const updatedItems = updatedItemsJson ? JSON.parse(updatedItemsJson) : [];
+
+  // Check if updatedItems is an array before iterating
+  if (Array.isArray(updatedItems)) {
+    updatedItems.forEach((item, index) => {
+      console.log('Item at index', index, ':', item);
+      const { randomItem1, newPrice, newItemName, newDescription, newAmountText } = item;
+      if (randomItem1==thisDivID){
+        console.log("randomItem1",randomItem1,thisDivID,"thisDivID")
+        itemEl.find('.add-qty').text(newAmountText);
+      }
  }
+    )}
+}
 
  var delAllButton = $('.js-delAllItemBtn');
 // Add a click event listener to the button
@@ -65,7 +82,7 @@ delAllButton.on('click', function(event) {
   });
 });
  // Delete only one item from settings
- $('.add-item .js-delItemBtn').on('click', function(event) {  
+ $('.cafe-settings').on('click', 'js-delItemBtn', function(event) {  
   console.log("DEL BUTTON PRESSED")  
   tg.showConfirm("Товар будет полностью удален из магазина.", function(confirm) {
       if (confirm){
@@ -110,6 +127,7 @@ preAddButton.on('click', function(event) {
     if (Array.isArray(existingItems)) {
       // Add the new item to the array
       const newItem = {
+        randomItem1 : randomItem,
         newItemName: newItemName,
         newPrice: newPrice,
         newDescription: newDescription,
@@ -381,4 +399,3 @@ if (targetClass.length === 0) {
   $('.initial-text').hide();
   console.log('Found div(s) with class:', targetClass);
 }
-

@@ -26,7 +26,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
 
-logWithTimestamp(` 20 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 21 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -274,10 +274,10 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
   if (Array.isArray(updatedItems)) {
     updatedItems.forEach((item, index) => {
       console.log('Item at index', index, ':', item);
-      const { newPrice, newItemName, newDescription, newAmountText } = item;
-      console.log('newPrice at index', newPrice, 'newItemName at index', newItemName, 'newDescription at index', newDescription, 'amount for sale', newAmountText);
+      const { randomItem1, newPrice, newItemName, newDescription, newAmountText } = item;
+      console.log('randomItem at index', randomItem1,'newPrice at index', newPrice, 'newItemName at index', newItemName, 'newDescription at index', newDescription, 'amount for sale', newAmountText);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      console.log('Attempting to create elements for:', { newPrice, newItemName, newDescription, newAmountText });
+      console.log('Attempting to create elements for:', {randomItem1, newPrice, newItemName, newDescription, newAmountText });
       const cafeContainer = document.querySelector('.cafe-page');
       const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription,newAmountText);
       cafeContainer.appendChild(newItemDiv);
