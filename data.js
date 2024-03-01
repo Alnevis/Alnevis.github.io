@@ -1,7 +1,7 @@
 
 
 $('.buttons-wrapper').hide();
-
+//
 var addItem = $('.js-addNewItemBtn'); 
 addItem.on('click', function(event) {  
 $('.js-addNewItemBtn').hide();
@@ -13,7 +13,7 @@ $('.buttons-wrapper').show();
  itemEl.data('item-count',1)  
  addclick(itemEl, 0 , itemId);
 });
-
+// */
 // Select the quantity increment button
 var plusButton = $('.add-item .addplusbutton');
 // Add a click event listener to the button
@@ -41,15 +41,7 @@ function addclick (itemEl, delta, itemId) {
   //console.log(itemEl.find('.add-qty').text());
   itemEl.find('.add-qty').text(count);  
   itempricefloat = parseFloat(itemEl.data('item-price')); 
-  if (count > 0) {
-    itemEl.find('.addNewItemBtn').show();
-    itemEl.find('.js-addNewItemBtn').hide();
-  } else {    
-    
-    itemEl.find('.addNewItemBtn').hide();
-    itemEl.find('.js-addNewItemBtn').show();
-    
-  };  
+   
  }
 
  var delAllButton = $('.js-delAllItemBtn');
@@ -72,13 +64,13 @@ delAllButton.on('click', function(event) {
     }
   });
 });
- 
-
-var saveButton = $('.js-AllItemBtn');
-// Add a click event listener to the button
-saveButton.on('click', function(event) {  
+ // Delete only one item from settings
+ $('.cafe-settings .js-delItemBtn').on('click', function(event) {  
+  console.log("DEL BUTTON PRESSED")  
   
 });
+
+
 
 
 
@@ -87,7 +79,7 @@ var preAddButton = $('.js-addItemBtn');
 preAddButton.on('click', function(event) {  
   console.log("Pre ADD BUTTON PRESSED");
   
-  var qtyAmount = parseInt($('.add-qty').val(), 10); // Convert to a number
+  var qtyAmount = parseInt($('.cafe-settings .add-qty').val(), 10); // Convert to a number
   console.log("qtyAmount ", qtyAmount);
   if (qtyAmount < 1) {
     tg.showAlert("Добавьте количество товара в наличии!");
@@ -100,6 +92,7 @@ preAddButton.on('click', function(event) {
     var newDescription = newDescriptionText.value;
     var amountText = document.querySelector('.add-qty');
     var newAmountText = amountText.textContent;  
+    console.log("Amount text: ",amountText)
     
     const setContainer = document.querySelector('.cafe-settings')   
     //const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
@@ -239,7 +232,7 @@ function createNewSample(newPrice,newItemName,newAmountText) {
           <button class="addNewItemBtn addplusbutton">+</button>         
       </div>
       <div class="button-container">
-      <button class="delAllItemBtn js-delAllItemBtn">Удалить</button>
+      <button class="delAllItemBtn js-delItemBtn">Удалить</button>
       <div class="buttons-wrapper">        
       </div>
     </div>
