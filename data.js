@@ -122,9 +122,10 @@ delAllButton.on('click', function(event) {
  // Delete only one item from settings
  $('.cafe-settings').on('click', '.js-delItemBtn', function(event) {  
   console.log("DEL BUTTON PRESSED")  
+  var clickedDelButton = $(this);
   tg.showConfirm("Товар будет полностью удален из магазина.", function(confirm) {
       if (confirm){
-        var itemEl = $(this).closest('.add-item'); 
+        var itemEl = clickedDelButton.closest(' .add-item'); 
         var itemId = itemEl.data('item-id');
         console.log("Deleting item, ItemID: ", itemId);
         tg.CloudStorage.removeItem(itemId, function(error, success) {
