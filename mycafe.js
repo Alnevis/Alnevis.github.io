@@ -11,7 +11,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
       console.log('keys found in Cloud Storage.');
       retrieveAndAppendItems(keys);
     } else {
-      tg.showAlert('No keys found in Cloud Storage.');
+      tg.showAlert('Откройте меню в правом верхнем углу и добавьте товары!');
     }
   }
 });
@@ -26,7 +26,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
 
-logWithTimestamp(` 19 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 20 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -258,18 +258,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     //tg.openTelegramLink('https://t.me/public_python');
     ///////////////////////////////////////////////////////////СОХРАНИТЬ////////////////////////////////////////////////////////////////////////////  
   } else if (tg.MainButton.text=="Сохранить"){      
-    /*var newItemtext = document.querySelector('.quantity-input');
-    var newItemName = newItemtext.value; 
-    var newPricetext = document.querySelector('.price-input');
-    var newPrice = newPricetext.value; 
-    var newDescriptionText = document.querySelector('.desc-input');
-    var newDescription =newDescriptionText.value; 
-    
-    const cafeContainer = document.querySelector('.cafe-page')   
-    const [newItemDiv,newOrderDiv, randomItem] = createNewItem(newPrice,newItemName,newDescription);
-    cafeContainer.appendChild(newItemDiv);
-    const OrderContainer = document.querySelector('.cafe-block');
-    OrderContainer.appendChild(newOrderDiv);*/ 
+     
     $('.cafe-settings').removeClass('show');
 
     console.log("Save BUTTON PRESSED") 
@@ -296,9 +285,9 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       const OrderContainer = document.querySelector('.cafe-block');
       OrderContainer.appendChild(newOrderDiv);
 
-      console.log('Processed Item:', { newPrice, newItemName, newDescription });
+      console.log('Processed Item:', { newPrice, newItemName, newDescription, newAmountText });
 
-      storeDivInfo(newItemName,newPrice,newDescription, randomItem);
+      storeDivInfo(newItemName,newPrice,newDescription, randomItem,newAmountText);
     });
   } else {
     console.error('Updated Items is not an array:', updatedItems);
@@ -359,7 +348,7 @@ Telegram.WebApp.onEvent('backButtonClicked', function () {
     //tg.openTelegramLink('https://t.me/public_python');  
   });
 
-  Telegram.WebApp.onEvent('settingsButtonClicked', function () {     
+  Telegram.WebApp.onEvent('settingsButtonClicked', function () {    
     
     tg.BackButton.show();
     tg.MainButton.setText("Сохранить"); //изменяем текст кнопки

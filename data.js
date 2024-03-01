@@ -65,7 +65,7 @@ delAllButton.on('click', function(event) {
   });
 });
  // Delete only one item from settings
- $('.cafe-settings .js-delItemBtn').on('click', function(event) {  
+ $('.add-item .js-delItemBtn').on('click', function(event) {  
   console.log("DEL BUTTON PRESSED")  
   tg.showConfirm("Товар будет полностью удален из магазина.", function(confirm) {
       if (confirm){
@@ -247,9 +247,9 @@ return [newItemItem, randomString];
 };
 
 // Storing div information
-function storeDivInfo(itemName, price, description, randomPlace) {
+function storeDivInfo(itemName, price, description, randomPlace,amountText) {
   //tg.showAlert(`Random  ` + randomPlace + ` Name ` + itemName + ` Price ` + price + ` Desc ` + description );
-  const divInfo = [itemName, price, description];
+  const divInfo = [itemName, price, description,amountText];
   const jsonString = JSON.stringify(divInfo); 
   //tg.showAlert(`SAVED IN STORAGE : ` + jsonString);  
   tg.CloudStorage.setItem(`${randomPlace}`, jsonString, function(error, success) {
@@ -323,8 +323,9 @@ function retrieveAndAppendItems(keys) {
         } else {
           if (storedData) {
             const parsedData = JSON.parse(storedData);
-            const [newItemDivS, newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2]);
-            resolve({ newItemDivS, newOrderDivS });
+            const [newItemDivS, newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2],parsedData[3]);
+            const [newItemDiv2, randomItem2] = createNewSample(parsedData[1], parsedData[0],parsedData[3]);
+            resolve({ newItemDivS, newOrderDivS, newItemDiv2 });
           } else {
             reject('No data found for key ' + key);
           }
@@ -337,10 +338,11 @@ function retrieveAndAppendItems(keys) {
     .then(results => {
       const cafeContainer = document.querySelector('.cafe-page');
       const OrderContainer = document.querySelector('.cafe-block');
-
-      results.forEach(({ newItemDivS, newOrderDivS }) => {
+      const settingsContainer = document.querySelector('.cafe-settings');
+      results.forEach(({ newItemDivS, newOrderDivS,newItemDiv2 }) => {
         cafeContainer.appendChild(newItemDivS);
         OrderContainer.appendChild(newOrderDivS);
+        settingsContainer.appendChild(newItemDiv2);
       });
     })
     .catch(error => {
