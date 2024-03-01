@@ -266,7 +266,7 @@ function generateRandomString(length) {
     <div class="cafe-order-item-description"><span> ${newDescription}</span></div>
     </div>
     `;
-
+    console.log("function createNewItem finished")
 return [newItemItem,newOrderItem];
 };
 

@@ -27,7 +27,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
 
-logWithTimestamp(` 37 version bot api${tg.version} `); /////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 38 version bot api${tg.version} `); /////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -228,13 +228,13 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       
       const [newItemDiv, newOrderDiv] = createNewItem(newPrice, newItemName, newDescription,newAmountText,randomItem1);
       cafeContainer.appendChild(newItemDiv);
-
+      console.log('cafeContainer.appendChild(newItemDiv);');
       const OrderContainer = document.querySelector('.cafe-block');
       OrderContainer.appendChild(newOrderDiv);
 
-      console.log('Processed Item:', { newPrice, newItemName, newDescription, newAmountText, randomItem });
+      console.log('Processed Item:', { newPrice, newItemName, newDescription, newAmountText, randomItem1 });
 
-      storeDivInfo(newItemName,newPrice,newDescription, randomItem,newAmountText);
+      storeDivInfo(newItemName,newPrice,newDescription, randomItem1,newAmountText);
     });
   } else {
     console.error('Updated Items is not an array:', updatedItems);
