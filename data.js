@@ -62,19 +62,20 @@ function addclick (itemEl, delta, itemId) {
           reject('Error retrieving data for key in addclick ' + key + ': ' + error);
         } else {
           const { randomItem3, newPrice3, newItemName3, newDescription3, newAmountText3} = storedValues;
+          const newItem3 = {
+            randomItem1 : thisDivID,
+            newItemName: newItemName3,
+            newPrice: newPrice3,
+            newDescription: newDescription3,
+            newAmountText : newAmountText3,
+          };
+          console.log("const new item ", newItem3)
+          existingItems.push(newItem3);
+      
+          // Save the updated array back to session storage
+          sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
         }
-        const newItem = {
-        randomItem1 : thisDivID,
-        newItemName: newItemName3,
-        newPrice: newPrice3,
-        newDescription: newDescription3,
-        newAmountText : newAmountText3,
-      };
-      console.log("const new item ", newItem)
-      existingItems.push(newItem);
-  
-      // Save the updated array back to session storage
-      sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
+        
     });
   };
 };
