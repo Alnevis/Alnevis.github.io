@@ -46,25 +46,39 @@ function addclick (itemEl, delta, itemId) {
       
   itempricefloat = parseFloat(itemEl.data('item-price')); 
   thisDivID = itemEl.data('item-id');
-  const updatedItemsJson = sessionStorage.getItem('newItemsList');
-  console.log('Updated Items JSON in addclick:', updatedItemsJson);
+  
+  
+  // Retrieve existing values from session storage
+    const existingItemsJson = sessionStorage.getItem('newItemsList');
+  
+    // Parse the JSON or initialize an empty array if it's null
+    const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
+    console.log('existingItemsJson in addclick:', existingItemsJson);
+    // Check if existingItems is an array before pushing the new item
+    if (Array.isArray(existingItems)) {
+      console.log('if (Array.isArray(existingItems)) ', 'divID:',thisDivID);
+      tg.CloudStorage.getItem(thisDivID, function(error, storedValues) {
+        if (error) {
+          reject('Error retrieving data for key in addclick ' + key + ': ' + error);
+        } else {
+          const { randomItem3, newPrice3, newItemName3, newDescription3, newAmountText3} = storedValues;
+        }
+        const newItem = {
+        randomItem1 : thisDivID,
+        newItemName: newItemName3,
+        newPrice: newPrice3,
+        newDescription: newDescription3,
+        newAmountText : newAmountText3,
+      };
+      console.log("const new item ", newItem)
+      existingItems.push(newItem);
+  
+      // Save the updated array back to session storage
+      sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
+    });
+  };
+};
 
-  // Parse the JSON or initialize an empty array if it's null/
-  const updatedItems = updatedItemsJson ? JSON.parse(updatedItemsJson) : [];
-
-  // Check if updatedItems is an array before iterating
-  if (Array.isArray(updatedItems)) {
-    updatedItems.forEach((item, index) => {
-      console.log('Item at index ', index, 'in addbutton :', item);
-      const { randomItem1, newPrice, newItemName, newDescription, newAmountText } = item;
-      if (randomItem1==thisDivID){
-        console.log("randomItem1",randomItem1,"thisDivID",thisDivID, newAmountText)
-        updatedItems[index].newAmountText = qtycount;
-      }
- }
-    )}
-    sessionStorage.setItem('newItemsList', JSON.stringify(updatedItems));
-}
 
  var delAllButton = $('.js-delAllItemBtn');
 // Add a click event listener to the button
@@ -298,9 +312,9 @@ function retrieveAndAppendItems(keys) {
         } else {
           if (storedData) {
             const parsedData = JSON.parse(storedData);
-            console.log("retrieveitems parsedata:",parsedData[1], parsedData[0], parsedData[2],parsedData[3], "key= ",key)
+            console.log("retrieveitems parsedata:",parsedData[1], parsedData[0], parsedData[2],parsedData[3], "key=",key)
             const [newItemDivS, newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2],parsedData[3]);
-            const [newItemDiv2] = createNewSample(parsedData[1], parsedData[0],parsedData[3],randomItemS);
+            const [newItemDiv2] = createNewSample(parsedData[1], parsedData[0],parsedData[3],key);
             resolve({ newItemDivS, newOrderDivS, newItemDiv2 });
           } else {
             reject('No data found for key ' + key);
