@@ -54,6 +54,7 @@ function addclick(itemEl, delta, itemId) {
 
     if (Array.isArray(existingItems)) {
       if (existingItems.length > 0){
+        console.log(' existingItems.length > 0');
         existingItems.forEach((storedValues, index) => {
           const { randomItem2, newPrice2, newItemName2, newDescription2, newAmountText2 } = storedValues;
           console.log(' isArray(existingItems)) Item at index ', index, 'in addbutton :', storedValues , 'divID:', thisDivID);
@@ -63,6 +64,7 @@ function addclick(itemEl, delta, itemId) {
           }
         });
       }else{     
+        console.log(' existingItems.length = 0');
       
       tg.CloudStorage.getItem(thisDivID, function (error, storedValues) {
         if (error) {
