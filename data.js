@@ -67,7 +67,13 @@ delAllButton.on('click', function(event) {
  // Delete only one item from settings
  $('.cafe-settings .js-delItemBtn').on('click', function(event) {  
   console.log("DEL BUTTON PRESSED")  
-  
+  tg.showConfirm("Товар будет полностью удален из магазина.", function(confirm) {
+      if (confirm){
+        console.log("User pressed OK");
+      }else{
+        console.log("User pressed Cancel");
+      }
+  })
 });
 
 
@@ -79,11 +85,6 @@ var preAddButton = $('.js-addItemBtn');
 preAddButton.on('click', function(event) {  
   console.log("Pre ADD BUTTON PRESSED");
   
-  var qtyAmount = parseInt($('.cafe-settings .add-qty').val(), 10); // Convert to a number
-  console.log("qtyAmount ", qtyAmount);
-  if (qtyAmount < 1) {
-    tg.showAlert("Добавьте количество товара в наличии!");
-  } else {
     var newItemtext = document.querySelector('.quantity-input');
     var newItemName = newItemtext.value; 
     var newPricetext = document.querySelector('.price-input');
@@ -92,8 +93,8 @@ preAddButton.on('click', function(event) {
     var newDescription = newDescriptionText.value;
     var amountText = document.querySelector('.add-qty');
     var newAmountText = amountText.textContent;  
-    console.log("Amount text: ",amountText)
-    
+    console.log("Amount text: ",newAmountText)
+    if (parseFloat(newAmountText) > 0) {
     const setContainer = document.querySelector('.cafe-settings')   
     //const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
      const [newItemDiv, randomItem] = createNewSample(newPrice, newItemName,newAmountText);
@@ -112,6 +113,7 @@ preAddButton.on('click', function(event) {
         newItemName: newItemName,
         newPrice: newPrice,
         newDescription: newDescription,
+        newAmountText : newAmountText,
       };
       console.log("const new item ", newItem)
       existingItems.push(newItem);
@@ -121,7 +123,9 @@ preAddButton.on('click', function(event) {
     } else {
       console.error('Existing Items is not an array:', existingItems);
     }
-  };
+  }else {
+    tg.showAlert("Установите количество товара в наличии!")
+  }
  
 });
 
@@ -156,7 +160,7 @@ function generateRandomString(length) {
     return randomString;
   }
   
-  function createNewItem(newPrice,newItemName,newDescription) {
+  function createNewItem(newPrice,newItemName,newDescription,newAmountText) {
     const newItemItem = document.createElement("div");
     newItemItem.classList.add("cafe-item", "js-item");
     newItemItem.setAttribute("data-item-price", newPrice);
@@ -183,6 +187,7 @@ function generateRandomString(length) {
                 <span class="button-item-label">Add</span>
                 <span class="ripple-mask"><span class="ripple"></span></span>
             </button>
+            <div class="amountForSale">${newAmountText}</div>
         </div>
     `;
    
@@ -211,7 +216,7 @@ function createNewSample(newPrice,newItemName,newAmountText) {
   const newItemItem = document.createElement("div");
   newItemItem.classList.add("add-item");
   newItemItem.setAttribute("data-item-price", newPrice);
-  newItemItem.setAttribute("data-item-count", "0");
+  newItemItem.setAttribute("data-item-count", newAmountText);
   const randomString = generateRandomString(12); // Generate a random string of length 28    
   newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
   

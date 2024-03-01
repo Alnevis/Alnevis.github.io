@@ -26,7 +26,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
 
-logWithTimestamp(` 18 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 19 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -40,7 +40,13 @@ let finalprice
 
 function incrClicked (itemEl, delta, itemId) {  
   var count = itemEl.data('item-count'); 
-  count += delta;  
+  var maximalCount = itemEl.data('amountForSale');
+  console.log("maximal amount = ", maximalCount)
+  count += delta;
+  if (parseFloat(count) > parseFloat(maximalCount)){
+    tg.showAlert("Достигнуто максимальное количество товара в наличии!")
+    count -= delta
+  } else {  
   itemEl.find('.js-item-quantity').text(count);
   $('.cafe-block .js-order-item-counter#'+ itemId + "counterc1" ).text(count);
 
@@ -131,7 +137,7 @@ function incrClicked (itemEl, delta, itemId) {
       itemsData.splice(existingIndex, 1);
       }
   };  
- // updateItem(itemEl, delta);
+}
 }
 var addbutton = $('.js-item-incr-btn'); 
 $('.cafe-page').on('click', '.js-item-incr-btn', function(event) {
@@ -279,12 +285,12 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
   if (Array.isArray(updatedItems)) {
     updatedItems.forEach((item, index) => {
       console.log('Item at index', index, ':', item);
-      const { newPrice, newItemName, newDescription } = item;
-      console.log('newPrice at index', newPrice, 'newItemName at index', newItemName, 'newDescription at index', newDescription);
+      const { newPrice, newItemName, newDescription, newAmountText } = item;
+      console.log('newPrice at index', newPrice, 'newItemName at index', newItemName, 'newDescription at index', newDescription, 'amount for sale', newAmountText);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      console.log('Attempting to create elements for:', { newPrice, newItemName, newDescription });
+      console.log('Attempting to create elements for:', { newPrice, newItemName, newDescription, newAmountText });
       const cafeContainer = document.querySelector('.cafe-page');
-      const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+      const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription,newAmountText);
       cafeContainer.appendChild(newItemDiv);
 
       const OrderContainer = document.querySelector('.cafe-block');
