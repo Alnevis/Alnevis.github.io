@@ -88,7 +88,7 @@ function addclick(itemEl, delta, itemId) {
             newDescription: newDescription3,
             newAmountText: newAmountText3,
           };
-          console.log("const new item ", newItem3);
+          console.log("existingItems.push(newItem3) in addclick ", newItem3);
           existingItems.push(newItem3);
     
           // Save the updated array back to session storage
@@ -191,11 +191,12 @@ preAddButton.on('click', function(event) {
         newDescription: newDescription,
         newAmountText : newAmountText,
       };
-      console.log("const new item ", newItem)
+      console.log("existingItems.push(newItem) ", newItem)
       existingItems.push(newItem);
   
       // Save the updated array back to session storage
       sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
+      console.log('Saved in storage:', existingItems);
     } else {
       console.error('Existing Items is not an array:', existingItems);
     }
@@ -224,13 +225,13 @@ function generateRandomString(length) {
     return randomString;
   }
   
-  function createNewItem(newPrice,newItemName,newDescription,newAmountText) {
-    console.log("function createNewItem",newPrice,newItemName,newDescription,newAmountText)
+  function createNewItem(newPrice,newItemName,newDescription,newAmountText,randomString) {
+    console.log("function createNewItem",newAmountText,randomString)
     const newItemItem = document.createElement("div");
     newItemItem.classList.add("cafe-item", "js-item");
     newItemItem.setAttribute("data-item-price", newPrice);
     newItemItem.setAttribute("data-item-count", "0");
-    const randomString = generateRandomString(12); // Generate a random string of length 28    
+    //const randomString = generateRandomString(12); // Generate a random string of length 28    
     newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
     
     newItemItem.innerHTML = `
@@ -274,7 +275,7 @@ function generateRandomString(length) {
     </div>
     `;
 
-return [newItemItem,newOrderItem, randomString];
+return [newItemItem,newOrderItem];
 };
 
 function createNewSample(newPrice,newItemName,newAmountText,randomString) {
@@ -336,7 +337,7 @@ function retrieveAndAppendItems(keys) {
           if (storedData) {
             const parsedData = JSON.parse(storedData);
             console.log("retrieveitems parsedata:",parsedData[1], parsedData[0], parsedData[2],parsedData[3], "key=",key)
-            const [newItemDivS, newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2],parsedData[3]);
+            const [newItemDivS, newOrderDivS] = createNewItem(parsedData[1], parsedData[0], parsedData[2],parsedData[3],key);
             const [newItemDiv2] = createNewSample(parsedData[1], parsedData[0],parsedData[3],key);
             resolve({ newItemDivS, newOrderDivS, newItemDiv2 });
           } else {
