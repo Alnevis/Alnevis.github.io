@@ -69,6 +69,7 @@ function addclick(itemEl, delta, itemId) {
           if (randomItem2==thisDivID){        
             existingItems[index].newAmountText = qtycount;
             console.log("randomItem1",randomItem2,"thisDivID",thisDivID,"newAmountText" , newAmountText2, "updatedItems[index].newAmountText",existingItems[index].newAmountText,"qtycount",qtycount )
+            sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
           }
         });
       }else{     
