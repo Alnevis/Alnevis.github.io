@@ -33,52 +33,74 @@ $('.cafe-settings').on('click', '.addminusbutton', function(event) {
   addclick(itemEl, -1, itemId );
 });
 
-function addclick (itemEl, delta, itemId) {  
-  var count = itemEl.data('item-count'); 
-  
-  count += delta; 
+function addclick(itemEl, delta, itemId) {
+  var count = itemEl.data('item-count');
+  count += delta;
   itemEl.find('.add-qty').text(count);
-  itemEl.data('item-count',count)
-  var countdata = itemEl.data('item-count')
+  itemEl.data('item-count', count);
+  var countdata = itemEl.data('item-count');
   var qtycount = itemEl.find('.add-qty').text();
-  console.log(`count=${count}  countdata = ${countdata} qty = ${qtycount}`);    
-  //console.log(itemEl.find('.add-qty').text());
-      
-  itempricefloat = parseFloat(itemEl.data('item-price')); 
+  console.log(`count=${count}  countdata = ${countdata} qty = ${qtycount}`);
+
+  itempricefloat = parseFloat(itemEl.data('item-price'));
   thisDivID = itemEl.data('item-id');
-  
-  
+
   // Retrieve existing values from session storage
-    const existingItemsJson = sessionStorage.getItem('newItemsList');
-  
-    // Parse the JSON or initialize an empty array if it's null
-    const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
-    console.log('existingItemsJson in addclick:', existingItemsJson);
-    // Check if existingItems is an array before pushing the new item
+  const existingItemsJson = sessionStorage.getItem('newItemsList');
+
+  // Parse the JSON or initialize an empty array if it's null
+  const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
+  console.log('existingItemsJson in addclick:', existingItemsJson);
+
+  // Check if existingItems is an array before pushing the new item
+  /*if (Array.isArray(updatedItems)) {
+    updatedItems.forEach((item, index) => {
+      console.log('Item at index ', index, 'in addbutton :', item);
+      const { randomItem1, newPrice, newItemName, newDescription, newAmountText} = item;
+      if (randomItem1==thisDivID){
+        
+        updatedItems[index].newAmountText = qtycount;
+        console.log("randomItem1",randomItem1,"thisDivID",thisDivID,"newAmountText" , newAmountText, "updatedItems[index].newAmountText",updatedItems[index].newAmountText,"qtycount",qtycount )
+      }
+ }
+    )}else {*/
     if (Array.isArray(existingItems)) {
-      console.log('if (Array.isArray(existingItems)) ', 'divID:',thisDivID);
-      tg.CloudStorage.getItem(thisDivID, function(error, storedValues) {
+      if (existingItems.length > 0){
+        existingItems.forEach((item, index) => {
+          const { randomItem2, newPrice2, newItemName2, newDescription2, newAmountText2 } = storedValues;
+          console.log(' isArray(existingItems)) Item at index ', index, 'in addbutton :', item , 'divID:', thisDivID);
+          if (randomItem2==thisDivID){        
+            updatedItems[index].newAmountText = qtycount;
+            console.log("randomItem1",randomItem2,"thisDivID",thisDivID,"newAmountText" , newAmountText2, "updatedItems[index].newAmountText",updatedItems[index].newAmountText,"qtycount",qtycount )
+          }
+        });
+      }else{     
+      
+      tg.CloudStorage.getItem(thisDivID, function (error, storedValues) {
         if (error) {
-          reject('Error retrieving data for key in addclick ' + key + ': ' + error);
-        } else {
-          const { randomItem3, newPrice3, newItemName3, newDescription3, newAmountText3} = storedValues;
+          console.error('Error retrieving data for key in addclick:', thisDivID, error);
+        } else if (storedValues) {
+          const { randomItem3, newPrice3, newItemName3, newDescription3, newAmountText3 } = storedValues;
           const newItem3 = {
-            randomItem1 : thisDivID,
+            randomItem1: thisDivID,
             newItemName: newItemName3,
             newPrice: newPrice3,
             newDescription: newDescription3,
-            newAmountText : newAmountText3,
+            newAmountText: newAmountText3,
           };
-          console.log("const new item ", newItem3)
+          console.log("const new item ", newItem3);
           existingItems.push(newItem3);
-      
+    
           // Save the updated array back to session storage
           sessionStorage.setItem('newItemsList', JSON.stringify(existingItems));
+        } else {
+          console.log(`Key ${thisDivID} does not exist in Cloud Storage.`);
         }
-        
-    });
-  };
-};
+      });
+    }
+  }
+}
+
 
 
  var delAllButton = $('.js-delAllItemBtn');
