@@ -59,11 +59,11 @@ function addclick(itemEl, delta, itemId) {
           console.log(' storedValue: ', storedValue);
           //const retrievedValue = JSON.parse(storedValue);
           //console.log(' retrievedValue: ', retrievedValue);
-          const randomItem2 = storedValue[0];
-          const newItemName2 = storedValue[1];
-          const newPrice2 = storedValue[2];
-          const newDescription2 = storedValue[3];
-          const newAmountText2 = storedValue[4];
+          const randomItem2 = storedValue['randomItem1'];;
+          const newItemName2 = storedValue['newItemName'];
+          const newPrice2 = storedValue['newPrice'];
+          const newDescription2 = storedValue['newDescription'];
+          const newAmountText2 = storedValue['newAmountText'];
           //
           console.log(' isArray(existingItems)) Item at index ', index, 'in addbutton :', storedValue , 'divID:', thisDivID , randomItem2, newAmountText2, newItemName2);
           if (randomItem2==thisDivID){        
