@@ -67,7 +67,7 @@ function addclick(itemEl, delta, itemId) {
     if (Array.isArray(existingItems)) {
       if (existingItems.length > 0){
         existingItems.forEach((item, index) => {
-          const { randomItem2, newPrice2, newItemName2, newDescription2, newAmountText2 } = storedValues;
+          const { randomItem2, newPrice2, newItemName2, newDescription2, newAmountText2 } = item;
           console.log(' isArray(existingItems)) Item at index ', index, 'in addbutton :', item , 'divID:', thisDivID);
           if (randomItem2==thisDivID){        
             updatedItems[index].newAmountText = qtycount;
