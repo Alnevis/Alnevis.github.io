@@ -83,7 +83,7 @@ function addclick(itemEl, delta, itemId) {
             newItemName: newItemName3,
             newPrice: newPrice3,
             newDescription: newDescription3,
-            newAmountText: newAmountText3,
+            newAmountText: qtycount,
           };
           console.log("existingItems.push(newItem3) in addclick ", newItem3);
           existingItems.push(newItem3);
