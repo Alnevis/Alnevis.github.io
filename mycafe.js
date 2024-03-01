@@ -25,11 +25,8 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
   //console.log("I am here")
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
-<<<<<<< HEAD
+
 logWithTimestamp(` 17 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
-=======
-logWithTimestamp(` 16 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
->>>>>>> 40550624736600f8dec42b316e44b3b1e345eca9
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();

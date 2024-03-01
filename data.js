@@ -182,7 +182,7 @@ function generateRandomString(length) {
             <span class="cafe-item-title">${newItemName}</span>
             <span class="cafe-item-price">$${newPrice}</span>
         </div>
-        <div class="settings-item-buttons">
+        <div class="cafe-item-buttons">
             <button class="cafe-item-quantity-decr js-item-quantity-decr button-item ripple-handler">-</button>
             <div class="cafe-item-quantity js-item-quantity">0</div>
             <button class="cafe-item-quantity-incr js-item-quantity-incr button-item ripple-handler">+</button>
