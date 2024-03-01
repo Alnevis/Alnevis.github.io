@@ -35,6 +35,7 @@ $('.cafe-settings').on('click', '.addminusbutton', function(event) {
 
 function addclick (itemEl, delta, itemId) {  
   var count = itemEl.data('item-count'); 
+  
   count += delta; 
   itemEl.find('.add-qty').text(count);
   itemEl.data('item-count',count)
@@ -91,6 +92,14 @@ delAllButton.on('click', function(event) {
   tg.showConfirm("Товар будет полностью удален из магазина.", function(confirm) {
       if (confirm){
         console.log("User pressed OK");
+        tg.CloudStorage.removeItem(itemKey, function(error, success) {
+          if (error) {
+            console.error('Failed to remove item with key', itemKey, ':', error);
+          } else {
+            tg.showAlert("Товар успешно удален!");
+            console.log('Item with key', itemKey, 'successfully removed.');
+          }
+        });
       }else{
         console.log("User pressed Cancel");
       }
@@ -329,14 +338,3 @@ function removeAllItems(keys, callback) {
   });
 }
 
-//check if divs added , if not we add text instructions
-var targetClass = $('.cafe-page .cafe-item'); // The class you are checking for
-
-if (targetClass.length === 0) {
-  
-  $('.initial-text').show();
-  console.log('Class added to the span element:', targetClass.length);
-} else {
-  $('.initial-text').hide();
-  console.log('Found div(s) with class:', targetClass);
-}
