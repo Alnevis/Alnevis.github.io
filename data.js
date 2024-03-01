@@ -69,7 +69,9 @@ function addclick (itemEl, delta, itemId) {
  var delAllButton = $('.js-delAllItemBtn');
 // Add a click event listener to the button
 delAllButton.on('click', function(event) {  
-  console.log("DEL BUTTON PRESSED")  
+  console.log("DEL BUTTON PRESSED")
+  tg.showConfirm("Все товары будут полностью удалены из магазина!", function(confirm) {
+    if (confirm){  
   tg.CloudStorage.getKeys(function (error, keys) {
     if (error) {
       console.error('Error retrieving keys from Cloud Storage:', error);
@@ -85,18 +87,23 @@ delAllButton.on('click', function(event) {
       });
     }
   });
+} 
+  });
 });
+
  // Delete only one item from settings
  $('.cafe-settings').on('click', '.js-delItemBtn', function(event) {  
   console.log("DEL BUTTON PRESSED")  
   tg.showConfirm("Товар будет полностью удален из магазина.", function(confirm) {
       if (confirm){
-        console.log("User pressed OK");
-        tg.CloudStorage.removeItem(itemKey, function(error, success) {
+        var itemEl = $(this).closest('.add-item'); 
+        var itemId = itemEl.data('item-id');
+        console.log("Deleting item, ItemID: ", itemId);
+        tg.CloudStorage.removeItem(itemId, function(error, success) {
           if (error) {
             console.error('Failed to remove item with key', itemKey, ':', error);
           } else {
-            tg.showAlert("Товар успешно удален!");
+            tg.showAlert("Товар успешно удален! Перезагрузите страницу!");
             console.log('Item with key', itemKey, 'successfully removed.');
           }
         });
@@ -125,9 +132,10 @@ preAddButton.on('click', function(event) {
     var newAmountText = amountText.textContent;  
     console.log("Amount text: ",newAmountText)
     if (parseFloat(newAmountText) > 0) {
-    const setContainer = document.querySelector('.cafe-settings')   
+    const setContainer = document.querySelector('.cafe-settings')
+    const randomItem = generateRandomString(12);   
   
-     const [newItemDiv, randomItem] = createNewSample(newPrice, newItemName,newAmountText);
+     const [newItemDiv] = createNewSample(newPrice, newItemName,newAmountText,randomItem);
     setContainer.appendChild(newItemDiv);
   
     // Retrieve existing values from session storage
@@ -232,12 +240,12 @@ function generateRandomString(length) {
 return [newItemItem,newOrderItem, randomString];
 };
 
-function createNewSample(newPrice,newItemName,newAmountText) {
+function createNewSample(newPrice,newItemName,newAmountText,randomString) {
   const newItemItem = document.createElement("div");
   newItemItem.classList.add("add-item");
   newItemItem.setAttribute("data-item-price", newPrice);
   newItemItem.setAttribute("data-item-count", newAmountText);
-  const randomString = generateRandomString(12); // Generate a random string of length 28    
+ // const randomString = generateRandomString(12); // Generate a random string of length 28    
   newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
   
   newItemItem.innerHTML = `
@@ -263,7 +271,7 @@ function createNewSample(newPrice,newItemName,newAmountText) {
     </div>
   `;
  
-return [newItemItem, randomString];
+return [newItemItem];
 };
 
 // Storing div information
@@ -290,9 +298,9 @@ function retrieveAndAppendItems(keys) {
         } else {
           if (storedData) {
             const parsedData = JSON.parse(storedData);
-            console.log("retrieveitems parsedata:",parsedData[1], parsedData[0], parsedData[2],parsedData[3])
+            console.log("retrieveitems parsedata:",parsedData[1], parsedData[0], parsedData[2],parsedData[3], "key= ",key)
             const [newItemDivS, newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2],parsedData[3]);
-            const [newItemDiv2, randomItem2] = createNewSample(parsedData[1], parsedData[0],parsedData[3]);
+            const [newItemDiv2] = createNewSample(parsedData[1], parsedData[0],parsedData[3],randomItemS);
             resolve({ newItemDivS, newOrderDivS, newItemDiv2 });
           } else {
             reject('No data found for key ' + key);
