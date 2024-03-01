@@ -71,10 +71,10 @@ function addclick(itemEl, delta, itemId) {
           //
           const retrievedValues = JSON.parse(storedValues);
          // const {newItemName3,newPrice3,  newDescription3, newAmountText3 } = retrievedValues;
-         const newItemName3 = storedValues[0];
-          const newPrice3 = storedValues[1];
-          const newDescription3 = storedValues[2];
-          const newAmountText3 = storedValues[3];
+         const newItemName3 = retrievedValues[0];
+          const newPrice3 = retrievedValues[1];
+          const newDescription3 = retrievedValues[2];
+          const newAmountText3 = retrievedValues[3];
           console.log('storedValues:', storedValues,'Retrieved values:', retrievedValues);
           const newItem3 = {
             randomItem1: thisDivID,
