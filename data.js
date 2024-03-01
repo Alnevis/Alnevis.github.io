@@ -76,11 +76,14 @@ function addclick(itemEl, delta, itemId) {
         });
       }else{     
       
-      tg.CloudStorage.getItems(thisDivID, function (error, storedValues) {
+      tg.CloudStorage.getItem(thisDivID, function (error, storedValues) {
         if (error) {
           console.error('Error retrieving data for key in addclick:', thisDivID, error);
         } else if (storedValues) {
-          const { randomItem3, newPrice3, newItemName3, newDescription3, newAmountText3 } = storedValues;
+          //
+          const retrievedValues = JSON.parse(storedValues);
+          const { randomItem3, newPrice3, newItemName3, newDescription3, newAmountText3 } = retrievedValues;
+          console.log('Retrieved values:', storedValues);
           const newItem3 = {
             randomItem1: thisDivID,
             newItemName: newItemName3,
