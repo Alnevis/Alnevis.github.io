@@ -49,7 +49,7 @@ function addclick (itemEl, delta, itemId) {
   const updatedItemsJson = sessionStorage.getItem('newItemsList');
   console.log('Updated Items JSON in addclick:', updatedItemsJson);
 
-  // Parse the JSON or initialize an empty array if it's null
+  // Parse the JSON or initialize an empty array if it's null/
   const updatedItems = updatedItemsJson ? JSON.parse(updatedItemsJson) : [];
 
   // Check if updatedItems is an array before iterating
