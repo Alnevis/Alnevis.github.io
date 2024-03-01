@@ -15,9 +15,9 @@ $('.buttons-wrapper').show();
 });
 
 // Select the quantity increment button
-var plusButton = $('.addplusbutton');
+var plusButton = $('.add-item .addplusbutton');
 // Add a click event listener to the button
-plusButton.on('click', function(event) { 
+$('.cafe-settings').on('click', '.addplusbutton', function(event) {
   
   var itemEl = $(this).closest('.add-item');
   var itemId = itemEl.data('item-id');
@@ -27,7 +27,7 @@ plusButton.on('click', function(event) {
 
 var minusButton = $('.addminusbutton');
 // Add a click event listener to the button
-minusButton.on('click', function(event) {    
+$('.cafe-settings').on('click', '.addminusbutton', function(event) {  
   var itemEl = $(this).closest('.add-item');
   var itemId = itemEl.data('item-id');
   addclick(itemEl, -1, itemId );
@@ -88,7 +88,7 @@ preAddButton.on('click', function(event) {
   console.log("Pre ADD BUTTON PRESSED");
   
   var qtyAmount = parseInt($('.add-qty').val(), 10); // Convert to a number
-  
+  console.log("qtyAmount ", qtyAmount);
   if (qtyAmount < 1) {
     tg.showAlert("Добавьте количество товара в наличии!");
   } else {
@@ -97,11 +97,13 @@ preAddButton.on('click', function(event) {
     var newPricetext = document.querySelector('.price-input');
     var newPrice = newPricetext.value; 
     var newDescriptionText = document.querySelector('.desc-input');
-    var newDescription = newDescriptionText.value; 
+    var newDescription = newDescriptionText.value;
+    var amountText = document.querySelector('.add-qty');
+    var newAmountText = amountText.textContent;  
     
     const setContainer = document.querySelector('.cafe-settings')   
     //const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
-     const [newItemDiv, randomItem] = createNewSample(newPrice, newItemName);
+     const [newItemDiv, randomItem] = createNewSample(newPrice, newItemName,newAmountText);
     setContainer.appendChild(newItemDiv);
   
     // Retrieve existing values from session storage
@@ -212,7 +214,7 @@ function generateRandomString(length) {
 return [newItemItem,newOrderItem, randomString];
 };
 
-function createNewSample(newPrice,newItemName) {
+function createNewSample(newPrice,newItemName,newAmountText) {
   const newItemItem = document.createElement("div");
   newItemItem.classList.add("add-item");
   newItemItem.setAttribute("data-item-price", newPrice);
@@ -227,15 +229,20 @@ function createNewSample(newPrice,newItemName) {
               <img src="img/Popcorn_148.png">  
           </picture>
       </div>
-      <div class="cafe-item-label">
+      <div class="setting-item-label">
           <span class="cafe-item-title">${newItemName}</span>
           <span class="cafe-item-price">$${newPrice}</span>
       </div>
-      <div class="cafe-item-buttons">
+      <div class="settings-item-buttons">
           <button class="addNewItemBtn addminusbutton">-</button>
-          <div class="add-qty addNewItemBtn">0</div>
+          <div class="add-qty addNewItemBtn">${newAmountText}</div>
           <button class="addNewItemBtn addplusbutton">+</button>         
       </div>
+      <div class="button-container">
+      <button class="delAllItemBtn js-delAllItemBtn">Удалить</button>
+      <div class="buttons-wrapper">        
+      </div>
+    </div>
   `;
  
 return [newItemItem, randomString];
