@@ -27,7 +27,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
 
-logWithTimestamp(` 34 version bot api${tg.version} `); /////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 35 version bot api${tg.version} `); /////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -225,8 +225,8 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
 //
       console.log('Attempting to create elements for:', {randomItem1, newPrice, newItemName, newDescription, newAmountText });
       const cafeContainer = document.querySelector('.cafe-page');
-      const randomItem = generateRandomString(12);
-      const [newItemDiv, newOrderDiv] = createNewItem(newPrice, newItemName, newDescription,newAmountText,randomItem);
+      
+      const [newItemDiv, newOrderDiv] = createNewItem(newPrice, newItemName, newDescription,newAmountText,randomItem1);
       cafeContainer.appendChild(newItemDiv);
 
       const OrderContainer = document.querySelector('.cafe-block');

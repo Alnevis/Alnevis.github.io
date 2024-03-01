@@ -52,18 +52,6 @@ function addclick(itemEl, delta, itemId) {
   const existingItems = existingItemsJson ? JSON.parse(existingItemsJson) : [];
   console.log('existingItemsJson in addclick:', existingItemsJson);
 
-  // Check if existingItems is an array before pushing the new item
-  /*if (Array.isArray(updatedItems)) {
-    updatedItems.forEach((item, index) => {
-      console.log('Item at index ', index, 'in addbutton :', item);
-      const { randomItem1, newPrice, newItemName, newDescription, newAmountText} = item;
-      if (randomItem1==thisDivID){
-        
-        updatedItems[index].newAmountText = qtycount;
-        console.log("randomItem1",randomItem1,"thisDivID",thisDivID,"newAmountText" , newAmountText, "updatedItems[index].newAmountText",updatedItems[index].newAmountText,"qtycount",qtycount )
-      }
- }
-    )}else {*/
     if (Array.isArray(existingItems)) {
       if (existingItems.length > 0){
         existingItems.forEach((storedValues, index) => {
