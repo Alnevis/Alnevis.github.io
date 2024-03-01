@@ -67,7 +67,7 @@ function addclick(itemEl, delta, itemId) {
           //
           console.log(' isArray(existingItems)) Item at index ', index, 'in addbutton :', storedValue , 'divID:', thisDivID , randomItem2, newAmountText2, newItemName2);
           if (randomItem2==thisDivID){        
-            updatedItems[index].newAmountText = qtycount;
+            existingItems[index].newAmountText = qtycount;
             console.log("randomItem1",randomItem2,"thisDivID",thisDivID,"newAmountText" , newAmountText2, "updatedItems[index].newAmountText",updatedItems[index].newAmountText,"qtycount",qtycount )
           }
         });
