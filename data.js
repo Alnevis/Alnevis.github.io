@@ -64,7 +64,7 @@ function addclick(itemEl, delta, itemId) {
           const newPrice2 = retrievedValue[2];
           const newDescription2 = retrievedValue[3];
           const newAmountText2 = retrievedValue[4];
-          
+          //
           console.log(' isArray(existingItems)) Item at index ', index, 'in addbutton :', storedValue , 'divID:', thisDivID , randomItem2, newAmountText2, newItemName2);
           if (randomItem2==thisDivID){        
             updatedItems[index].newAmountText = qtycount;
