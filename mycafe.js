@@ -8,7 +8,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
     tg.showAlert('Error retrieving keys from Cloud Storage: ' + error);
   } else {
     if (keys && keys.length > 0) {
-      console.log('keys found in Cloud Storage.');
+      console.log('keys found in Cloud Storage:',keys);
       retrieveAndAppendItems(keys);
     } else {
       tg.showAlert('Откройте меню в правом верхнем углу и добавьте товары!');
@@ -26,7 +26,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
 
-logWithTimestamp(` 23 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+logWithTimestamp(` 24 version bot api${tg.version} `); ////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();
@@ -40,7 +40,7 @@ let finalprice
 
 function incrClicked (itemEl, delta, itemId) {  
   var count = itemEl.data('item-count'); 
-  var maximalCount = itemEl.find('amountForSale').text();
+  var maximalCount = itemEl.find('.amountForSale').text();
   console.log("maximal amount = ", maximalCount)
   count += delta;
   if (parseFloat(count) > parseFloat(maximalCount)){
@@ -182,62 +182,7 @@ $('.cafe-page').on('click', '.js-item-quantity-incr', function(event) {
   var itemId = itemEl.data('item-id');
   incrClicked(itemEl, 1, itemId);
 });
-/*-------------------zzzzzzzzzzzzzzzzzzzzzzzzz-------------------------------------------------------------------------------------
 
-
-document.addEventListener('DOMContentLoaded', function() {
-    var myButton = document.getElementById('myButton');
-  myButton.addEventListener('click', function() {  
-    if (myButton.textContent == "Посмотреть заказ") {  
-      myButton.textContent = "Сохранить";
-      var OrderMode = document.querySelector('.cafe-items');
-      OrderMode.style.display = 'none';
-      var cafeOrderOverview = document.querySelector('.cafe-order-overview');
-      cafeOrderOverview.style.display = 'flex';
-      cafeOrderOverview.style.opacity = '1';
-      var Comment = document.querySelector('.comment');
-      Comment.style.display = 'flex';
-      $('.finalamount').addClass('show');
-    } else if (myButton.textContent=="Сохранить"){
-    alert(`Сохранено!`);     
-
-  }else if (myButton.textContent=="SET"){    
-    storeDivInfo(newItemName,newPrice,newDescription);
-  }else {
-    alert(`ено!`);
-    }
-  });
-});
-//---------------------------------------------------------------------------------*/
-/*
-    var newItemtext = document.querySelector('.quantity-input');
-    var newItemName = newItemtext.value; 
-    var newPricetext = document.querySelector('.price-input');
-    var newPrice = newPricetext.value; 
-    var newDescriptionText = document.querySelector('.desc-input');
-    var newDescription =newDescriptionText.value; 
-    
-    const cafeContainer = document.querySelector('.cafe-page')   
-    const [newItemDiv,newOrderDiv] = createNewItem(newPrice,newItemName,newDescription);
-    cafeContainer.appendChild(newItemDiv);
-    const OrderContainer = document.querySelector('.cafe-block');
-    OrderContainer.appendChild(newOrderDiv); 
-    $('.cafe-settings').removeClass('show');
-   
-//return to initial page and conceal current page 
-
-var OrderMode = document.querySelector('.cafe-items');
-OrderMode.style.display = 'none';      
-var cafeOrderOverview = document.querySelector('.cafe-order-overview');
-cafeOrderOverview.style.display = 'none';
-cafeOrderOverview.style.opacity = '0';
-var Comment = document.querySelector('.comment');
-Comment.style.display = 'none';
-$('.finalamount').removeClass('show');
-$('.cafe-settings').addClass('show');
-//alert(`itemname1` );
-*/
-   
 //     
 Telegram.WebApp.onEvent('mainButtonClicked', function () { 
  // document.addEventListener('DOMContentLoaded', function() { 
@@ -285,7 +230,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       const OrderContainer = document.querySelector('.cafe-block');
       OrderContainer.appendChild(newOrderDiv);
 
-      console.log('Processed Item:', { newPrice, newItemName, newDescription, newAmountText });
+      console.log('Processed Item:', { newPrice, newItemName, newDescription, newAmountText, randomItem });
 
       storeDivInfo(newItemName,newPrice,newDescription, randomItem,newAmountText);
     });

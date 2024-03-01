@@ -117,7 +117,7 @@ preAddButton.on('click', function(event) {
     console.log("Amount text: ",newAmountText)
     if (parseFloat(newAmountText) > 0) {
     const setContainer = document.querySelector('.cafe-settings')   
-    //const [newItemDiv, newOrderDiv, randomItem] = createNewItem(newPrice, newItemName, newDescription);
+  
      const [newItemDiv, randomItem] = createNewSample(newPrice, newItemName,newAmountText);
     setContainer.appendChild(newItemDiv);
   
@@ -151,19 +151,7 @@ preAddButton.on('click', function(event) {
  
 });
 
-/*  var newItemtext = document.querySelector('.quantity-input');
-    var newItemName = newItemtext.value; 
-    var newPricetext = document.querySelector('.price-input');
-    var newPrice = newPricetext.value; 
-    var newDescriptionText = document.querySelector('.desc-input');
-    var newDescription =newDescriptionText.value; 
-    
-    const cafeContainer = document.querySelector('.cafe-page')   
-    const [newItemDiv,newOrderDiv, randomItem] = createNewItem(newPrice,newItemName,newDescription);
-    cafeContainer.appendChild(newItemDiv);
-    const OrderContainer = document.querySelector('.cafe-block');
-    OrderContainer.appendChild(newOrderDiv); 
-    */
+
 function generateRandomString(length) {
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     const numbers = '0123456789';
@@ -183,6 +171,7 @@ function generateRandomString(length) {
   }
   
   function createNewItem(newPrice,newItemName,newDescription,newAmountText) {
+    console.log("function createNewItem",newPrice,newItemName,newDescription,newAmountText)
     const newItemItem = document.createElement("div");
     newItemItem.classList.add("cafe-item", "js-item");
     newItemItem.setAttribute("data-item-price", newPrice);
@@ -278,64 +267,11 @@ function storeDivInfo(itemName, price, description, randomPlace,amountText) {
     if (error) {
       tg.showAlert('Error storing data in Cloud Storage');
     } else {
-      tg.showAlert('Данные товара сохранены успешно!');
+      tg.showAlert('Данные товара сохранены успешно!',itemName, price, description,amountText);
     }    
   });
 }
-/*
-// Retrieve the stored JSON string from Telegram's Cloud Storage
-tg.CloudStorage.getItem('addedDivInfo', function(error, storedDivInfo) {
-  if (error) {
-    tg.showAlert('Error retrieving data from Cloud Storage:' + error);
-  } else {
-    if (storedDivInfo) {
-      // Parse the JSON string back to an array
-      const parsedDivInfo = JSON.parse(storedDivInfo);
 
-      // Assuming you have a function createNewItem that takes relevant parameters and returns a new div
-      const [newItem, newOrderItem] = createNewItem(parsedDivInfo[1], parsedDivInfo[0], parsedDivInfo[2]);
-
-      // Append the new divs to the container
-      cafeContainer.appendChild(newItem);
-      cafeOrderContainer.appendChild(newOrderItem);
-    } else {
-      tg.showAlert('No stored data found.');
-    }
-  }
-});
-//
-// Get all keys from Cloud Storage
-tg.CloudStorage.getKeys(function(error, keys) {
-  if (error) {
-    tg.showAlert('Error retrieving keys from Cloud Storage: ' + error);
-  } else {
-    if (keys && keys.length > 0) {
-      // Iterate through each key
-      keys.forEach(function(key) {        
-        tg.CloudStorage.getItem(key, function(error, storedData) {
-          if (error) {
-            tg.showAlert('Error retrieving data for key ' + key + ': ' + error);
-          } else {
-              if (storedData) {
-              // Parse the JSON string back to an array or object based on your data structure
-              const parsedData = JSON.parse(storedData);
-              // Now you can work with each retrieved data
-              //tg.showAlert('Ключ : ' + key + ' Значение ключа '+ parsedData[1] + ' Значение ключа '+ parsedData[0] + ' Значение ключа '+ parsedData[2]);
-              const cafeContainer = document.querySelector('.cafe-page')   
-              const [newItemDivS,newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2]);
-              cafeContainer.appendChild(newItemDivS);
-              const OrderContainer = document.querySelector('.cafe-block');
-              OrderContainer.appendChild(newOrderDivS); 
-            }
-          }
-        });
-      });
-    } else {
-      tg.showAlert('No keys found in Cloud Storage.');
-    }
-  }
-});
-*/
 function retrieveAndAppendItems(keys) {
   const promises = keys.map(key => {
     return new Promise((resolve, reject) => {
@@ -345,6 +281,7 @@ function retrieveAndAppendItems(keys) {
         } else {
           if (storedData) {
             const parsedData = JSON.parse(storedData);
+            console.log("retrieveitems parsedata:",parsedData[1], parsedData[0], parsedData[2],parsedData[3])
             const [newItemDivS, newOrderDivS, randomItemS] = createNewItem(parsedData[1], parsedData[0], parsedData[2],parsedData[3]);
             const [newItemDiv2, randomItem2] = createNewSample(parsedData[1], parsedData[0],parsedData[3]);
             resolve({ newItemDivS, newOrderDivS, newItemDiv2 });
