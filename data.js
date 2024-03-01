@@ -36,10 +36,13 @@ $('.cafe-settings').on('click', '.addminusbutton', function(event) {
 function addclick (itemEl, delta, itemId) {  
   var count = itemEl.data('item-count'); 
   count += delta; 
+  itemEl.find('.add-qty').text(count);
   itemEl.data('item-count',count)
-  console.log(`count=${count}`);    
+  var countdata = itemEl.data('item-count')
+  var qtycount = itemEl.find('.add-qty').text();
+  console.log(`count=${count}  countdata = ${countdata} qty = ${qtycount}`);    
   //console.log(itemEl.find('.add-qty').text());
-  itemEl.find('.add-qty').text(count);    
+      
   itempricefloat = parseFloat(itemEl.data('item-price')); 
   thisDivID = itemEl.data('item-id');
   const updatedItemsJson = sessionStorage.getItem('newItemsList');
@@ -51,14 +54,15 @@ function addclick (itemEl, delta, itemId) {
   // Check if updatedItems is an array before iterating
   if (Array.isArray(updatedItems)) {
     updatedItems.forEach((item, index) => {
-      console.log('Item at index', index, ':', item);
+      console.log('Item at index ', index, 'in addbutton :', item);
       const { randomItem1, newPrice, newItemName, newDescription, newAmountText } = item;
       if (randomItem1==thisDivID){
-        console.log("randomItem1",randomItem1,thisDivID,"thisDivID")
-        itemEl.find('.add-qty').text(newAmountText);
+        console.log("randomItem1",randomItem1,"thisDivID",thisDivID, newAmountText)
+        updatedItems[index].newAmountText = qtycount;
       }
  }
     )}
+    sessionStorage.setItem('newItemsList', JSON.stringify(updatedItems));
 }
 
  var delAllButton = $('.js-delAllItemBtn');
@@ -82,7 +86,7 @@ delAllButton.on('click', function(event) {
   });
 });
  // Delete only one item from settings
- $('.cafe-settings').on('click', 'js-delItemBtn', function(event) {  
+ $('.cafe-settings').on('click', '.js-delItemBtn', function(event) {  
   console.log("DEL BUTTON PRESSED")  
   tg.showConfirm("Товар будет полностью удален из магазина.", function(confirm) {
       if (confirm){
