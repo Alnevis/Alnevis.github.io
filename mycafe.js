@@ -273,11 +273,12 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
     tg.CloudStorage.getKeys(function(error, keys) {
       if (error) {
         console.log('Error retrieving keys from Cloud Storage: ' + error);
-      } else{
-        message += `\nkeys: ${keys}`;
+      } else{        
         //console.log('keys from Cloud Storage: ' + keys + 'message: ' + message);
         console.log('message: ' + message);
+    
       }
+    message += `\nkeys: ${keys}`;
     });
     
     //alert(`${message}`);
