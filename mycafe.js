@@ -11,7 +11,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
       console.log('keys found in Cloud Storage:',keys);
       retrieveAndAppendItems(keys);
     } else {
-      tg.showAlert('59 Откройте меню в правом верхнем углу и добавьте товары!');
+      tg.showAlert('61 Откройте меню в правом верхнем углу и добавьте товары!');
       log.console('Откройте меню в правом верхнем углу и добавьте товары!');
     }
   }
@@ -259,46 +259,42 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
       
   }else {
     // After processing all items
-    var finalprice =  parseFloat($('.finalamount .allitemtotalprice').text());
+    var finalprice = parseFloat($('.finalamount .allitemtotalprice').text());
     var finalprice = finalprice.toFixed(2)
     // Construct a string with information for all items and final price
     var message = itemsData.map(function (item) {
-      return `${item.title} ${item.count} шт. по цене ${item.price}  на сумму ${item.total}`;
+        return `${item.title} ${item.count} шт. по цене ${item.price}  на сумму ${item.total}`;
     }).join('\n');
     var textarea = document.querySelector('.cafe-text-field');
-    var userComment = textarea.value;    
+    var userComment = textarea.value;
+
     // Add the final price to the message
     message += `\nFinal Price: ${finalprice}`;
     message += `\nUser's Comment: ${userComment}`;
-    tg.CloudStorage.getKeys(function(error, keys) {
-      if (error) {
-        console.log('Error retrieving keys from Cloud Storage: ' + error);
-      } else{        
-        //console.log('keys from Cloud Storage: ' + keys + 'message: ' + message);
-        if (keys.length > 1) {
-          tg.CloudStorage.getItems(keys, (error,keyvalues)){
-            message += `\nvalues: ${keyvalues}`;
-            tg.sendData(`${message}`);
-          }          
-      }else {
-        tg.CloudStorage.getItem(keys, (error,keyvalue)){
-          message += `\nvalue: ${keyvalue}`;
-          tg.sendData(`${message}`);
-        }          
-      }
-      //alert(`${message}`);
-        
-        console.log('message: ' + message);
-    
-      }
-    
+    tg.CloudStorage.getKeys(function (error, keys) {
+        if (error) {
+            console.log('Error retrieving keys from Cloud Storage: ' + error);
+        } else {
+            if (keys.length > 1) {
+                tg.CloudStorage.getItems(keys, function (error, keyvalues) {
+                    message += `\nvalues: ${keyvalues}`;
+                    tg.sendData(`${message}`);
+                });
+            } else {
+                tg.CloudStorage.getItem(keys, function (error, keyvalue) {
+                    message += `\nvalue: ${keyvalue}`;
+                    tg.sendData(`${message}`);
+                });
+            }
+            console.log('message: ' + message);
+        }
     });
-    
-   
-    //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
-    //tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice}  на сумму ${totalitemprice} final price : ${finalprice} `);     
-    //tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!`);
-    }
+
+    // tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
+    // tg.sendData(`${itemtitle} ${count1} шт. по цене ${itemprice}  на сумму ${totalitemprice} final price : ${finalprice} `);     
+    // tg.showAlert(`ОТКРОЙТЕ ПРИЛОЖЕНИЕ ЧЕРЕЗ КНОПКУ НА КЛАВИАТУРЕ БОТА!`);
+}
+
 });
 //});
 Telegram.WebApp.onEvent('backButtonClicked', function () {     
