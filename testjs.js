@@ -1,7 +1,7 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 tg.MainButton.show()
 tg.MainButton.enable()
-  console.log("start3")
+  console.log("start53")
   
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
     let profName = tg.initDataUnsafe.user.first_name
