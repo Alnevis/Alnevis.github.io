@@ -11,7 +11,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
       console.log('keys found in Cloud Storage:',keys);
       retrieveAndAppendItems(keys);
     } else {
-      tg.showAlert('Откройте меню в правом верхнем углу и добавьте товары!');
+      tg.showAlert('48 Откройте меню в правом верхнем углу и добавьте товары!');
       log.console('Откройте меню в правом верхнем углу и добавьте товары!');
     }
   }
@@ -27,7 +27,7 @@ tg.MainButton.text = "Посмотреть заказ"; //изменяем те�
 //$('.cafe-block .cafe-order-item .js-order-item').hide();
 //});
 
-logWithTimestamp(`47 version bot api${tg.version} `); /////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
+//logWithTimestamp(`47 version bot api${tg.version} `); /////////////////////${tg.WebAppInitData.user}///////////////////////////////////////////////////////////////////////////////////////////
 tg.SettingsButton.show();
 tg.isClosingConfirmationEnabled = true;
 tg.BackButton.hide();

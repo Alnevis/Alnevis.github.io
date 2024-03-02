@@ -36,6 +36,12 @@ $('.cafe-settings').on('click', '.addminusbutton', function(event) {
 function addclick(itemEl, delta, itemId) {
   var count = itemEl.data('item-count');
   count += delta;
+  if (count < 2){
+    count = 1
+    itemEl.find('.addminusbutton').hide();
+  }else {
+    itemEl.find('.addminusbutton').show();
+  }
   itemEl.find('.add-qty').text(count);
   itemEl.data('item-count', count);
   var countdata = itemEl.data('item-count');
