@@ -1,7 +1,7 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 tg.MainButton.show()
 tg.MainButton.enable()
-  console.log("start")
+  console.log("start1")
   function getBotInfo() {
    // Replace 'YOUR_BOT_TOKEN' with your actual bot token
    const botToken = 'YOUR_BOT_TOKEN';
