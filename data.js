@@ -298,7 +298,7 @@ function createNewSample(newPrice,newItemName,newAmountText,randomString) {
   newItemItem.setAttribute("data-item-id", randomString); // You can set a unique ID for the new item
   
   newItemItem.innerHTML = `
-  
+      <div class="settings-wrapper">
       <div class="cafe-item-photo">
           <picture class="cafe-item-lottie">        
               <img src="img/Popcorn_148.png">  
@@ -307,6 +307,7 @@ function createNewSample(newPrice,newItemName,newAmountText,randomString) {
       <div class="setting-item-label">
           <span class="cafe-item-title">${newItemName}</span>
           <span class="cafe-item-price">$${newPrice}</span>
+      </div>
       </div>
       <div class="settings-item-buttons">
           <button class="addNewItemBtn addminusbutton">-</button>

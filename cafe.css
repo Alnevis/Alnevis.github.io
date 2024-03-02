@@ -134,7 +134,9 @@ body {
   .amountForSale{
     display: none;
   }
-  
+  .settings-wrapper{
+      display: block;
+  }
   .settings-item-lottie img
    {
     
