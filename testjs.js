@@ -34,7 +34,7 @@ function sendToBot(){
     
         // Replace 'YOUR_BOT_TOKEN' with your actual bot token
         const botToken = '6566526748:AAEKT_vmAfS5IXEvw7vJcX8qri-4YtUHGJ4';
-        const chatId = '6566526748';
+        const chatId = '6653096233';
         // Replace 'Hello from your bot!' with the message you want to send
         const messageText = 'Hello from your bot!';
         // Telegram Bot API endpoint for the getMe method
@@ -63,7 +63,7 @@ function sendToBot(){
         .then(data => {
             if (data && data.ok) {
                 console.log(data);
-                alert('Message sent successfully!');
+                //alert('Message sent successfully!');
             } else {
                 throw new Error('Failed to send message.');
             }
