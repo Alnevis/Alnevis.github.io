@@ -11,7 +11,7 @@ tg.CloudStorage.getKeys(function(error, keys) {
       console.log('keys found in Cloud Storage:',keys);
       retrieveAndAppendItems(keys);
     } else {
-      tg.showAlert('54 Откройте меню в правом верхнем углу и добавьте товары!');
+      tg.showAlert('56 Откройте меню в правом верхнем углу и добавьте товары!');
       log.console('Откройте меню в правом верхнем углу и добавьте товары!');
     }
   }
@@ -278,9 +278,9 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
         console.log('message: ' + message);
     
       }
-    message += `\nkeys: ${keys}`;
-    });
     
+    });
+    message += `\nkeys: ${keys}`;
     //alert(`${message}`);
     tg.sendData(`${message}`);    
     //tg.showAlert(`Данные получены! y: ${typeof y} ${JSON.stringify(y)}  x: ${typeof x} ${JSON.stringify(x)} `);
