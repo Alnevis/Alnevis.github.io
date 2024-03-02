@@ -42,7 +42,7 @@ function sendToBot(profName,userID){
     
         // Replace 'YOUR_BOT_TOKEN' with your actual bot token
         const botToken = '6566526748:AAEKT_vmAfS5IXEvw7vJcX8qri-4YtUHGJ4';
-        const chatId = `'6653096233'`;
+        const chatId = '6653096233';
         // Replace 'Hello from your bot!' with the message you want to send
         const messageText = `Hello from ${profName} UserID:${userID}!`;
         // Telegram Bot API endpoint for the getMe method
