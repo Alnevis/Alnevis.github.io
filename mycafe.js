@@ -275,7 +275,8 @@ Telegram.WebApp.onEvent('mainButtonClicked', function () {
         console.log('Error retrieving keys from Cloud Storage: ' + error);
       } else{
         message += `\nkeys: ${keys}`;
-        console.log('keys from Cloud Storage: ' + keys + 'message:' + message);
+        //console.log('keys from Cloud Storage: ' + keys + 'message: ' + message);
+        console.log('message: ' + message);
       }
     });
     
