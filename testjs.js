@@ -1,48 +1,34 @@
-let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-
-   tg.expand(); //расширяем на все окно
-
-   tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-   tg.MainButton.setText("ЗАКАЗАТЬ"); //изменяем текст кнопки иначе
-   tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
-   tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
-   tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
-
-   let btn = document.getElementById("btn"); //получаем кнопку скрыть/показать
-
-   btn.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-      if (tg.MainButton.isVisible){ //если кнопка показана
-         tg.MainButton.hide() //скрываем кнопку
-      }
-      else{ //иначе
-         tg.MainButton.show() //показываем
-      }
-   });
-
-   let btnED = document.getElementById("btnED"); //получаем кнопку активировать/деактивировать
-   btnED.addEventListener('click', function(){ //вешаем событие на нажатие html-кнопки
-      if (tg.MainButton.isActive){ //если кнопка показана
-         tg.MainButton.setParams({"color": "#E0FFFF"}); //меняем цвет
-         tg.MainButton.disable() //скрываем кнопку
-      }
-      else{ //иначе
-         tg.MainButton.setParams({"color": "#143F6B"}); //меняем цвет
-         tg.MainButton.enable() //показываем
-      }
-   });
-
-   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-      tg.sendData(`Ваш Заказ отправлен!`);
-      //window.alert(`HELLO!`);
-      //при клике на основную кнопку отправляем данные в строковом виде  
-   });
-
-
-
+let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
+tg.MainButton.show()
+tg.MainButton.enable()
+  
+   function getBotInfo() {
+      // Replace 'YOUR_BOT_TOKEN' with your actual bot token
+      const botToken = '6566526748:AAEKT_vmAfS5IXEvw7vJcX8qri-4YtUHGJ4';
+  
+      // Telegram Bot API endpoint for the getMe method
+      const apiUrl = `https://api.telegram.org/bot${botToken}/getMe`;
+  
+      // Make a fetch request to the Telegram Bot API
+      fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+              console.log(data);
+              alert(`Bot ID: ${data.result.id}\nBot Username: ${data.result.username}`);
+          })
+          .catch(error => {
+              console.error('Error getting bot information:', error);
+              alert('Error getting bot information. Check console for details.');
+          });
+  }
+  Telegram.WebApp.onEvent('mainButtonClicked', function(){
+   let profName = tg.initDataUnsafe.user.first_name   
+    console.log(profName)
+});
    /* let usercard = document.getElementById("usercard"); //получаем блок usercard
 
-   let profName = document.createElement('p'); //создаем параграф
-   profName.innerText = `${tg.initDataUnsafe.user.first_name}
+   
+   profName.innerText = `
    ${tg.initDataUnsafe.user.last_name}
    ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
    //выдем имя, "фамилию", через тире username и код языка
