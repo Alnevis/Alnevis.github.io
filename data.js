@@ -338,7 +338,7 @@ function storeDivInfo(itemName, price, description, randomPlace,amountText) {
     }    
   });
 }
-
+//
 function retrieveAndAppendItems(keys) {
   const promises = keys.map(key => {
     return new Promise((resolve, reject) => {
