@@ -22,6 +22,7 @@ tg.MainButton.enable()
               alert('Error getting bot information. Check console for details.');
           });
   }
+  getBotInfo()
   console.log("start6")
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
    let profName = tg.initDataUnsafe.user.first_name   
