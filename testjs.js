@@ -1,10 +1,10 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 tg.MainButton.show()
 tg.MainButton.enable()
-  console.log("start1")
+  console.log("start1111")
   function getBotInfo() {
    // Replace 'YOUR_BOT_TOKEN' with your actual bot token
-   const botToken = 'YOUR_BOT_TOKEN';
+   const botToken = '6566526748:AAEKT_vmAfS5IXEvw7vJcX8qri-4YtUHGJ4';
 
    // Telegram Bot API endpoint for the getMe method
    const apiUrl = `https://api.telegram.org/bot${botToken}/getMe`;
