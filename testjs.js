@@ -1,7 +1,15 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 tg.MainButton.show()
 tg.MainButton.enable()
-  console.log("start5555")
+  console.log("start3")
+  
+  Telegram.WebApp.onEvent('mainButtonClicked', function(){
+    let profName = tg.initDataUnsafe.user.first_name
+    let userID = tg.initDataUnsafe.user.id
+     
+    console.log(profName,userID)
+    sendToBot(profName, userID)
+});
   /*function getBotInfo() {
    // Replace 'YOUR_BOT_TOKEN' with your actual bot token
    const botToken = '6566526748:AAEKT_vmAfS5IXEvw7vJcX8qri-4YtUHGJ4';
@@ -30,13 +38,13 @@ tg.MainButton.enable()
            alert('Error getting bot information. Check console for details.');
        });
 }*/
-function sendToBot(){
+function sendToBot(profName,userID){
     
         // Replace 'YOUR_BOT_TOKEN' with your actual bot token
         const botToken = '6566526748:AAEKT_vmAfS5IXEvw7vJcX8qri-4YtUHGJ4';
-        const chatId = '6653096233';
+        const chatId = `'6653096233'`;
         // Replace 'Hello from your bot!' with the message you want to send
-        const messageText = 'Hello from your bot!';
+        const messageText = `Hello from ${profName} UserID:${userID}!`;
         // Telegram Bot API endpoint for the getMe method
         const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
      
@@ -75,12 +83,8 @@ function sendToBot(){
 }
 
  // getBotInfo()
-  sendToBot()
-  console.log("start6")
-  Telegram.WebApp.onEvent('mainButtonClicked', function(){
-   let profName = tg.initDataUnsafe.user.first_name   
-    console.log(profName)
-});
+  
+  
    /* let usercard = document.getElementById("usercard"); //получаем блок usercard
 
    
