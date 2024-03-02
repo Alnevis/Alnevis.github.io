@@ -1,7 +1,7 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 tg.MainButton.show()
 tg.MainButton.enable()
-  console.log("start3333")
+  console.log("start5555")
   /*function getBotInfo() {
    // Replace 'YOUR_BOT_TOKEN' with your actual bot token
    const botToken = '6566526748:AAEKT_vmAfS5IXEvw7vJcX8qri-4YtUHGJ4';
@@ -38,7 +38,7 @@ function sendToBot(){
         // Replace 'Hello from your bot!' with the message you want to send
         const messageText = 'Hello from your bot!';
         // Telegram Bot API endpoint for the getMe method
-        const apiUrl = `https://api.telegram.org/bot${botToken}/getMe`;
+        const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
      
         // Parameters for the sendMessage method
     const params = {
