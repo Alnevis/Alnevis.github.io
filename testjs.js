@@ -1,16 +1,19 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
-tg.MainButton.show()
-tg.MainButton.enable()
-console.log("start3")
+tg.MainButton.show();
+tg.MainButton.enable();
+console.log("start5");
   
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    let profName = tg.initDataUnsafe.user.first_name
-    let userID = tg.initDataUnsafe.user.id
+    console.log("button clicked");
+    let profName = tg.initDataUnsafe.user.first_name;
+    let userID = tg.initDataUnsafe.user.id;
+    
     if (profName) {
-        console.log(profName,userID)
-        sendToBot(profName, userID)
+        console.log("profName ",profName," userID ",userID ,typeof(profName),typeof(userID),Boolean(profName),Boolean(userID));
+        sendToBot(profName, userID);
     }else {
-        tg.sendData("NO USERID")
+        console.log("profName ", profName, " userID ", userID, typeof(profName), typeof(userID), Boolean(profName), Boolean(userID));
+        tg.sendData("NO USERID");
     }
      
     
