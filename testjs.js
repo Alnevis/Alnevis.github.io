@@ -1,19 +1,17 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 tg.MainButton.show();
 tg.MainButton.enable();
-console.log("start7");
+console.log("start71");
 console.log("tg.initDataUnsafe ",tg.initDataUnsafe,typeof(tg.initDataUnsafe),Boolean(tg.initDataUnsafe));  
-Telegram.WebApp.onEvent('mainButtonClicked', function(){
-    console.log("button clicked");
+console.log("Object.keys",Object.keys(tg.initDataUnsafe).length); 
+Telegram.WebApp.onEvent('mainButtonClicked', function(){          
         
-        
-    if (tg.initDataUnsafe != null && tg.initDataUnsafe != undefined) {
+    if (Object.keys(tg.initDataUnsafe).length === 0) {        
+        tg.sendData("NO USERID");
+    }else {        
         let profName = tg.initDataUnsafe.user.first_name;
         let userID = tg.initDataUnsafe.user.id;
         sendToBot(profName, userID);
-    }else {
-        console.log("profName ", profName, " userID ", userID, typeof(profName), typeof(userID), Boolean(profName), Boolean(userID));
-        tg.sendData("NO USERID");
     }    
     
 });
