@@ -1,14 +1,19 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 tg.MainButton.show()
 tg.MainButton.enable()
-  console.log("start53")
+console.log("start3")
   
   Telegram.WebApp.onEvent('mainButtonClicked', function(){
     let profName = tg.initDataUnsafe.user.first_name
     let userID = tg.initDataUnsafe.user.id
+    if (profName) {
+        console.log(profName,userID)
+        sendToBot(profName, userID)
+    }else {
+        tg.sendData("NO USERID")
+    }
      
-    console.log(profName,userID)
-    sendToBot(profName, userID)
+    
 });
   /*function getBotInfo() {
    // Replace 'YOUR_BOT_TOKEN' with your actual bot token
