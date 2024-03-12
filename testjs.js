@@ -1,7 +1,7 @@
 let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
 tg.MainButton.show();
 tg.MainButton.enable();
-console.log("start1");
+console.log("start2");
 console.log("tg.initDataUnsafe ",tg.initDataUnsafe,typeof(tg.initDataUnsafe),Boolean(tg.initDataUnsafe)); 
 console.log("tg.initData ",tg.initData,typeof(tg.initData),Boolean(tg.initData)); 
 console.log("query ",tg.initDataUnsafe.query_id); 
